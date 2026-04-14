@@ -78,16 +78,17 @@ const GLASS_MAT = {
 
 function GlassInfill({ railLength, panelH, postXs, finishColor, postW }) {
   const clampMp = { color: finishColor, metalness: 0.9, roughness: 0.15, clearcoat: 0.6 };
+  const glassH = panelH - 0.05;
   return (
     <group>
-      {/* Glass panel */}
-      <mesh position={[0, panelH / 2 + 0.02, 0]}>
-        <boxGeometry args={[railLength - 0.07, panelH, 0.012]} />
+      {/* Glass panel — flush from base to just below handrail */}
+      <mesh position={[0, glassH / 2 + 0.03, 0]}>
+        <boxGeometry args={[railLength, glassH, 0.012]} />
         <meshPhysicalMaterial {...GLASS_MAT} />
       </mesh>
       {/* Glass edge highlight — thin green strip at top */}
-      <mesh position={[0, panelH + 0.02, 0]}>
-        <boxGeometry args={[railLength - 0.07, 0.003, 0.012]} />
+      <mesh position={[0, glassH + 0.03, 0]}>
+        <boxGeometry args={[railLength, 0.003, 0.012]} />
         <meshPhysicalMaterial color="#b8dcc8" transparent opacity={0.6} roughness={0.1} />
       </mesh>
 
@@ -164,26 +165,22 @@ function VerticalSpijlen({ railLength, panelH, finishColor, material }) {
   const isRvs = material === "rvs";
   const count = Math.max(4, Math.round(railLength / 0.105));
   const spacing = railLength / (count + 1);
+  // Bars span from base rail to underside of handrail
+  const barH = panelH - 0.04;
 
   return (
     <group>
-      {/* Bottom rail */}
-      <mesh position={[0, 0.035, 0]} castShadow receiveShadow>
-        <boxGeometry args={[railLength, 0.025, 0.02]} />
-        <meshPhysicalMaterial {...mp} />
-      </mesh>
-      {/* Bars */}
       {Array.from({ length: count }, (_, i) => {
         const x = -railLength / 2 + spacing * (i + 1);
-        const y = panelH / 2 + 0.035;
+        const y = barH / 2 + 0.03;
         return isRvs ? (
           <mesh key={i} position={[x, y, 0]} castShadow>
-            <cylinderGeometry args={[0.006, 0.006, panelH, 16]} />
+            <cylinderGeometry args={[0.006, 0.006, barH, 16]} />
             <meshPhysicalMaterial {...mp} />
           </mesh>
         ) : (
           <mesh key={i} position={[x, y, 0]} castShadow>
-            <boxGeometry args={[0.012, panelH, 0.012]} />
+            <boxGeometry args={[0.012, barH, 0.012]} />
             <meshPhysicalMaterial {...mp} />
           </mesh>
         );
@@ -195,15 +192,15 @@ function VerticalSpijlen({ railLength, panelH, finishColor, material }) {
 function HorizontaleProfielen({ railLength, panelH, finishColor, material }) {
   const mp = frameMat(finishColor, material);
   const rows = panelH > 0.7 ? 5 : 4;
-  const bottomY = 0.07;
-  const topY = panelH - 0.03;
+  const bottomY = 0.05;
+  const topY = panelH - 0.02;
   const gap = (topY - bottomY) / (rows - 1);
 
   return (
     <group>
       {Array.from({ length: rows }, (_, i) => (
         <mesh key={i} position={[0, bottomY + gap * i, 0]} castShadow>
-          <boxGeometry args={[railLength - 0.07, 0.025, 0.02]} />
+          <boxGeometry args={[railLength, 0.025, 0.02]} />
           <meshPhysicalMaterial {...mp} />
         </mesh>
       ))}
@@ -215,8 +212,8 @@ function HorizontaleStaven({ railLength, panelH, finishColor, material }) {
   const isRvs = material === "rvs";
   const mp = frameMat(finishColor, material);
   const barCount = panelH > 0.75 ? 5 : 4;
-  const bottomY = 0.09;
-  const topY = panelH - 0.06;
+  const bottomY = 0.06;
+  const topY = panelH - 0.04;
   const gap = (topY - bottomY) / (barCount - 1);
 
   return (
@@ -225,31 +222,23 @@ function HorizontaleStaven({ railLength, panelH, finishColor, material }) {
         const y = bottomY + gap * i;
         return isRvs ? (
           <mesh key={i} position={[0, y, 0]} rotation={[0, 0, Math.PI / 2]} castShadow>
-            <cylinderGeometry args={[0.01, 0.01, railLength - 0.05, 20]} />
+            <cylinderGeometry args={[0.01, 0.01, railLength, 20]} />
             <meshPhysicalMaterial {...mp} />
           </mesh>
         ) : (
           <mesh key={i} position={[0, y, 0]} castShadow>
-            <boxGeometry args={[railLength - 0.05, 0.02, 0.016]} />
+            <boxGeometry args={[railLength, 0.02, 0.016]} />
             <meshPhysicalMaterial {...mp} />
           </mesh>
         );
       })}
-      {/* Rosette connectors for RVS at bar endpoints */}
       {isRvs && Array.from({ length: barCount }, (_, bi) => {
         const y = bottomY + gap * bi;
-        return [-(railLength / 2 - 0.035), (railLength / 2 - 0.035)].map((x, j) => (
-          <group key={`${bi}-${j}`} position={[x, y, 0]}>
-            <mesh castShadow>
-              <cylinderGeometry args={[0.016, 0.016, 0.01, 20]} />
-              <meshPhysicalMaterial {...mp} />
-            </mesh>
-            {/* Inner ring */}
-            <mesh position={[0, 0, 0]}>
-              <torusGeometry args={[0.012, 0.002, 8, 20]} />
-              <meshPhysicalMaterial {...mp} />
-            </mesh>
-          </group>
+        return [-(railLength / 2 - 0.02), (railLength / 2 - 0.02)].map((x, j) => (
+          <mesh key={`${bi}-${j}`} position={[x, y, 0]} castShadow>
+            <cylinderGeometry args={[0.016, 0.016, 0.01, 20]} />
+            <meshPhysicalMaterial {...mp} />
+          </mesh>
         ));
       })}
     </group>
@@ -260,23 +249,13 @@ function Lamellen({ railLength, panelH, finishColor, material }) {
   const mp = frameMat(finishColor, material);
   const count = Math.max(4, Math.round(railLength / 0.055));
   const spacing = railLength / (count + 1);
+  const lamelH = panelH - 0.06;
 
   return (
     <group>
-      {/* Bottom rail */}
-      <mesh position={[0, 0.022, 0]} castShadow>
-        <boxGeometry args={[railLength, 0.016, 0.024]} />
-        <meshPhysicalMaterial {...mp} />
-      </mesh>
-      {/* Top rail (extra for lamellen) */}
-      <mesh position={[0, panelH + 0.022, 0]} castShadow>
-        <boxGeometry args={[railLength, 0.016, 0.024]} />
-        <meshPhysicalMaterial {...mp} />
-      </mesh>
-      {/* Lamellen with slight angle */}
       {Array.from({ length: count }, (_, i) => (
-        <mesh key={i} position={[-railLength / 2 + spacing * (i + 1), panelH / 2 + 0.022, 0]} rotation={[0, 0.1, 0]} castShadow>
-          <boxGeometry args={[0.04, panelH - 0.01, 0.007]} />
+        <mesh key={i} position={[-railLength / 2 + spacing * (i + 1), lamelH / 2 + 0.03, 0]} rotation={[0, 0.1, 0]} castShadow>
+          <boxGeometry args={[0.04, lamelH, 0.007]} />
           <meshPhysicalMaterial {...mp} />
         </mesh>
       ))}
@@ -456,12 +435,16 @@ function RailSection({ lengthM, heightM, selection, finishColor, showStartPost =
   const postW  = isRvs ? 0.042 : 0.044;
   const postD  = isRvs ? 0.042 : depthM * 0.7;
   const postH  = heightM;
-  const railH  = isRvs ? 0 : 0.05;
+  const railH  = isRvs ? 0.04 : 0.05;
   const railD  = isRvs ? 0.042 : depthM * 0.82;
-  const panelH = Math.max(0.42, heightM - (isRvs ? 0.04 : railH) - 0.04);
-  const innerSpan = Math.max(0.12, lengthM - postW);
+  // Panel fills from just above base to just below handrail — no gaps
+  const panelH = Math.max(0.42, heightM - railH * 0.5 - 0.02);
+  // Handrail spans full length (edge-to-edge of outer posts)
+  const railSpan = lengthM;
+  // Infill span: between the inner faces of the outer posts
+  const fillSpan = Math.max(0.12, lengthM - postW * 0.5);
 
-  // Post spacing: ~85cm for realism
+  // Post spacing: ~85cm, always at least 2
   const nPosts  = isFrameless ? 0 : Math.max(2, Math.min(10, Math.round(lengthM / 0.85) + 1));
   const postGap = nPosts > 1 ? lengthM / (nPosts - 1) : 0;
 
@@ -476,33 +459,33 @@ function RailSection({ lengthM, heightM, selection, finishColor, showStartPost =
   const postXs = posts.map(p => p.x);
   const mp = frameMat(finishColor, selection.material);
 
+  // Handrail Y: sits exactly on top of posts
+  const railY = heightM;
+
   return (
     <group>
-      {/* Handrail */}
+      {/* ── Handrail — spans full length, sits exactly on post tops ── */}
       {!isFrameless && !isAluGlas && (
         isRvs ? (
-          /* Round cylindrical handrail for RVS */
-          <mesh position={[0, heightM, 0]} rotation={[0, 0, Math.PI / 2]} castShadow receiveShadow>
-            <cylinderGeometry args={[0.02, 0.02, innerSpan, 32]} />
+          <mesh position={[0, railY, 0]} rotation={[0, 0, Math.PI / 2]} castShadow receiveShadow>
+            <cylinderGeometry args={[0.02, 0.02, railSpan, 32]} />
             <meshPhysicalMaterial {...mp} />
           </mesh>
         ) : (
-          /* Rectangular handrail with rounded top profile */
-          <group position={[0, heightM + railH / 2, 0]}>
+          <group position={[0, railY + railH / 2, 0]}>
             <mesh castShadow receiveShadow>
-              <boxGeometry args={[innerSpan, railH, railD]} />
+              <boxGeometry args={[railSpan, railH, railD]} />
               <meshPhysicalMaterial {...mp} />
             </mesh>
-            {/* Top surface highlight */}
             <mesh position={[0, railH / 2 + 0.002, 0]}>
-              <boxGeometry args={[innerSpan - 0.003, 0.003, railD - 0.004]} />
+              <boxGeometry args={[railSpan - 0.003, 0.003, railD - 0.004]} />
               <meshPhysicalMaterial {...mp} envMapIntensity={1.4} roughness={0.1} />
             </mesh>
           </group>
         )
       )}
 
-      {/* Posts with base hardware */}
+      {/* ── Posts — centered at their X position, bottom at y=0 ── */}
       {posts.map((post, i) => (
         <group key={i} position={[post.x, postH / 2, 0]}>
           <Post isRvs={isRvs} finishColor={finishColor} postH={postH} postW={postW} postD={postD} material={selection.material} />
@@ -510,21 +493,29 @@ function RailSection({ lengthM, heightM, selection, finishColor, showStartPost =
         </group>
       ))}
 
-      {/* Infill */}
+      {/* ── Bottom rail — connects all posts at the base ── */}
+      {!isFrameless && selection.infill !== "glas" && (
+        <mesh position={[0, 0.018, 0]} castShadow>
+          <boxGeometry args={[fillSpan, 0.018, postD * 0.8]} />
+          <meshPhysicalMaterial {...mp} />
+        </mesh>
+      )}
+
+      {/* ── Infill — fills the space between posts ── */}
       {isFrameless ? (
         <FramelessGlass railLength={lengthM} panelH={panelH} />
       ) : selection.infill === "glas" ? (
-        <GlassInfill railLength={innerSpan} panelH={panelH} postXs={postXs} finishColor={finishColor} postW={postW} />
+        <GlassInfill railLength={fillSpan} panelH={panelH} postXs={postXs} finishColor={finishColor} postW={postW} />
       ) : selection.infill === "verticale-spijlen" ? (
-        <VerticalSpijlen railLength={innerSpan} panelH={panelH} finishColor={finishColor} material={selection.material} />
+        <VerticalSpijlen railLength={fillSpan} panelH={panelH} finishColor={finishColor} material={selection.material} />
       ) : selection.infill === "horizontale-profielen" ? (
-        <HorizontaleProfielen railLength={innerSpan} panelH={panelH} finishColor={finishColor} material={selection.material} />
+        <HorizontaleProfielen railLength={fillSpan} panelH={panelH} finishColor={finishColor} material={selection.material} />
       ) : selection.infill === "horizontale-staven" ? (
-        <HorizontaleStaven railLength={innerSpan} panelH={panelH} finishColor={finishColor} material={selection.material} />
+        <HorizontaleStaven railLength={fillSpan} panelH={panelH} finishColor={finishColor} material={selection.material} />
       ) : selection.infill === "lamellen" ? (
-        <Lamellen railLength={innerSpan} panelH={panelH} finishColor={finishColor} material={selection.material} />
+        <Lamellen railLength={fillSpan} panelH={panelH} finishColor={finishColor} material={selection.material} />
       ) : (
-        <DesignFill railLength={innerSpan} panelH={panelH} finishColor={finishColor} />
+        <DesignFill railLength={fillSpan} panelH={panelH} finishColor={finishColor} />
       )}
     </group>
   );
@@ -560,11 +551,15 @@ function RailSegment({ segData, selection, finishColor }) {
 
 function RoundedCornerConnector({ corner, selection, finishColor }) {
   const depthM = Math.max(0.04, (selection.depth ?? 6) / 100);
-  const railH = 0.055;
-  const railD = depthM * 0.85;
-  const isFrameless = selection.infill === "glas" && selection.material !== "rvs";
+  const isRvs = selection.material === "rvs";
+  const railH = isRvs ? 0.04 : 0.05;
+  const railD = isRvs ? 0.042 : depthM * 0.82;
+  const isFrameless = selection.infill === "glas" && !isRvs;
   const heightM = Math.max(0.6, (selection.height ?? 105) / 100);
-  const levels = isFrameless ? [0.06, Math.max(0.02, heightM * 0.45)] : [heightM + railH / 2, 0.10];
+  // Match exact Y of handrail in RailSection + bottom rail
+  const levels = isFrameless
+    ? [0.04, Math.max(0.02, heightM * 0.45)]
+    : [heightM + (isRvs ? 0 : railH / 2), 0.018];
 
   const corner3D = { ...corner, direction: -corner.direction };
   const points = sampleRoundedCorner(corner3D, 12).map(planPointToWorld);
