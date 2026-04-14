@@ -78,55 +78,90 @@ const GLASS_MAT = {
 
 function GlassInfill({ railLength, panelH, postXs, finishColor, postW }) {
   const clampMp = { color: finishColor, metalness: 0.9, roughness: 0.15, clearcoat: 0.6 };
-  const glassBottom = 0.02;
+  const boltMp = { color: "#70787f", metalness: 0.95, roughness: 0.08 };
+  const glassBottom = 0.025;
   const glassTop = panelH - 0.01;
   const glassH = glassTop - glassBottom;
   const glassY = (glassBottom + glassTop) / 2;
+
+  // Gap between glass edge and post center
+  const gapFromPost = postW / 2 + 0.012;
+
+  // Build individual glass panels between each pair of adjacent posts
+  const sortedPosts = [...postXs].sort((a, b) => a - b);
+  const panels = [];
+  for (let i = 0; i < sortedPosts.length - 1; i++) {
+    const leftX = sortedPosts[i] + gapFromPost;
+    const rightX = sortedPosts[i + 1] - gapFromPost;
+    const w = rightX - leftX;
+    if (w > 0.05) {
+      panels.push({ cx: (leftX + rightX) / 2, w });
+    }
+  }
+
+  // Bracket positions: 25% and 75% of glass height
+  const bracketY1 = glassBottom + glassH * 0.25;
+  const bracketY2 = glassBottom + glassH * 0.75;
+
   return (
     <group>
-      {/* Glass panel — from just above floor to just below handrail */}
-      <mesh position={[0, glassY, 0]}>
-        <boxGeometry args={[railLength, glassH, 0.012]} />
-        <meshPhysicalMaterial {...GLASS_MAT} />
-      </mesh>
-      {/* Glass edge highlight — thin green strip at top */}
-      <mesh position={[0, glassTop, 0]}>
-        <boxGeometry args={[railLength, 0.003, 0.012]} />
-        <meshPhysicalMaterial color="#b8dcc8" transparent opacity={0.6} roughness={0.1} />
-      </mesh>
-
-      {/* D-clamps at each post */}
-      {postXs.map((x, i) => (
-        <group key={i} position={[x, 0, 0]}>
-          {/* Lower clamp */}
-          <group position={[0, panelH * 0.2, 0]}>
-            {[0.014, -0.014].map((z, j) => (
-              <mesh key={j} position={[0, 0, z]} castShadow>
-                <boxGeometry args={[postW * 0.9, 0.06, 0.014]} />
-                <meshPhysicalMaterial {...clampMp} />
-              </mesh>
-            ))}
-            {/* Hex bolt */}
-            <mesh position={[0, 0, 0.022]} rotation={[Math.PI / 2, 0, 0]} castShadow>
-              <cylinderGeometry args={[0.005, 0.005, 0.005, 6]} />
-              <meshPhysicalMaterial color="#70787f" metalness={0.95} roughness={0.08} />
-            </mesh>
-          </group>
-          {/* Upper clamp */}
-          <group position={[0, panelH * 0.75, 0]}>
-            {[0.014, -0.014].map((z, j) => (
-              <mesh key={j} position={[0, 0, z]} castShadow>
-                <boxGeometry args={[postW * 0.9, 0.06, 0.014]} />
-                <meshPhysicalMaterial {...clampMp} />
-              </mesh>
-            ))}
-            <mesh position={[0, 0, 0.022]} rotation={[Math.PI / 2, 0, 0]} castShadow>
-              <cylinderGeometry args={[0.005, 0.005, 0.005, 6]} />
-              <meshPhysicalMaterial color="#70787f" metalness={0.95} roughness={0.08} />
-            </mesh>
-          </group>
+      {/* Individual glass panels between posts — NOT touching posts */}
+      {panels.map((p, i) => (
+        <group key={`glass-${i}`}>
+          <mesh position={[p.cx, glassY, 0]}>
+            <boxGeometry args={[p.w, glassH, 0.012]} />
+            <meshPhysicalMaterial {...GLASS_MAT} />
+          </mesh>
+          {/* Green edge at top */}
+          <mesh position={[p.cx, glassTop, 0]}>
+            <boxGeometry args={[p.w, 0.003, 0.012]} />
+            <meshPhysicalMaterial color="#b8dcc8" transparent opacity={0.5} roughness={0.1} />
+          </mesh>
         </group>
       ))}
+
+      {/* 2 brackets per post — arms sticking out from the post to hold the glass */}
+      {sortedPosts.map((x, i) => {
+        const isFirst = i === 0;
+        const isLast = i === sortedPosts.length - 1;
+
+        return (
+          <group key={`brackets-${i}`} position={[x, 0, 0]}>
+            {[bracketY1, bracketY2].map((by, bi) => (
+              <group key={bi} position={[0, by, 0]}>
+                {/* Bracket arm — extends from post face toward the glass on each side */}
+                {!isFirst && (
+                  <group>
+                    {/* Left-side bracket arm */}
+                    <mesh position={[-(postW / 2 + 0.006), 0, 0]} castShadow>
+                      <boxGeometry args={[0.016, 0.04, postW * 0.85]} />
+                      <meshPhysicalMaterial {...clampMp} />
+                    </mesh>
+                    {/* Bolt on front */}
+                    <mesh position={[-(postW / 2 + 0.006), 0, postW * 0.42 + 0.003]} rotation={[Math.PI / 2, 0, 0]} castShadow>
+                      <cylinderGeometry args={[0.004, 0.004, 0.005, 6]} />
+                      <meshPhysicalMaterial {...boltMp} />
+                    </mesh>
+                  </group>
+                )}
+                {!isLast && (
+                  <group>
+                    {/* Right-side bracket arm */}
+                    <mesh position={[postW / 2 + 0.006, 0, 0]} castShadow>
+                      <boxGeometry args={[0.016, 0.04, postW * 0.85]} />
+                      <meshPhysicalMaterial {...clampMp} />
+                    </mesh>
+                    <mesh position={[postW / 2 + 0.006, 0, postW * 0.42 + 0.003]} rotation={[Math.PI / 2, 0, 0]} castShadow>
+                      <cylinderGeometry args={[0.004, 0.004, 0.005, 6]} />
+                      <meshPhysicalMaterial {...boltMp} />
+                    </mesh>
+                  </group>
+                )}
+              </group>
+            ))}
+          </group>
+        );
+      })}
     </group>
   );
 }
