@@ -116,65 +116,70 @@ export default function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Right side — abstract 3D-ish visual */}
+          {/* Right side — project photo mosaic */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="lg:col-span-5 hidden lg:flex items-center justify-center"
+            className="lg:col-span-5 hidden lg:block"
           >
-            <div className="relative w-full max-w-md aspect-square">
-              {/* Rotating outer ring */}
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
-                className="absolute inset-0 rounded-full border border-gold/10"
-              />
-              <motion.div
-                animate={{ rotate: -360 }}
-                transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
-                className="absolute inset-6 rounded-full border border-dashed border-gold/[0.07]"
-              />
-
-              {/* Center glass-like element */}
-              <div className="absolute inset-12 rounded-2xl bg-gradient-to-br from-gold/[0.08] to-transparent border border-gold/10 backdrop-blur-sm flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-16 h-16 mx-auto mb-3 rounded-lg bg-gold/10 flex items-center justify-center">
-                    <svg className="w-8 h-8 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-                      <path d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
-                    </svg>
-                  </div>
-                  <p className="text-gold/60 text-xs font-medium tracking-wider uppercase">3D Simulator</p>
-                </div>
+            <div className="relative">
+              {/* Photo grid — asymmetric mosaic */}
+              <div className="grid grid-cols-2 gap-3">
+                {/* Top left — tall */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5, duration: 0.6 }}
+                  className="relative row-span-2 rounded-sm overflow-hidden aspect-[3/4]"
+                >
+                  <Image src="/images/1b.jpg" alt="Frameless glazen balustrade" fill className="object-cover" sizes="25vw" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/40 to-transparent" />
+                </motion.div>
+                {/* Top right — square */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6, duration: 0.6 }}
+                  className="relative rounded-sm overflow-hidden aspect-square"
+                >
+                  <Image src="/images/11b.jpg" alt="Glazen trapbalustrade" fill className="object-cover" sizes="25vw" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/30 to-transparent" />
+                </motion.div>
+                {/* Bottom right — landscape */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.7, duration: 0.6 }}
+                  className="relative rounded-sm overflow-hidden aspect-[4/3]"
+                >
+                  <Image src="/images/3.jpg" alt="Glazen balustrade dakterras" fill className="object-cover" sizes="25vw" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/30 to-transparent" />
+                </motion.div>
               </div>
 
-              {/* Floating stat pills */}
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute -top-2 right-4 px-4 py-2 bg-charcoal-light/80 border border-gold/10 rounded-lg backdrop-blur-sm"
-              >
-                <span className="text-gold font-bold text-sm">17+</span>
-                <span className="text-gray-500 text-xs ml-1">jaar</span>
-              </motion.div>
-
-              <motion.div
-                animate={{ y: [0, 6, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-                className="absolute bottom-4 -left-4 px-4 py-2 bg-charcoal-light/80 border border-gold/10 rounded-lg backdrop-blur-sm"
-              >
-                <span className="text-gold font-bold text-sm">1000+</span>
-                <span className="text-gray-500 text-xs ml-1">projecten</span>
-              </motion.div>
-
+              {/* Floating stat badge — top right */}
               <motion.div
                 animate={{ y: [0, -6, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-                className="absolute top-1/2 -right-6 px-4 py-2 bg-charcoal-light/80 border border-gold/10 rounded-lg backdrop-blur-sm"
+                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                className="absolute -top-3 -right-3 px-4 py-2.5 bg-charcoal/90 border border-gold/20 rounded-lg backdrop-blur-md shadow-xl z-10"
               >
-                <span className="text-gold font-bold text-sm">98%</span>
-                <span className="text-gray-500 text-xs ml-1">tevreden</span>
+                <span className="text-gold font-bold text-lg">17+</span>
+                <span className="text-gray-400 text-xs ml-1.5 block leading-none mt-0.5">jaar ervaring</span>
               </motion.div>
+
+              {/* Floating stat badge — bottom left */}
+              <motion.div
+                animate={{ y: [0, 5, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
+                className="absolute -bottom-3 -left-3 px-4 py-2.5 bg-charcoal/90 border border-gold/20 rounded-lg backdrop-blur-md shadow-xl z-10"
+              >
+                <span className="text-gold font-bold text-lg">1000+</span>
+                <span className="text-gray-400 text-xs ml-1.5 block leading-none mt-0.5">projecten</span>
+              </motion.div>
+
+              {/* Gold accent border */}
+              <div className="absolute -inset-2 border border-gold/10 rounded-sm pointer-events-none" />
             </div>
           </motion.div>
         </motion.div>
