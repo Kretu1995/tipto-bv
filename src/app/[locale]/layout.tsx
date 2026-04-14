@@ -5,6 +5,8 @@ import { routing } from '@/i18n/routing';
 import { jsonLdOrganization, jsonLdLocalBusiness } from '@/lib/metadata';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import BackToTop from '@/components/ui/BackToTop';
+import CookieConsent from '@/components/ui/CookieConsent';
 import '@/app/globals.css';
 
 const inter = Inter({
@@ -54,6 +56,8 @@ export default async function LocaleLayout({ children, params }: Props) {
           <Header />
           <main>{children}</main>
           <Footer />
+          <BackToTop />
+          <CookieConsent />
         </NextIntlClientProvider>
       </body>
     </html>

@@ -213,6 +213,12 @@
     "privacy": "Polityka prywatności",
     "terms": "Regulamin"
   },
+  "CookieConsent": {
+    "message": "Używamy plików cookie, aby poprawić Twoje doświadczenia na naszej stronie. Kontynuując przeglądanie, zgadzasz się na naszą politykę cookies.",
+    "accept": "Akceptuję",
+    "decline": "Odrzuć",
+    "learnMore": "Więcej informacji"
+  },
   "Common": {
     "requestQuote": "Zamów Wycenę",
     "learnMore": "Więcej Informacji",

@@ -3,8 +3,9 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Container from '@/components/ui/Container';
+import Lightbox from '@/components/ui/Lightbox';
 import { cn } from '@/lib/utils';
 import { IMAGES } from '@/lib/images';
 
@@ -13,6 +14,7 @@ const categories = ['all', 'balustrades', 'ramen', 'deuren', 'garagepoorten', 't
 export default function RealisatiesContent() {
   const t = useTranslations('RealisatiesPage.filter');
   const [filter, setFilter] = useState<typeof categories[number]>('all');
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const projects = IMAGES.projects;
   const filtered = filter === 'all' ? projects : projects.filter((p) => p.category === filter);
@@ -25,7 +27,7 @@ export default function RealisatiesContent() {
           {categories.map((cat) => (
             <button
               key={cat}
-              onClick={() => setFilter(cat)}
+              onClick={() => { setFilter(cat); setLightboxIndex(null); }}
               className={cn(
                 'px-4 py-2 text-sm font-medium rounded-sm border transition-all cursor-pointer',
                 filter === cat
@@ -47,6 +49,7 @@ export default function RealisatiesContent() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.05, duration: 0.3 }}
               className="group relative aspect-[4/3] rounded-sm overflow-hidden cursor-pointer"
+              onClick={() => setLightboxIndex(i)}
             >
               <Image
                 src={project.src}
@@ -55,7 +58,17 @@ export default function RealisatiesContent() {
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/10 to-transparent z-10" />
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/10 to-transparent z-10 transition-colors group-hover:from-charcoal/50" />
+
+              {/* Zoom icon on hover */}
+              <div className="absolute inset-0 z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="w-12 h-12 rounded-full bg-white/15 backdrop-blur-sm flex items-center justify-center">
+                  <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
+                  </svg>
+                </div>
+              </div>
+
               <div className="absolute bottom-0 left-0 right-0 z-20 p-4">
                 <span className="inline-block px-2 py-0.5 bg-gold/20 text-gold text-xs font-medium rounded mb-2 capitalize backdrop-blur-sm">
                   {project.category}
@@ -66,6 +79,17 @@ export default function RealisatiesContent() {
           ))}
         </div>
       </Container>
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {lightboxIndex !== null && (
+          <Lightbox
+            images={filtered.map((p) => ({ src: p.src, title: p.title }))}
+            initialIndex={lightboxIndex}
+            onClose={() => setLightboxIndex(null)}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 }

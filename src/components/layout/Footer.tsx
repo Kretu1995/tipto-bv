@@ -93,8 +93,9 @@ export default function Footer() {
           <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
             <p>&copy; {new Date().getFullYear()} {t('copyright')}</p>
             <div className="flex gap-6">
-              <Link href="#" className="hover:text-gray-300 transition-colors">{t('privacy')}</Link>
-              <Link href="#" className="hover:text-gray-300 transition-colors">{t('terms')}</Link>
+              <Link href="/privacy" className="hover:text-gray-300 transition-colors">{t('privacy')}</Link>
+              <Link href="/cookies" className="hover:text-gray-300 transition-colors">Cookies</Link>
+              <Link href="/algemene-voorwaarden" className="hover:text-gray-300 transition-colors">{t('terms')}</Link>
             </div>
           </div>
         </Container>

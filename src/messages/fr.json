@@ -227,6 +227,12 @@
     "privacy": "Politique de confidentialité",
     "terms": "Conditions générales"
   },
+  "CookieConsent": {
+    "message": "Nous utilisons des cookies pour améliorer votre expérience sur notre site. En continuant à naviguer, vous acceptez notre politique de cookies.",
+    "accept": "Accepter",
+    "decline": "Refuser",
+    "learnMore": "En savoir plus"
+  },
   "Common": {
     "requestQuote": "Demander un Devis",
     "learnMore": "En Savoir Plus",

@@ -701,6 +701,12 @@
     "privacy": "Privacybeleid",
     "terms": "Algemene Voorwaarden"
   },
+  "CookieConsent": {
+    "message": "Wij gebruiken cookies om uw ervaring op onze website te verbeteren. Door verder te surfen, gaat u akkoord met ons cookiebeleid.",
+    "accept": "Accepteren",
+    "decline": "Weigeren",
+    "learnMore": "Meer informatie"
+  },
   "Common": {
     "requestQuote": "Offerte Aanvragen",
     "learnMore": "Meer Info",
