@@ -1233,8 +1233,8 @@
     min-height: 0;
   }
 
-  .tc__pane--2d  { order: 2; min-height: 280px; }
-  .tc__pane--3d  { order: 1; min-height: 240px; }
+  .tc__pane--2d  { order: 2; min-height: 360px; }
+  .tc__pane--3d  { order: 1; min-height: 280px; }
   .tc__bg-picker { display: none; }
   .presets__btn  { min-width: 54px; padding: 5px 7px; }
 

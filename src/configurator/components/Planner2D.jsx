@@ -33,7 +33,7 @@ const MAJOR_GRID    = 100; // cm
 function computeTransform(vertices, cssW, cssH) {
   const PAD          = 80;
   const MIN_SPAN_X   = 600;
-  const MIN_SPAN_Y   = 350;
+  const MIN_SPAN_Y   = 500;
   const MAX_SCALE    = 2.2;
 
   const verts = Object.values(vertices);
@@ -75,8 +75,8 @@ function canvasToPlan(cx, cy, tx) {
   return { x: (cx - tx.ox) / tx.scale, y: -(cy - tx.oy) / tx.scale };
 }
 
-const ANGLE_LOCK_DEG = 10;
-const MIN_DIST_CM    = 30;
+const ANGLE_LOCK_DEG = 7;
+const MIN_DIST_CM    = 20;
 
 function applySnap(x, y, snapOn, anchor) {
   let rx = x, ry = y;
