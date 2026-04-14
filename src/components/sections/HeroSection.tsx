@@ -102,15 +102,15 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.35 }}
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4"
             >
-              <Button href="/contact" size="lg">
+              <Button href="/contact" size="md" className="sm:!px-7 sm:!py-3.5 sm:!text-base">
                 {t('ctaPrimary')}
                 <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                   <path d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Button>
-              <Button href="/balustrades" variant="outline" size="lg">
+              <Button href="/balustrades" variant="outline" size="md" className="sm:!px-7 sm:!py-3.5 sm:!text-base">
                 {t('ctaSecondary')}
               </Button>
             </motion.div>
