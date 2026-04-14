@@ -80,13 +80,36 @@ function CameraFitter({ bbox }) {
 
 function frameMat(finishColor, material) {
   const isRvs = material === "rvs";
+  const isPowder = material === "gepoedercoat-staal";
+  if (isRvs) {
+    return {
+      color: finishColor,
+      metalness: 0.95,
+      roughness: 0.12,
+      clearcoat: 0.85,
+      clearcoatRoughness: 0.06,
+      envMapIntensity: 1.4,
+      reflectivity: 0.9,
+    };
+  }
+  if (isPowder) {
+    return {
+      color: finishColor,
+      metalness: 0.35,
+      roughness: 0.45,
+      clearcoat: 0.65,
+      clearcoatRoughness: 0.25,
+      envMapIntensity: 0.8,
+    };
+  }
+  // Aluminium
   return {
     color: finishColor,
-    metalness: isRvs ? 0.96 : 0.82,
-    roughness: isRvs ? 0.16 : 0.27,
-    clearcoat: isRvs ? 0.78 : 0.42,
-    clearcoatRoughness: isRvs ? 0.1 : 0.22,
-    envMapIntensity: isRvs ? 1.25 : 0.95,
+    metalness: 0.88,
+    roughness: 0.22,
+    clearcoat: 0.48,
+    clearcoatRoughness: 0.18,
+    envMapIntensity: 1.05,
   };
 }
 
@@ -96,25 +119,53 @@ function GlassInfill({ railLength, panelH, postXs, finishColor, postW }) {
   return (
     <group>
       <mesh position={[0, panelH / 2 + 0.02, 0]}>
-        <boxGeometry args={[railLength - 0.08, panelH, 0.012]} />
-        <meshPhysicalMaterial color="#dce9f2" transmission={0.94} roughness={0.035} metalness={0} ior={1.5} thickness={0.03} envMapIntensity={1.1} transparent opacity={0.76} attenuationDistance={1.8} attenuationColor="#f5fbff" />
+        <boxGeometry args={[railLength - 0.08, panelH, 0.014]} />
+        <meshPhysicalMaterial
+          color="#e0ecf4"
+          transmission={0.92}
+          roughness={0.02}
+          metalness={0}
+          ior={1.52}
+          thickness={0.014}
+          envMapIntensity={1.3}
+          transparent
+          opacity={0.82}
+          attenuationDistance={2.2}
+          attenuationColor="#eaf4ff"
+          specularIntensity={0.8}
+          specularColor="#ffffff"
+          side={2}
+        />
       </mesh>
-      {postXs.map((x, i) => (
-        <group key={i} position={[x, panelH * 0.25, 0]}>
-          {[0.018, -0.018].map((z, j) => (
-            <mesh key={j} position={[0, 0, z]} castShadow>
-              <boxGeometry args={[postW * 1.08, 0.048, 0.018]} />
-              <meshPhysicalMaterial color={finishColor} metalness={0.82} roughness={0.24} clearcoat={0.4} />
-            </mesh>
-          ))}
-          {[0.018, -0.018].map((z, j) => (
-            <mesh key={`u${j}`} position={[0, panelH * 0.35, z]} castShadow>
-              <boxGeometry args={[postW * 1.08, 0.048, 0.018]} />
-              <meshPhysicalMaterial color={finishColor} metalness={0.82} roughness={0.24} clearcoat={0.4} />
-            </mesh>
-          ))}
-        </group>
-      ))}
+      {/* Glass clamps at each post position — two pairs (top + bottom) */}
+      {postXs.map((x, i) => {
+        const clampMat = { color: finishColor, metalness: 0.88, roughness: 0.18, clearcoat: 0.55, clearcoatRoughness: 0.12 };
+        return (
+          <group key={i} position={[x, 0, 0]}>
+            {/* Bottom clamp pair */}
+            {[0.016, -0.016].map((z, j) => (
+              <mesh key={`b${j}`} position={[0, panelH * 0.22, z]} castShadow>
+                <boxGeometry args={[postW * 1.05, 0.055, 0.016]} />
+                <meshPhysicalMaterial {...clampMat} />
+              </mesh>
+            ))}
+            {/* Top clamp pair */}
+            {[0.016, -0.016].map((z, j) => (
+              <mesh key={`t${j}`} position={[0, panelH * 0.72, z]} castShadow>
+                <boxGeometry args={[postW * 1.05, 0.055, 0.016]} />
+                <meshPhysicalMaterial {...clampMat} />
+              </mesh>
+            ))}
+            {/* Decorative bolt heads on clamps */}
+            {[panelH * 0.22, panelH * 0.72].map((y, ci) => (
+              <mesh key={`bolt${ci}`} position={[0, y, 0.024]} castShadow>
+                <cylinderGeometry args={[0.005, 0.005, 0.006, 8]} />
+                <meshPhysicalMaterial color="#888" metalness={0.95} roughness={0.1} />
+              </mesh>
+            ))}
+          </group>
+        );
+      })}
     </group>
   );
 }
@@ -123,8 +174,33 @@ function FramelessGlass({ railLength, panelH }) {
   return (
     <group>
       <mesh position={[0, panelH / 2 + 0.04, 0]}>
-        <boxGeometry args={[railLength - 0.04, panelH, 0.012]} />
-        <meshPhysicalMaterial color="#dce9f2" transmission={0.97} roughness={0.028} metalness={0} ior={1.5} thickness={0.032} envMapIntensity={1.18} transparent opacity={0.74} attenuationDistance={1.9} attenuationColor="#f6fbff" />
+        <boxGeometry args={[railLength - 0.04, panelH, 0.014]} />
+        <meshPhysicalMaterial
+          color="#e2edf5"
+          transmission={0.95}
+          roughness={0.015}
+          metalness={0}
+          ior={1.52}
+          thickness={0.014}
+          envMapIntensity={1.35}
+          transparent
+          opacity={0.78}
+          attenuationDistance={2.5}
+          attenuationColor="#f0f8ff"
+          specularIntensity={0.85}
+          specularColor="#ffffff"
+          side={2}
+        />
+      </mesh>
+      {/* Bottom U-channel for frameless glass */}
+      <mesh position={[0, 0.018, 0]} castShadow>
+        <boxGeometry args={[railLength - 0.02, 0.036, 0.028]} />
+        <meshPhysicalMaterial color="#808890" metalness={0.9} roughness={0.15} clearcoat={0.5} />
+      </mesh>
+      {/* Top edge cap */}
+      <mesh position={[0, panelH + 0.04 + 0.008, 0]} castShadow>
+        <boxGeometry args={[railLength - 0.02, 0.016, 0.024]} />
+        <meshPhysicalMaterial color="#808890" metalness={0.9} roughness={0.15} clearcoat={0.5} />
       </mesh>
     </group>
   );
@@ -132,22 +208,35 @@ function FramelessGlass({ railLength, panelH }) {
 
 function VerticalSpijlen({ railLength, panelH, finishColor, material }) {
   const mp      = frameMat(finishColor, material);
-  const count   = Math.max(4, Math.round(railLength * 4.8));
+  // ~11cm spacing between bars is standard for child safety
+  const count   = Math.max(4, Math.round(railLength / 0.11));
   const spacing = railLength / (count + 1);
+  const barW    = material === "rvs" ? 0 : 0.014; // 0 = round for RVS
+  const barR    = 0.006; // radius for RVS round bars
 
   return (
     <group>
-      {/* Bottom rail / neut */}
-      <mesh position={[0, 0.06, 0]} castShadow receiveShadow>
-        <boxGeometry args={[railLength, 0.035, 0.025]} />
+      {/* Bottom rail */}
+      <mesh position={[0, 0.04, 0]} castShadow receiveShadow>
+        <boxGeometry args={[railLength, 0.028, 0.022]} />
         <meshPhysicalMaterial {...mp} />
       </mesh>
-      {Array.from({ length: count }, (_, i) => (
-        <mesh key={i} position={[-railLength / 2 + spacing * (i + 1), panelH / 2 + 0.06, 0]} castShadow>
-          <boxGeometry args={[0.016, panelH, 0.012]} />
-          <meshPhysicalMaterial {...mp} />
-        </mesh>
-      ))}
+      {/* Vertical bars */}
+      {Array.from({ length: count }, (_, i) => {
+        const x = -railLength / 2 + spacing * (i + 1);
+        const y = panelH / 2 + 0.04;
+        return material === "rvs" ? (
+          <mesh key={i} position={[x, y, 0]} castShadow>
+            <cylinderGeometry args={[barR, barR, panelH, 12]} />
+            <meshPhysicalMaterial {...mp} />
+          </mesh>
+        ) : (
+          <mesh key={i} position={[x, y, 0]} castShadow>
+            <boxGeometry args={[barW, panelH, 0.010]} />
+            <meshPhysicalMaterial {...mp} />
+          </mesh>
+        );
+      })}
     </group>
   );
 }
@@ -158,17 +247,22 @@ function VerticalSpijlen({ railLength, panelH, finishColor, material }) {
  */
 function HorizontaleProfielen({ railLength, panelH, finishColor, material }) {
   const mp     = frameMat(finishColor, material);
-  const rows   = panelH > 0.7 ? 4 : 3;
-  const vertGap = panelH / (rows + 1);
+  const rows   = panelH > 0.7 ? 5 : 4;
+  const bottomY = 0.08;
+  const topY = panelH - 0.04;
+  const gap = (topY - bottomY) / (rows - 1);
 
   return (
     <group>
-      {Array.from({ length: rows }, (_, i) => (
-        <mesh key={i} position={[0, vertGap * (i + 1), 0]} castShadow>
-          <boxGeometry args={[railLength - 0.10, 0.018, 0.016]} />
-          <meshPhysicalMaterial {...mp} />
-        </mesh>
-      ))}
+      {Array.from({ length: rows }, (_, i) => {
+        const y = bottomY + gap * i;
+        return (
+          <mesh key={i} position={[0, y, 0]} castShadow>
+            <boxGeometry args={[railLength - 0.08, 0.022, 0.018]} />
+            <meshPhysicalMaterial {...mp} />
+          </mesh>
+        );
+      })}
     </group>
   );
 }
@@ -230,14 +324,28 @@ function HorizontaleStaven({ railLength, panelH, finishColor, material }) {
 
 function Lamellen({ railLength, panelH, finishColor, material }) {
   const mp      = frameMat(finishColor, material);
-  const count   = Math.max(4, Math.round(railLength * 2.8));
+  // ~6cm spacing for architectural privacy look
+  const count   = Math.max(4, Math.round(railLength / 0.06));
   const spacing = railLength / (count + 1);
+  const lamelW  = 0.042;
+  const lamelD  = 0.008;
 
   return (
     <group>
+      {/* Bottom rail */}
+      <mesh position={[0, 0.025, 0]} castShadow>
+        <boxGeometry args={[railLength, 0.018, 0.022]} />
+        <meshPhysicalMaterial {...mp} />
+      </mesh>
+      {/* Lamellen — slightly rotated for visual depth */}
       {Array.from({ length: count }, (_, i) => (
-        <mesh key={i} position={[-railLength / 2 + spacing * (i + 1), panelH / 2, 0]} castShadow>
-          <boxGeometry args={[0.048, panelH - 0.02, 0.010]} />
+        <mesh
+          key={i}
+          position={[-railLength / 2 + spacing * (i + 1), panelH / 2 + 0.025, 0]}
+          rotation={[0, 0.12, 0]}
+          castShadow
+        >
+          <boxGeometry args={[lamelW, panelH - 0.04, lamelD]} />
           <meshPhysicalMaterial {...mp} />
         </mesh>
       ))}
@@ -292,40 +400,51 @@ function DesignFill({ railLength, panelH, finishColor }) {
 // ─── Post + base ──────────────────────────────────────────────────────────────
 
 function Post({ isRvs, finishColor, postH, postW, postD }) {
-  const mp = {
-    color: finishColor,
-    metalness: isRvs ? 0.96 : 0.84,
-    roughness: isRvs ? 0.14 : 0.24,
-    clearcoat: isRvs ? 0.88 : 0.42,
-    clearcoatRoughness: isRvs ? 0.08 : 0.2,
-  };
+  const mp = frameMat(finishColor, isRvs ? "rvs" : "aluminium");
   return (
     <group>
+      {/* Main post body */}
       <mesh castShadow receiveShadow>
         {isRvs
-          ? <cylinderGeometry args={[postW / 2, postW / 2, postH, 16]} />
+          ? <cylinderGeometry args={[postW / 2, postW / 2, postH, 24]} />
           : <boxGeometry args={[postW, postH, postD]} />}
         <meshPhysicalMaterial {...mp} />
       </mesh>
-      {/* Spherical cap on RVS round post (bolkop) */}
+
+      {/* RVS: spherical cap (bolkop) + decorative ring */}
       {isRvs && (
-        <mesh position={[0, postH / 2 + postW * 0.5, 0]} castShadow>
-          <sphereGeometry args={[postW * 0.62, 16, 16]} />
-          <meshPhysicalMaterial {...mp} />
-        </mesh>
+        <>
+          <mesh position={[0, postH / 2 + postW * 0.42, 0]} castShadow>
+            <sphereGeometry args={[postW * 0.58, 24, 24]} />
+            <meshPhysicalMaterial {...mp} />
+          </mesh>
+          {/* Decorative ring just below top */}
+          <mesh position={[0, postH / 2 - 0.005, 0]} castShadow>
+            <torusGeometry args={[postW / 2 + 0.002, 0.003, 12, 24]} />
+            <meshPhysicalMaterial {...mp} />
+          </mesh>
+        </>
       )}
-      {/* Architect style: small cap detail on rectangular post */}
+
+      {/* Rectangular post: top cap plate + bottom accent */}
       {!isRvs && (
-        <mesh position={[0, postH / 2 - 0.04, 0]} castShadow>
-          <boxGeometry args={[postW * 1.18, 0.025, postD * 1.18]} />
-          <meshPhysicalMaterial {...mp} />
-        </mesh>
-      )}
-      {!isRvs && (
-        <mesh position={[0, -postH / 2 + 0.1, 0]} castShadow>
-          <boxGeometry args={[postW * 1.08, 0.018, postD * 1.08]} />
-          <meshPhysicalMaterial color={finishColor} metalness={0.82} roughness={0.2} clearcoat={0.35} />
-        </mesh>
+        <>
+          {/* Top cap — flat plate with slight overhang */}
+          <mesh position={[0, postH / 2 + 0.006, 0]} castShadow>
+            <boxGeometry args={[postW + 0.008, 0.012, postD + 0.008]} />
+            <meshPhysicalMaterial {...mp} />
+          </mesh>
+          {/* Decorative indent near top */}
+          <mesh position={[0, postH / 2 - 0.035, 0]} castShadow>
+            <boxGeometry args={[postW * 1.12, 0.004, postD * 1.12]} />
+            <meshPhysicalMaterial {...mp} />
+          </mesh>
+          {/* Decorative indent near bottom */}
+          <mesh position={[0, -postH / 2 + 0.08, 0]} castShadow>
+            <boxGeometry args={[postW * 1.06, 0.004, postD * 1.06]} />
+            <meshPhysicalMaterial {...mp} />
+          </mesh>
+        </>
       )}
     </group>
   );
@@ -396,7 +515,7 @@ function PostBase({ mounting, finishColor, postW, postD, postH, isFreeEnd = true
     );
   }
 
-  // Floor mount: horizontal plate + anchor bolts on top of concrete
+  // Floor mount: horizontal base plate with welded sleeve + anchor bolts
   return (
     <group position={[0, -postH / 2 + 0.008, 0]}>
       <mesh castShadow>
@@ -439,7 +558,9 @@ function RailSection({
   const panelH  = Math.max(0.42, heightM - railH - 0.05);
   const innerSpan = Math.max(0.12, lengthM - postW);
 
-  const nPosts  = isFrameless ? 0 : Math.max(2, Math.min(8, Math.round(lengthM * 1.35)));
+  // Post spacing: ~80cm apart is realistic for balustrades, min 2 posts
+  const idealSpacing = 0.80;
+  const nPosts  = isFrameless ? 0 : Math.max(2, Math.min(10, Math.round(lengthM / idealSpacing) + 1));
   const postGap = nPosts > 1 ? lengthM / (nPosts - 1) : 0;
 
   const posts = Array.from({ length: nPosts }, (_, i) => {
@@ -460,10 +581,18 @@ function RailSection({
     <group>
       {/* Top handrail — hidden for aluminium + glas (posts visible, no top bar) */}
       {!isFrameless && !isAluGlas && (
-        <mesh position={[0, heightM + railH / 2, 0]} castShadow receiveShadow>
-          <boxGeometry args={[innerSpan, railH, railD]} />
-          <meshPhysicalMaterial {...mp} />
-        </mesh>
+        <group position={[0, heightM + railH / 2, 0]}>
+          {/* Main handrail body */}
+          <mesh castShadow receiveShadow>
+            <boxGeometry args={[innerSpan, railH, railD]} />
+            <meshPhysicalMaterial {...mp} />
+          </mesh>
+          {/* Top chamfer strip for realism */}
+          <mesh position={[0, railH / 2 + 0.002, 0]} castShadow>
+            <boxGeometry args={[innerSpan - 0.004, 0.004, railD - 0.006]} />
+            <meshPhysicalMaterial {...mp} />
+          </mesh>
+        </group>
       )}
 
       {/* Posts with base hardware */}
@@ -631,14 +760,20 @@ function ConcreteBlock({ bbox, mounting }) {
 
   return (
     <group>
+      {/* Main concrete body */}
       <mesh position={[cx, -PLATFORM_HEIGHT / 2, cz]} receiveShadow castShadow>
         <boxGeometry args={[w, PLATFORM_HEIGHT, d]} />
-        <meshStandardMaterial color="#c4bcb1" roughness={0.92} metalness={0.02} />
+        <meshStandardMaterial color="#bfb8ad" roughness={0.95} metalness={0.01} />
       </mesh>
-      {/* Top-edge definition strip */}
-      <mesh position={[cx, -0.001, cz]}>
-        <boxGeometry args={[w + 0.005, 0.003, d + 0.005]} />
-        <meshStandardMaterial color="#a39b91" roughness={0.94} metalness={0.01} />
+      {/* Top surface — slightly lighter, smoother */}
+      <mesh position={[cx, -0.001, cz]} receiveShadow>
+        <boxGeometry args={[w - 0.002, 0.004, d - 0.002]} />
+        <meshStandardMaterial color="#ccc5ba" roughness={0.85} metalness={0.02} />
+      </mesh>
+      {/* Edge chamfer strip — subtle detail */}
+      <mesh position={[cx, -0.003, cz + d / 2 - 0.003]}>
+        <boxGeometry args={[w - 0.006, 0.006, 0.006]} />
+        <meshStandardMaterial color="#b0a89d" roughness={0.92} metalness={0.01} />
       </mesh>
     </group>
   );
@@ -932,7 +1067,7 @@ function SceneInner({ segments, roundedCorners, selection, finishColor, bbox, sh
       <fog attach="fog" args={["#f4ede2", 8, 24]} />
       <CameraFitter bbox={bbox} />
 
-      <Environment preset="city" background={false} resolution={quality.envResolution} />
+      <Environment preset="apartment" background={false} resolution={quality.envResolution} />
 
       <mesh position={[center.x, 4.8, center.z - 7.2]}>
         <planeGeometry args={[28, 14]} />
@@ -944,14 +1079,14 @@ function SceneInner({ segments, roundedCorners, selection, finishColor, bbox, sh
       </mesh>
 
       {/* ── 3-point studio lighting ── */}
-      <ambientLight intensity={0.34} color="#F8F0E4" />
-      <hemisphereLight intensity={0.55} color="#FFF8EE" groundColor="#7B8792" />
+      <ambientLight intensity={0.28} color="#F8F0E4" />
+      <hemisphereLight intensity={0.5} color="#FFF8EE" groundColor="#7B8792" />
 
-      {/* Key light */}
+      {/* Key light — warm, strong shadows */}
       <directionalLight
-        intensity={2.5}
-        position={[center.x + 5.5, 8.5, center.z + 4.2]}
-        color="#FFF6ED"
+        intensity={2.8}
+        position={[center.x + 5.5, 9, center.z + 4.2]}
+        color="#FFF4E8"
         castShadow
         shadow-mapSize-width={quality.shadowMap}
         shadow-mapSize-height={quality.shadowMap}
@@ -965,11 +1100,14 @@ function SceneInner({ segments, roundedCorners, selection, finishColor, bbox, sh
         shadow-normalBias={0.025}
       />
 
-      {/* Fill light */}
-      <directionalLight intensity={0.82} position={[center.x - 5, 4.4, center.z + 3]} color="#D8E8F8" />
+      {/* Fill light — cool tone for contrast */}
+      <directionalLight intensity={0.9} position={[center.x - 5, 5, center.z + 3]} color="#D0E4F6" />
 
-      {/* Rim light */}
-      <pointLight intensity={1.5} position={[center.x + 0.5, 2.8, center.z - 4.8]} color="#FFD9A6" decay={2} />
+      {/* Rim / back light — adds edge definition to metals */}
+      <pointLight intensity={2.0} position={[center.x + 0.5, 3.2, center.z - 5]} color="#FFD9A6" decay={2} />
+
+      {/* Under-fill for glass transmission */}
+      <pointLight intensity={0.6} position={[center.x, 0.3, center.z + 1.5]} color="#E8E0D4" decay={2} />
 
       {/* ── Concrete slab — only under flat segments, at the front edge ── */}
       <ConcreteBlock bbox={flatBbox ?? bbox} mounting={selection.mounting} />
