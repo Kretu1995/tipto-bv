@@ -26,7 +26,7 @@ export default async function BalkonsPage({ params }: Props) {
       <ProductPageTemplate
         namespace="BalkonsPage"
         materialKeys={['aluminum', 'steel', 'glass']}
-        materialImages={[IMAGES.materials.aluminum, IMAGES.materials.inox, IMAGES.materials.glass]}
+        materialImages={['/images/1.jpg', '/images/10.jpg', '/images/9.jpg']}
         featureKeys={['weatherproof', 'loadBearing', 'drainage', 'custom', 'safety', 'finish']}
         breadcrumbLabel="Balkons"
       />

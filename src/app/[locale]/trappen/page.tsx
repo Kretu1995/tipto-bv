@@ -26,7 +26,7 @@ export default async function TrappenPage({ params }: Props) {
       <ProductPageTemplate
         namespace="TrappenPage"
         materialKeys={['wood', 'steel', 'concrete']}
-        materialImages={[IMAGES.materials.wood, IMAGES.materials.inox, IMAGES.materials.composite]}
+        materialImages={['/images/13.jpg', '/images/18.jpg', '/images/11b.jpg']}
         featureKeys={['custom', 'design', 'safety', 'durable', 'lighting', 'combination']}
         breadcrumbLabel="Trappen"
       />

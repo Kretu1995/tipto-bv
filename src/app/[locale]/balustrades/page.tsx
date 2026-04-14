@@ -39,7 +39,7 @@ export default async function BalustradesPage({ params }: Props) {
       <ProductPageTemplate
         namespace="BalustradesPage"
         materialKeys={['inox', 'powderCoated', 'aluminum', 'glass']}
-        materialImages={[IMAGES.materials.inox, IMAGES.materials.aluminum, IMAGES.materials.aluminum, IMAGES.materials.glass]}
+        materialImages={['/images/18.jpg', '/images/8.jpg', '/images/15.jpg', '/images/3.jpg']}
         featureKeys={['safety', 'custom', 'durable', 'design', 'install', 'warranty']}
         breadcrumbLabel="Balustrades"
         showSimulatorCta
