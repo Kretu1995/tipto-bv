@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import Container from '@/components/ui/Container';
@@ -48,13 +49,15 @@ export default function Header() {
         <Container>
           <nav className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 group">
-              <div className="w-8 h-8 bg-gold rounded-sm flex items-center justify-center">
-                <span className="text-white font-bold text-sm">T</span>
-              </div>
-              <span className="text-xl font-bold font-[family-name:var(--font-playfair)] text-charcoal group-hover:text-gold transition-colors">
-                Tipto
-              </span>
+            <Link href="/" className="flex items-center group">
+              <Image
+                src="/images/logo.svg"
+                alt="Tipto BV"
+                width={130}
+                height={32}
+                className="h-7 sm:h-8 w-auto"
+                priority
+              />
             </Link>
 
             {/* Desktop Navigation */}

@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
+import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import { COMPANY } from '@/lib/constants';
 
@@ -13,13 +14,14 @@ export default function Footer() {
         <div className="py-16 lg:py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-gold rounded-sm flex items-center justify-center">
-                <span className="text-white font-bold text-sm">T</span>
-              </div>
-              <span className="text-xl font-bold font-[family-name:var(--font-playfair)] text-white">
-                Tipto
-              </span>
+            <Link href="/" className="inline-block mb-4">
+              <Image
+                src="/images/logo-light.svg"
+                alt="Tipto BV"
+                width={130}
+                height={32}
+                className="h-8 w-auto"
+              />
             </Link>
             <p className="text-sm leading-relaxed text-gray-400 mb-6">
               {t('description')}

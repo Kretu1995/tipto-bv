@@ -2,7 +2,6 @@ import { setRequestLocale } from 'next-intl/server';
 import { getTranslations } from 'next-intl/server';
 import { generatePageMetadata } from '@/lib/metadata';
 import type { Metadata } from 'next';
-import Container from '@/components/ui/Container';
 import ProductHero from '@/components/sections/ProductHero';
 import SimulatorWrapper from '@/components/three/SimulatorWrapper';
 
@@ -31,10 +30,10 @@ export default async function SimulatorPage({ params }: Props) {
         ]}
       />
 
-      <section className="py-12 lg:py-16 bg-off-white">
-        <Container>
+      <section className="bg-off-white">
+        <div className="w-full">
           <SimulatorWrapper />
-        </Container>
+        </div>
       </section>
     </>
   );
