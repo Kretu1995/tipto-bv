@@ -84,36 +84,51 @@ function GlassInfill({ railLength, panelH, postXs, finishColor, postW }) {
   const glassTop = panelH - 0.01;
   const glassH = glassTop - glassBottom;
   const glassY = (glassBottom + glassTop) / 2;
-
-  // Gap between glass edge and post center
   const gapFromPost = postW / 2 + 0.012;
 
-  // Build individual glass panels between each pair of adjacent posts
+  // Build dividers: post positions + segment edges
+  const segLeft = -railLength / 2;
+  const segRight = railLength / 2;
   const sortedPosts = [...postXs].sort((a, b) => a - b);
-  const panels = [];
-  for (let i = 0; i < sortedPosts.length - 1; i++) {
-    const leftX = sortedPosts[i] + gapFromPost;
-    const rightX = sortedPosts[i + 1] - gapFromPost;
-    const w = rightX - leftX;
-    if (w > 0.05) {
-      panels.push({ cx: (leftX + rightX) / 2, w });
+
+  // All divider points: segment edges + posts
+  const dividers = [segLeft, ...sortedPosts, segRight];
+  // Remove near-duplicates (when a post is at the edge)
+  const uniqueDividers = [dividers[0]];
+  for (let i = 1; i < dividers.length; i++) {
+    if (Math.abs(dividers[i] - uniqueDividers[uniqueDividers.length - 1]) > 0.02) {
+      uniqueDividers.push(dividers[i]);
     }
   }
 
-  // Bracket positions: 25% and 75% of glass height
+  // Glass panels between each pair of dividers
+  const panels = [];
+  for (let i = 0; i < uniqueDividers.length - 1; i++) {
+    const left = uniqueDividers[i];
+    const right = uniqueDividers[i + 1];
+    // Is left/right a post? Add gap. Is it a segment edge? No gap needed.
+    const leftIsPost = sortedPosts.some(p => Math.abs(p - left) < 0.02);
+    const rightIsPost = sortedPosts.some(p => Math.abs(p - right) < 0.02);
+    const leftEdge = leftIsPost ? left + gapFromPost : left + 0.005;
+    const rightEdge = rightIsPost ? right - gapFromPost : right - 0.005;
+    const w = rightEdge - leftEdge;
+    if (w > 0.03) {
+      panels.push({ cx: (leftEdge + rightEdge) / 2, w });
+    }
+  }
+
   const bracketY1 = glassBottom + glassH * 0.25;
   const bracketY2 = glassBottom + glassH * 0.75;
 
   return (
     <group>
-      {/* Individual glass panels between posts — NOT touching posts */}
+      {/* Glass panels */}
       {panels.map((p, i) => (
         <group key={`glass-${i}`}>
           <mesh position={[p.cx, glassY, 0]}>
             <boxGeometry args={[p.w, glassH, GLASS_THICKNESS]} />
             <meshPhysicalMaterial {...GLASS_MAT} />
           </mesh>
-          {/* Green edge at top */}
           <mesh position={[p.cx, glassTop, 0]}>
             <boxGeometry args={[p.w, 0.003, GLASS_THICKNESS]} />
             <meshPhysicalMaterial color="#b8dcc8" transparent opacity={0.5} roughness={0.1} />
@@ -121,48 +136,33 @@ function GlassInfill({ railLength, panelH, postXs, finishColor, postW }) {
         </group>
       ))}
 
-      {/* 2 brackets per post — arms sticking out from the post to hold the glass */}
-      {sortedPosts.map((x, i) => {
-        const isFirst = i === 0;
-        const isLast = i === sortedPosts.length - 1;
-
-        return (
-          <group key={`brackets-${i}`} position={[x, 0, 0]}>
-            {[bracketY1, bracketY2].map((by, bi) => (
-              <group key={bi} position={[0, by, 0]}>
-                {/* Bracket arm — extends from post face toward the glass on each side */}
-                {!isFirst && (
-                  <group>
-                    {/* Left-side bracket arm */}
-                    <mesh position={[-(postW / 2 + 0.008), 0, 0]} castShadow>
-                      <boxGeometry args={[0.022, 0.055, postW * 0.95]} />
-                      <meshPhysicalMaterial {...clampMp} />
-                    </mesh>
-                    {/* Bolt on front */}
-                    <mesh position={[-(postW / 2 + 0.008), 0, postW * 0.47 + 0.003]} rotation={[Math.PI / 2, 0, 0]} castShadow>
-                      <cylinderGeometry args={[0.005, 0.005, 0.006, 6]} />
-                      <meshPhysicalMaterial {...boltMp} />
-                    </mesh>
-                  </group>
-                )}
-                {!isLast && (
-                  <group>
-                    {/* Right-side bracket arm */}
-                    <mesh position={[postW / 2 + 0.008, 0, 0]} castShadow>
-                      <boxGeometry args={[0.022, 0.055, postW * 0.95]} />
-                      <meshPhysicalMaterial {...clampMp} />
-                    </mesh>
-                    <mesh position={[postW / 2 + 0.008, 0, postW * 0.47 + 0.003]} rotation={[Math.PI / 2, 0, 0]} castShadow>
-                      <cylinderGeometry args={[0.005, 0.005, 0.006, 6]} />
-                      <meshPhysicalMaterial {...boltMp} />
-                    </mesh>
-                  </group>
-                )}
-              </group>
-            ))}
-          </group>
-        );
-      })}
+      {/* Brackets on each post (both sides) */}
+      {sortedPosts.map((x, i) => (
+        <group key={`brackets-${i}`} position={[x, 0, 0]}>
+          {[bracketY1, bracketY2].map((by, bi) => (
+            <group key={bi} position={[0, by, 0]}>
+              {/* Left bracket */}
+              <mesh position={[-(postW / 2 + 0.008), 0, 0]} castShadow>
+                <boxGeometry args={[0.022, 0.055, postW * 0.95]} />
+                <meshPhysicalMaterial {...clampMp} />
+              </mesh>
+              <mesh position={[-(postW / 2 + 0.008), 0, postW * 0.47 + 0.003]} rotation={[Math.PI / 2, 0, 0]} castShadow>
+                <cylinderGeometry args={[0.005, 0.005, 0.006, 6]} />
+                <meshPhysicalMaterial {...boltMp} />
+              </mesh>
+              {/* Right bracket */}
+              <mesh position={[postW / 2 + 0.008, 0, 0]} castShadow>
+                <boxGeometry args={[0.022, 0.055, postW * 0.95]} />
+                <meshPhysicalMaterial {...clampMp} />
+              </mesh>
+              <mesh position={[postW / 2 + 0.008, 0, postW * 0.47 + 0.003]} rotation={[Math.PI / 2, 0, 0]} castShadow>
+                <cylinderGeometry args={[0.005, 0.005, 0.006, 6]} />
+                <meshPhysicalMaterial {...boltMp} />
+              </mesh>
+            </group>
+          ))}
+        </group>
+      ))}
     </group>
   );
 }
