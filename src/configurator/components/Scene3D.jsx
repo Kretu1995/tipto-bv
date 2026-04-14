@@ -535,6 +535,37 @@ function RailSection({ lengthM, heightM, selection, finishColor, showStartPost =
   );
 }
 
+// ─── Corner cap — fills the gap above the corner post between two rail ends ──
+
+function CornerCap({ position, selection, finishColor }) {
+  const depthM = Math.max(0.04, (selection.depth ?? 6) / 100);
+  const isRvs = selection.material === "rvs";
+  const railH = isRvs ? 0.04 : 0.05;
+  const railD = isRvs ? 0.042 : depthM * 0.82;
+  const postW = isRvs ? 0.042 : 0.044;
+  const heightM = Math.max(0.6, (selection.height ?? 105) / 100);
+  const mp = frameMat(finishColor, selection.material);
+
+  // Cap sits at handrail height, sized to fill the gap above the corner post
+  const capY = heightM + (isRvs ? 0 : railH / 2);
+
+  return (
+    <group position={[position.x, capY, position.z]}>
+      {isRvs ? (
+        <mesh castShadow>
+          <sphereGeometry args={[0.022, 16, 16]} />
+          <meshPhysicalMaterial {...mp} />
+        </mesh>
+      ) : (
+        <mesh castShadow>
+          <boxGeometry args={[postW + 0.008, railH, railD]} />
+          <meshPhysicalMaterial {...mp} />
+        </mesh>
+      )}
+    </group>
+  );
+}
+
 // ─── Flat segment in 3D space ────────────────────────────────────────────────
 
 function RailSegment({ segData, selection, finishColor }) {
@@ -786,7 +817,7 @@ function BoundingBoxDimensions({ bbox }) {
 
 // ─── Scene internals ─────────────────────────────────────────────────────────
 
-function SceneInner({ segments, roundedCorners, selection, finishColor, bbox, showDimensions, qualityMode }) {
+function SceneInner({ segments, roundedCorners, junctionPositions, selection, finishColor, bbox, showDimensions, qualityMode }) {
   const center = bboxCenterToWorld(bbox);
   const heightM = Math.max(0.6, (selection.height ?? 105) / 100);
   const sh = Math.max(Math.hypot(bbox.width, bbox.height) / 200 + 2.5, 4);
@@ -867,6 +898,11 @@ function SceneInner({ segments, roundedCorners, selection, finishColor, bbox, sh
         <RoundedCornerConnector key={corner.vertexId} corner={corner} selection={selection} finishColor={finishColor} />
       ))}
 
+      {/* Corner caps — fill the gap above corner posts at every junction vertex */}
+      {junctionPositions.map((pos, i) => (
+        <CornerCap key={`cap-${i}`} position={pos} selection={selection} finishColor={finishColor} />
+      ))}
+
       {showDimensions && (
         <>
           <DimensionAnnotationsWithArrows segments={segments} heightM={heightM} />
@@ -920,6 +956,26 @@ function Scene3D({ geo, selection, finish, showDimensions = false, qualityMode =
     });
   }, [geo, segments]);
 
+  // Find junction vertices (degree >= 2) and convert to world positions
+  const junctionPositions = useMemo(() => {
+    const vertexCount = {};
+    Object.values(geo.segments).forEach(seg => {
+      vertexCount[seg.startId] = (vertexCount[seg.startId] || 0) + 1;
+      vertexCount[seg.endId]   = (vertexCount[seg.endId]   || 0) + 1;
+    });
+    const positions = [];
+    const seen = new Set();
+    Object.entries(vertexCount).forEach(([vid, count]) => {
+      if (count >= 2 && !seen.has(vid) && geo.vertices[vid]) {
+        seen.add(vid);
+        const v = geo.vertices[vid];
+        const world = planPointToWorld({ x: v.x, y: v.y });
+        positions.push(world);
+      }
+    });
+    return positions;
+  }, [geo]);
+
   const initCam = useMemo(() => getCameraSetup(bbox), []); // eslint-disable-line
 
   if (enrichedSegments.length === 0) {
@@ -933,6 +989,7 @@ function Scene3D({ geo, selection, finish, showDimensions = false, qualityMode =
       <PerspectiveCamera makeDefault position={initCam.position} fov={28} />
       <Suspense fallback={null}>
         <SceneInner segments={enrichedSegments} roundedCorners={roundedCorners}
+          junctionPositions={junctionPositions}
           selection={selection} finishColor={finishColor} bbox={bbox}
           showDimensions={showDimensions} qualityMode={qualityMode} />
       </Suspense>
