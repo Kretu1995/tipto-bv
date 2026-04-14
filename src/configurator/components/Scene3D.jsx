@@ -133,13 +133,13 @@ function GlassInfill({ railLength, panelH, postXs, finishColor, postW }) {
                 {!isFirst && (
                   <group>
                     {/* Left-side bracket arm */}
-                    <mesh position={[-(postW / 2 + 0.006), 0, 0]} castShadow>
-                      <boxGeometry args={[0.016, 0.04, postW * 0.85]} />
+                    <mesh position={[-(postW / 2 + 0.008), 0, 0]} castShadow>
+                      <boxGeometry args={[0.022, 0.055, postW * 0.95]} />
                       <meshPhysicalMaterial {...clampMp} />
                     </mesh>
                     {/* Bolt on front */}
-                    <mesh position={[-(postW / 2 + 0.006), 0, postW * 0.42 + 0.003]} rotation={[Math.PI / 2, 0, 0]} castShadow>
-                      <cylinderGeometry args={[0.004, 0.004, 0.005, 6]} />
+                    <mesh position={[-(postW / 2 + 0.008), 0, postW * 0.47 + 0.003]} rotation={[Math.PI / 2, 0, 0]} castShadow>
+                      <cylinderGeometry args={[0.005, 0.005, 0.006, 6]} />
                       <meshPhysicalMaterial {...boltMp} />
                     </mesh>
                   </group>
@@ -147,12 +147,12 @@ function GlassInfill({ railLength, panelH, postXs, finishColor, postW }) {
                 {!isLast && (
                   <group>
                     {/* Right-side bracket arm */}
-                    <mesh position={[postW / 2 + 0.006, 0, 0]} castShadow>
-                      <boxGeometry args={[0.016, 0.04, postW * 0.85]} />
+                    <mesh position={[postW / 2 + 0.008, 0, 0]} castShadow>
+                      <boxGeometry args={[0.022, 0.055, postW * 0.95]} />
                       <meshPhysicalMaterial {...clampMp} />
                     </mesh>
-                    <mesh position={[postW / 2 + 0.006, 0, postW * 0.42 + 0.003]} rotation={[Math.PI / 2, 0, 0]} castShadow>
-                      <cylinderGeometry args={[0.004, 0.004, 0.005, 6]} />
+                    <mesh position={[postW / 2 + 0.008, 0, postW * 0.47 + 0.003]} rotation={[Math.PI / 2, 0, 0]} castShadow>
+                      <cylinderGeometry args={[0.005, 0.005, 0.006, 6]} />
                       <meshPhysicalMaterial {...boltMp} />
                     </mesh>
                   </group>
