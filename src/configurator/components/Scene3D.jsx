@@ -447,13 +447,13 @@ function RailSection({ lengthM, heightM, selection, finishColor, showStartPost =
   const railD  = isSpijlenStyle ? 0.016 : depthM * 0.82;
   const panelH = heightM;
 
-  // At free ends: handrail extends postW/2 PAST the end post center (flush with outer edge).
-  // At junctions: handrail stops at the center of the shared corner post.
-  const startExtra = startIsFreeEnd ? postW / 2 : -(postW / 2);
-  const endExtra   = endIsFreeEnd   ? postW / 2 : -(postW / 2);
-  const railSpan   = lengthM + startExtra + endExtra;
+  // At free ends: rail extends postW/2 PAST the end post center (flush with outer edge).
+  // At junctions: rail stops at the center of the shared corner post.
+  const startExtra = startIsFreeEnd ? postW / 2 : 0;
+  const endExtra   = endIsFreeEnd   ? postW / 2 : 0;
+  const railSpan   = Math.max(0.05, lengthM + startExtra + endExtra);
   const railOffsetX = (endExtra - startExtra) / 2;
-  const fillSpan   = Math.max(0.12, railSpan);
+  const fillSpan   = railSpan;
   const fillOffsetX = railOffsetX;
 
   // Post spacing: ~85cm, always at least 2, always show posts

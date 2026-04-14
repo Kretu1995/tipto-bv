@@ -1,11 +1,19 @@
+'use client';
+
+import { useEffect } from 'react';
+
 export default function SimulatorLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <>
-      <style dangerouslySetInnerHTML={{ __html: `
-        header, footer, .back-to-top, .cookie-consent { display: none !important; }
-        main { padding: 0 !important; margin: 0 !important; }
-      `}} />
-      {children}
-    </>
-  );
+  useEffect(() => {
+    // Hide header, footer, back-to-top, cookie consent
+    const els = document.querySelectorAll('header, footer');
+    els.forEach(el => (el as HTMLElement).style.display = 'none');
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      els.forEach(el => (el as HTMLElement).style.display = '');
+      document.body.style.overflow = '';
+    };
+  }, []);
+
+  return <>{children}</>;
 }
