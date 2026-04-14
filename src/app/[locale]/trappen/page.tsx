@@ -21,14 +21,14 @@ export default async function TrappenPage({ params }: Props) {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdProduct(t('meta.title'), t('meta.description'), 'Stairs')) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumb([{ name: 'Home', url: SITE_URL }, { name: 'Trappen', url: `${SITE_URL}/trappen` }])) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdProduct(t('meta.title'), t('meta.description'), 'Stair Balustrades')) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumb([{ name: 'Home', url: SITE_URL }, { name: 'Trapbalustrades', url: `${SITE_URL}/trappen` }])) }} />
       <ProductPageTemplate
         namespace="TrappenPage"
-        materialKeys={['wood', 'steel', 'concrete']}
-        materialImages={[IMAGES.materials.trapHout, IMAGES.materials.trapStaal, IMAGES.materials.trapGlas]}
+        materialKeys={['glass', 'steel', 'aluminum']}
+        materialImages={[IMAGES.materials.trapGlas, IMAGES.materials.trapStaal, IMAGES.materials.trapHout]}
         featureKeys={['custom', 'design', 'safety', 'durable', 'lighting', 'combination']}
-        breadcrumbLabel="Trappen"
+        breadcrumbLabel="Trapbalustrades"
       />
     </>
   );

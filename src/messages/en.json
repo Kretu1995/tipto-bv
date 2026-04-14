@@ -7,7 +7,7 @@
     "ramen": "Windows",
     "deuren": "Doors",
     "garagepoorten": "Garage Doors",
-    "trappen": "Stairs",
+    "trappen": "Stair Balustrades",
     "balkons": "Balconies",
     "simulator": "3D Simulator",
     "realisaties": "Projects",
@@ -51,8 +51,8 @@
         "description": "Sectional doors, tilting doors and roller doors with automatic operation."
       },
       "trappen": {
-        "title": "Stairs",
-        "description": "Custom stairs in wood, steel or concrete. Functional design that inspires."
+        "title": "Stair Balustrades",
+        "description": "Custom-made balustrades and railings for every staircase. Safety and style in glass, steel or aluminium."
       },
       "balkons": {
         "title": "Balconies",
@@ -327,34 +327,35 @@
   },
   "TrappenPage": {
     "meta": {
-      "title": "Custom Stairs — Wood, Steel & Concrete | Tipto BV",
-      "description": "Custom stairs in wood, steel and concrete. From floating stairs to classic spiral staircases. Design and functionality by Tipto BV."
+      "title": "Custom Stair Balustrades — Glass, Steel & Aluminium | Tipto BV",
+      "description": "Premium custom stair balustrades and railings in glass, steel and aluminium. Safety and design for every staircase. Craftsmanship by Tipto BV."
     },
     "hero": {
-      "badge": "Stairs",
-      "title": "Stairs that Elevate Your Interior to the Next Level",
-      "subtitle": "Custom stairs that bring functionality and design together. From modern floating stairs to classic spiral staircases — every project is unique."
+      "badge": "Stair Balustrades",
+      "title": "Stair Balustrades that Combine Safety and Style",
+      "subtitle": "Custom-made balustrades and railings for every staircase. From modern glass panels to sleek steel constructions — we ensure safety with a premium look."
     },
     "materials": {
       "title": "Materials & Styles",
-      "wood": { "title": "Wooden Stairs", "description": "Warm appearance and timeless design. Available in various wood types." },
-      "steel": { "title": "Steel Stairs", "description": "Industrial and modern. Strong, slim and perfect for contemporary interiors." },
-      "concrete": { "title": "Concrete Stairs", "description": "Robust and versatile. The perfect foundation for any finish." }
+      "glass": { "title": "Glass Stair Balustrades", "description": "Transparent and modern. Maximum light and visibility with tempered safety glass." },
+      "steel": { "title": "Steel Stair Railings", "description": "Industrial and robust. Clean lines with the strength of steel." },
+      "aluminum": { "title": "Aluminium Stair Balustrades", "description": "Lightweight and versatile. Modern profiles with powder coating in any colour." }
     },
     "features": {
       "title": "Features",
       "custom": "Fully custom made",
-      "design": "Endless design options",
-      "safety": "Anti-slip finish",
-      "durable": "Long-lasting quality",
-      "lighting": "LED lighting possible",
-      "combination": "Combine materials"
+      "design": "Matching every stair style",
+      "safety": "Meets all safety standards",
+      "durable": "Durable materials",
+      "lighting": "LED lighting integration possible",
+      "combination": "Combinable with glass, steel or aluminium"
     },
     "faq": {
-      "title": "Frequently Asked Questions about Stairs",
+      "title": "Frequently Asked Questions about Stair Balustrades",
       "items": [
-        { "question": "What material is best for stairs?", "answer": "The best choice depends on your interior style and budget. Wooden stairs are timeless, steel stairs are modern and compact, and concrete stairs offer maximum flexibility in finishing." },
-        { "question": "How long does it take to make custom stairs?", "answer": "Production time averages 6-8 weeks after design approval. Installation typically takes 2-3 days." }
+        { "question": "What materials do you offer for stair balustrades?", "answer": "We offer stair balustrades in glass, steel and aluminium. Each material can be custom finished and combined to your preferences." },
+        { "question": "Can you install balustrades on an existing staircase?", "answer": "Yes, we install balustrades and railings on both new and existing staircases. Our specialist will visit to assess the possibilities." },
+        { "question": "How long does stair balustrade installation take?", "answer": "Installation time depends on the complexity and type of staircase. On average, installation takes 1-2 days." }
       ]
     }
   },
@@ -464,7 +465,7 @@
       "ramen": "Windows",
       "deuren": "Doors",
       "garagepoorten": "Garage Doors",
-      "trappen": "Stairs",
+      "trappen": "Stair Balustrades",
       "balkons": "Balconies"
     }
   },
@@ -538,7 +539,7 @@
         "ramen": "Windows",
         "deuren": "Doors",
         "garagepoorten": "Garage Doors",
-        "trappen": "Stairs",
+        "trappen": "Stair Balustrades",
         "balkons": "Balconies",
         "other": "Other"
       },

@@ -94,10 +94,18 @@ export default function Footer() {
         <Container>
           <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
             <p>&copy; {new Date().getFullYear()} {t('copyright')}</p>
-            <div className="flex gap-6">
-              <Link href="/privacy" className="hover:text-gray-300 transition-colors">{t('privacy')}</Link>
-              <Link href="/cookies" className="hover:text-gray-300 transition-colors">Cookies</Link>
-              <Link href="/algemene-voorwaarden" className="hover:text-gray-300 transition-colors">{t('terms')}</Link>
+            <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+              <div className="flex gap-6">
+                <Link href="/privacy" className="hover:text-gray-300 transition-colors">{t('privacy')}</Link>
+                <Link href="/cookies" className="hover:text-gray-300 transition-colors">Cookies</Link>
+                <Link href="/algemene-voorwaarden" className="hover:text-gray-300 transition-colors">{t('terms')}</Link>
+              </div>
+              <span className="text-gray-600">
+                Website gemaakt door{' '}
+                <a href="https://www.wdstudio.be" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-gold-hover transition-colors">
+                  WD Studio
+                </a>
+              </span>
             </div>
           </div>
         </Container>

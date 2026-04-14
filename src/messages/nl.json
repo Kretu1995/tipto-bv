@@ -7,7 +7,7 @@
     "ramen": "Ramen",
     "deuren": "Deuren",
     "garagepoorten": "Garagepoorten",
-    "trappen": "Trappen",
+    "trappen": "Trapbalustrades",
     "balkons": "Balkons",
     "simulator": "3D Simulator",
     "realisaties": "Realisaties",
@@ -51,8 +51,8 @@
         "description": "Sectionaalpoorten, kantelpoorten en rolpoorten met automatische bediening."
       },
       "trappen": {
-        "title": "Trappen",
-        "description": "Maatwerk trappen in hout, staal of beton. Functioneel design dat inspireert."
+        "title": "Trapbalustrades",
+        "description": "Op maat gemaakte balustrades en leuningen voor elke trap. Veiligheid en stijl in glas, staal of aluminium."
       },
       "balkons": {
         "title": "Balkons",
@@ -375,48 +375,52 @@
   },
   "TrappenPage": {
     "meta": {
-      "title": "Trappen op Maat — Hout, Staal & Beton | Tipto BV",
-      "description": "Maatwerk trappen in hout, staal en beton. Van zwevende trappen tot klassieke draaitrappen. Design en functionaliteit door Tipto BV."
+      "title": "Trapbalustrades op Maat — Glas, Staal & Aluminium | Tipto BV",
+      "description": "Premium trapbalustrades en trapleuningen op maat in glas, staal en aluminium. Veiligheid en design voor elke trap. Vakmanschap door Tipto BV."
     },
     "hero": {
-      "badge": "Trappen",
-      "title": "Trappen die Uw Interieur naar een Hoger Niveau Tillen",
-      "subtitle": "Maatwerk trappen die functionaliteit en design samenbrengen. Van moderne zwevende trappen tot klassieke draaitrappen — elk project is uniek."
+      "badge": "Trapbalustrades",
+      "title": "Trapbalustrades die Veiligheid en Stijl Combineren",
+      "subtitle": "Op maat gemaakte balustrades en leuningen voor elke trap. Van moderne glazen panelen tot strakke stalen constructies — wij zorgen voor veiligheid met een premium uitstraling."
     },
     "materials": {
       "title": "Materialen & Stijlen",
-      "wood": {
-        "title": "Houten Trappen",
-        "description": "Warme uitstraling en tijdloos design. Beschikbaar in diverse houtsoorten."
+      "glass": {
+        "title": "Glazen Trapbalustrades",
+        "description": "Transparant en modern. Maximaal licht en zicht met gehard veiligheidsglas."
       },
       "steel": {
-        "title": "Stalen Trappen",
-        "description": "Industrieel en modern. Sterk, slank en perfect voor hedendaagse interieurs."
+        "title": "Stalen Trapleuningen",
+        "description": "Industrieel en robuust. Strakke lijnen met de kracht van staal."
       },
-      "concrete": {
-        "title": "Betonnen Trappen",
-        "description": "Robuust en veelzijdig. De perfecte basis voor elke afwerking."
+      "aluminum": {
+        "title": "Aluminium Trapbalustrades",
+        "description": "Lichtgewicht en veelzijdig. Moderne profielen met poedercoating in elke kleur."
       }
     },
     "features": {
       "title": "Kenmerken",
       "custom": "Volledig op maat",
-      "design": "Eindeloze designopties",
-      "safety": "Antislip afwerking",
-      "durable": "Langdurige kwaliteit",
-      "lighting": "LED-verlichting mogelijk",
-      "combination": "Materiaalen combineren"
+      "design": "Passend bij elke trapstijl",
+      "safety": "Voldoet aan alle veiligheidsnormen",
+      "durable": "Duurzame materialen",
+      "lighting": "LED-verlichting integratie mogelijk",
+      "combination": "Combineerbaar met glas, staal of aluminium"
     },
     "faq": {
-      "title": "Veelgestelde Vragen over Trappen",
+      "title": "Veelgestelde Vragen over Trapbalustrades",
       "items": [
         {
-          "question": "Welk materiaal is het beste voor een trap?",
-          "answer": "De beste keuze hangt af van uw interieurstijl en budget. Houten trappen zijn tijdloos, stalen trappen zijn modern en compact, en betonnen trappen bieden maximale flexibiliteit in afwerking."
+          "question": "Welke materialen bieden jullie aan voor trapbalustrades?",
+          "answer": "Wij bieden trapbalustrades aan in glas, staal en aluminium. Elk materiaal kan op maat worden afgewerkt en gecombineerd naar uw wensen."
         },
         {
-          "question": "Hoe lang duurt het om een trap op maat te maken?",
-          "answer": "De productietijd bedraagt gemiddeld 6-8 weken na goedkeuring van het ontwerp. De installatie duurt doorgaans 2-3 dagen."
+          "question": "Kunnen jullie balustrades plaatsen op een bestaande trap?",
+          "answer": "Ja, wij installeren balustrades en leuningen op zowel nieuwe als bestaande trappen. Onze specialist komt ter plaatse om de mogelijkheden te bekijken."
+        },
+        {
+          "question": "Hoe lang duurt de installatie van een trapbalustrade?",
+          "answer": "De installatietijd hangt af van de complexiteit en het type trap. Gemiddeld duurt een installatie 1-2 dagen."
         }
       ]
     }
@@ -542,7 +546,7 @@
       "ramen": "Ramen",
       "deuren": "Deuren",
       "garagepoorten": "Garagepoorten",
-      "trappen": "Trappen",
+      "trappen": "Trapbalustrades",
       "balkons": "Balkons"
     }
   },
@@ -666,7 +670,7 @@
         "ramen": "Ramen",
         "deuren": "Deuren",
         "garagepoorten": "Garagepoorten",
-        "trappen": "Trappen",
+        "trappen": "Trapbalustrades",
         "balkons": "Balkons",
         "other": "Anders"
       },

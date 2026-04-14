@@ -7,7 +7,7 @@
     "ramen": "Okna",
     "deuren": "Drzwi",
     "garagepoorten": "Bramy garażowe",
-    "trappen": "Schody",
+    "trappen": "Balustrady schodowe",
     "balkons": "Balkony",
     "simulator": "Symulator 3D",
     "realisaties": "Realizacje",
@@ -38,7 +38,7 @@
       "ramen": { "title": "Okna", "description": "Energooszczędne okna z PVC, aluminium lub drewna. Maksymalna izolacja, minimalne zużycie energii." },
       "deuren": { "title": "Drzwi", "description": "Drzwi zewnętrzne i wewnętrzne na wymiar. Od klasycznego drewna po nowoczesne aluminium." },
       "garagepoorten": { "title": "Bramy garażowe", "description": "Bramy segmentowe, uchylne i rolowane z automatycznym sterowaniem." },
-      "trappen": { "title": "Schody", "description": "Schody na wymiar z drewna, stali lub betonu. Funkcjonalny design, który inspiruje." },
+      "trappen": { "title": "Balustrady schodowe", "description": "Balustrady i poręcze na wymiar do każdych schodów. Bezpieczeństwo i styl w szkle, stali lub aluminium." },
       "balkons": { "title": "Balkony", "description": "Nowoczesne i klasyczne balkony z trwałych materiałów i wyrafinowanym designem." }
     },
     "values": {
@@ -137,13 +137,14 @@
     ] }
   },
   "TrappenPage": {
-    "meta": { "title": "Schody Na Wymiar — Drewno, Stal & Beton | Tipto BV", "description": "Schody na wymiar z drewna, stali i betonu. Od schodów podwieszanych po klasyczne kręcone." },
-    "hero": { "badge": "Schody", "title": "Schody, Które Wynoszą Wnętrze na Wyższy Poziom", "subtitle": "Schody na wymiar łączące funkcjonalność i design. Od nowoczesnych schodów podwieszanych po klasyczne kręcone — każdy projekt jest unikalny." },
-    "materials": { "title": "Materiały i Style", "wood": { "title": "Schody Drewniane", "description": "Ciepły wygląd i ponadczasowy design. Dostępne w różnych gatunkach drewna." }, "steel": { "title": "Schody Stalowe", "description": "Industrialne i nowoczesne. Mocne, smukłe i idealne do współczesnych wnętrz." }, "concrete": { "title": "Schody Betonowe", "description": "Solidne i wszechstronne. Idealna baza pod każde wykończenie." } },
-    "features": { "title": "Cechy", "custom": "W pełni na wymiar", "design": "Nieskończone opcje designu", "safety": "Wykończenie antypoślizgowe", "durable": "Długotrwała jakość", "lighting": "Oświetlenie LED możliwe", "combination": "Łączenie materiałów" },
-    "faq": { "title": "Najczęstsze Pytania o Schody", "items": [
-      { "question": "Jaki materiał jest najlepszy na schody?", "answer": "Zależy od stylu wnętrza i budżetu. Schody drewniane są ponadczasowe, stalowe nowoczesne, a betonowe oferują maksymalną elastyczność." },
-      { "question": "Ile trwa produkcja schodów na wymiar?", "answer": "Czas produkcji to średnio 6-8 tygodni po zatwierdzeniu projektu. Montaż trwa 2-3 dni." }
+    "meta": { "title": "Balustrady Schodowe Na Wymiar — Szkło, Stal & Aluminium | Tipto BV", "description": "Balustrady schodowe i poręcze premium na wymiar ze szkła, stali i aluminium. Bezpieczeństwo i design dla każdych schodów. Rzemiosło Tipto BV." },
+    "hero": { "badge": "Balustrady Schodowe", "title": "Balustrady Schodowe Łączące Bezpieczeństwo i Styl", "subtitle": "Balustrady i poręcze na wymiar do każdych schodów. Od nowoczesnych paneli szklanych po eleganckie konstrukcje stalowe — zapewniamy bezpieczeństwo z premium wyglądem." },
+    "materials": { "title": "Materiały i Style", "glass": { "title": "Szklane Balustrady Schodowe", "description": "Przezroczyste i nowoczesne. Maksymalne światło i widoczność z hartowanego szkła bezpiecznego." }, "steel": { "title": "Stalowe Poręcze Schodowe", "description": "Industrialne i solidne. Czyste linie z siłą stali." }, "aluminum": { "title": "Aluminiowe Balustrady Schodowe", "description": "Lekkie i wszechstronne. Nowoczesne profile z malowaniem proszkowym w dowolnym kolorze." } },
+    "features": { "title": "Cechy", "custom": "W pełni na wymiar", "design": "Dopasowane do każdego stylu schodów", "safety": "Spełnia wszystkie normy bezpieczeństwa", "durable": "Trwałe materiały", "lighting": "Możliwość integracji oświetlenia LED", "combination": "Łączenie ze szkłem, stalą lub aluminium" },
+    "faq": { "title": "Najczęstsze Pytania o Balustrady Schodowe", "items": [
+      { "question": "Jakie materiały oferujecie na balustrady schodowe?", "answer": "Oferujemy balustrady schodowe ze szkła, stali i aluminium. Każdy materiał można wykończyć i łączyć na wymiar według Twoich preferencji." },
+      { "question": "Czy możecie zamontować balustrady na istniejących schodach?", "answer": "Tak, montujemy balustrady i poręcze zarówno na nowych, jak i istniejących schodach. Nasz specjalista przyjedzie ocenić możliwości." },
+      { "question": "Ile trwa montaż balustrady schodowej?", "answer": "Czas montażu zależy od złożoności i typu schodów. Średnio montaż trwa 1-2 dni." }
     ] }
   },
   "BalkonsPage": {
@@ -168,7 +169,7 @@
   "RealisatiesPage": {
     "meta": { "title": "Nasze Realizacje — Galeria Projektów | Tipto BV", "description": "Zobacz nasze zrealizowane projekty. Od balustrad i okien po schody i balkony — odkryj rzemiosło Tipto BV." },
     "hero": { "badge": "Portfolio", "title": "Nasze Realizacje", "subtitle": "Zobacz wybór naszych najnowszych projektów. Każdy projekt jest dowodem naszego rzemiosła i zaangażowania w jakość." },
-    "filter": { "all": "Wszystkie Projekty", "balustrades": "Balustrady", "ramen": "Okna", "deuren": "Drzwi", "garagepoorten": "Bramy garażowe", "trappen": "Schody", "balkons": "Balkony" }
+    "filter": { "all": "Wszystkie Projekty", "balustrades": "Balustrady", "ramen": "Okna", "deuren": "Drzwi", "garagepoorten": "Bramy garażowe", "trappen": "Balustrady schodowe", "balkons": "Balkony" }
   },
   "WerkwijzePage": {
     "meta": { "title": "Nasz Sposób Pracy — Od Kontaktu do Montażu | Tipto BV", "description": "Dowiedz się, jak pracuje Tipto BV. Od pierwszego kontaktu po montaż — prowadzimy Cię przez każdy etap." },
@@ -200,7 +201,7 @@
   "ContactPage": {
     "meta": { "title": "Kontakt i Wycena | Tipto BV", "description": "Skontaktuj się z Tipto BV po bezpłatną wycenę. Zadzwoń, napisz lub wypełnij formularz. Koekoekstraat 25, 2630 Aartselaar." },
     "hero": { "badge": "Skontaktuj się", "title": "Porozmawiajmy o Twoim Projekcie", "subtitle": "Opowiedz nam o swoim projekcie i otrzymaj bezpłatną wycenę na wymiar. Odpowiadamy w ciągu 24 godzin." },
-    "form": { "name": "Imię i nazwisko", "namePlaceholder": "Twoje pełne imię i nazwisko", "email": "Adres e-mail", "emailPlaceholder": "twoj@email.be", "phone": "Numer telefonu", "phonePlaceholder": "+32 ...", "product": "Produkt", "productPlaceholder": "Wybierz produkt", "productOptions": { "balustrades": "Balustrady", "ramen": "Okna", "deuren": "Drzwi", "garagepoorten": "Bramy garażowe", "trappen": "Schody", "balkons": "Balkony", "other": "Inne" }, "message": "Wiadomość", "messagePlaceholder": "Opowiedz nam o swoim projekcie...", "submit": "Wyślij Zapytanie", "sending": "Wysyłanie...", "success": "Dziękujemy za zapytanie! Skontaktujemy się w ciągu 24 godzin.", "error": "Coś poszło nie tak. Spróbuj ponownie lub zadzwoń.", "required": "To pole jest wymagane", "invalidEmail": "Podaj prawidłowy adres e-mail" },
+    "form": { "name": "Imię i nazwisko", "namePlaceholder": "Twoje pełne imię i nazwisko", "email": "Adres e-mail", "emailPlaceholder": "twoj@email.be", "phone": "Numer telefonu", "phonePlaceholder": "+32 ...", "product": "Produkt", "productPlaceholder": "Wybierz produkt", "productOptions": { "balustrades": "Balustrady", "ramen": "Okna", "deuren": "Drzwi", "garagepoorten": "Bramy garażowe", "trappen": "Balustrady schodowe", "balkons": "Balkony", "other": "Inne" }, "message": "Wiadomość", "messagePlaceholder": "Opowiedz nam o swoim projekcie...", "submit": "Wyślij Zapytanie", "sending": "Wysyłanie...", "success": "Dziękujemy za zapytanie! Skontaktujemy się w ciągu 24 godzin.", "error": "Coś poszło nie tak. Spróbuj ponownie lub zadzwoń.", "required": "To pole jest wymagane", "invalidEmail": "Podaj prawidłowy adres e-mail" },
     "info": { "title": "Dane kontaktowe", "address": "Adres", "phone": "Telefon", "email": "E-mail", "vat": "Numer VAT", "hours": "Godziny otwarcia", "weekdays": "Poniedziałek - Piątek: 08:00 - 18:00", "saturday": "Sobota: 09:00 - 14:00", "sunday": "Niedziela: Zamknięte" }
   },
   "Footer": {

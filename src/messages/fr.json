@@ -7,7 +7,7 @@
     "ramen": "Fenêtres",
     "deuren": "Portes",
     "garagepoorten": "Portes de garage",
-    "trappen": "Escaliers",
+    "trappen": "Balustrades d'escalier",
     "balkons": "Balcons",
     "simulator": "Simulateur 3D",
     "realisaties": "Réalisations",
@@ -38,7 +38,7 @@
       "ramen": { "title": "Fenêtres", "description": "Fenêtres écoénergétiques en PVC, aluminium ou bois. Isolation maximale, consommation minimale." },
       "deuren": { "title": "Portes", "description": "Portes extérieures et intérieures sur mesure. Du bois classique à l'aluminium moderne." },
       "garagepoorten": { "title": "Portes de garage", "description": "Portes sectionnelles, basculantes et enroulables avec commande automatique." },
-      "trappen": { "title": "Escaliers", "description": "Escaliers sur mesure en bois, acier ou béton. Un design fonctionnel qui inspire." },
+      "trappen": { "title": "Balustrades d'escalier", "description": "Balustrades et rampes sur mesure pour chaque escalier. Sécurité et style en verre, acier ou aluminium." },
       "balkons": { "title": "Balcons", "description": "Balcons modernes et classiques avec des matériaux durables et un design raffiné." }
     },
     "values": {
@@ -151,13 +151,14 @@
     ] }
   },
   "TrappenPage": {
-    "meta": { "title": "Escaliers Sur Mesure — Bois, Acier & Béton | Tipto BV", "description": "Escaliers sur mesure en bois, acier et béton. Des escaliers flottants aux escaliers en colimaçon classiques." },
-    "hero": { "badge": "Escaliers", "title": "Des Escaliers qui Élèvent Votre Intérieur", "subtitle": "Escaliers sur mesure alliant fonctionnalité et design. Des escaliers flottants modernes aux colimaçons classiques — chaque projet est unique." },
-    "materials": { "title": "Matériaux & Styles", "wood": { "title": "Escaliers en Bois", "description": "Apparence chaleureuse et design intemporel. Disponibles en diverses essences." }, "steel": { "title": "Escaliers en Acier", "description": "Industriels et modernes. Solides, fins et parfaits pour les intérieurs contemporains." }, "concrete": { "title": "Escaliers en Béton", "description": "Robustes et polyvalents. La base parfaite pour toute finition." } },
-    "features": { "title": "Caractéristiques", "custom": "Entièrement sur mesure", "design": "Options de design infinies", "safety": "Finition antidérapante", "durable": "Qualité durable", "lighting": "Éclairage LED possible", "combination": "Combiner les matériaux" },
-    "faq": { "title": "Questions Fréquentes sur les Escaliers", "items": [
-      { "question": "Quel matériau est le mieux pour un escalier ?", "answer": "Le meilleur choix dépend de votre style d'intérieur et de votre budget. Les escaliers en bois sont intemporels, en acier sont modernes, et en béton offrent une flexibilité maximale." },
-      { "question": "Combien de temps faut-il pour fabriquer un escalier sur mesure ?", "answer": "Le délai de production est en moyenne de 6 à 8 semaines après approbation du design. L'installation dure généralement 2 à 3 jours." }
+    "meta": { "title": "Balustrades d'Escalier Sur Mesure — Verre, Acier & Aluminium | Tipto BV", "description": "Balustrades d'escalier et rampes premium sur mesure en verre, acier et aluminium. Sécurité et design pour chaque escalier. Savoir-faire par Tipto BV." },
+    "hero": { "badge": "Balustrades d'Escalier", "title": "Balustrades d'Escalier Alliant Sécurité et Style", "subtitle": "Balustrades et rampes sur mesure pour chaque escalier. Des panneaux en verre modernes aux constructions en acier épurées — nous assurons la sécurité avec un look premium." },
+    "materials": { "title": "Matériaux & Styles", "glass": { "title": "Balustrades d'Escalier en Verre", "description": "Transparentes et modernes. Lumière et visibilité maximales avec du verre de sécurité trempé." }, "steel": { "title": "Rampes d'Escalier en Acier", "description": "Industrielles et robustes. Des lignes épurées avec la solidité de l'acier." }, "aluminum": { "title": "Balustrades d'Escalier en Aluminium", "description": "Légères et polyvalentes. Profilés modernes avec poudrage dans toutes les couleurs." } },
+    "features": { "title": "Caractéristiques", "custom": "Entièrement sur mesure", "design": "Adapté à chaque style d'escalier", "safety": "Conforme à toutes les normes de sécurité", "durable": "Matériaux durables", "lighting": "Intégration d'éclairage LED possible", "combination": "Combinable avec verre, acier ou aluminium" },
+    "faq": { "title": "Questions Fréquentes sur les Balustrades d'Escalier", "items": [
+      { "question": "Quels matériaux proposez-vous pour les balustrades d'escalier ?", "answer": "Nous proposons des balustrades d'escalier en verre, acier et aluminium. Chaque matériau peut être fini et combiné sur mesure selon vos souhaits." },
+      { "question": "Pouvez-vous installer des balustrades sur un escalier existant ?", "answer": "Oui, nous installons des balustrades et rampes sur les escaliers neufs et existants. Notre spécialiste se déplace pour évaluer les possibilités." },
+      { "question": "Combien de temps dure l'installation d'une balustrade d'escalier ?", "answer": "Le temps d'installation dépend de la complexité et du type d'escalier. En moyenne, l'installation dure 1 à 2 jours." }
     ] }
   },
   "BalkonsPage": {
@@ -182,7 +183,7 @@
   "RealisatiesPage": {
     "meta": { "title": "Nos Réalisations — Galerie de Projets | Tipto BV", "description": "Découvrez nos projets réalisés. Des balustrades aux escaliers — découvrez le savoir-faire de Tipto BV." },
     "hero": { "badge": "Portfolio", "title": "Nos Réalisations", "subtitle": "Découvrez une sélection de nos projets les plus récents. Chaque projet est la preuve de notre savoir-faire." },
-    "filter": { "all": "Tous les Projets", "balustrades": "Balustrades", "ramen": "Fenêtres", "deuren": "Portes", "garagepoorten": "Portes de garage", "trappen": "Escaliers", "balkons": "Balcons" }
+    "filter": { "all": "Tous les Projets", "balustrades": "Balustrades", "ramen": "Fenêtres", "deuren": "Portes", "garagepoorten": "Portes de garage", "trappen": "Balustrades d'escalier", "balkons": "Balcons" }
   },
   "WerkwijzePage": {
     "meta": { "title": "Notre Méthode — Du Contact à l'Installation | Tipto BV", "description": "Découvrez comment Tipto BV travaille. Du premier contact à l'installation — nous vous guidons à chaque étape." },
@@ -214,7 +215,7 @@
   "ContactPage": {
     "meta": { "title": "Contact & Demande de Devis | Tipto BV", "description": "Contactez Tipto BV pour un devis gratuit. Appelez, envoyez un email ou remplissez le formulaire. Koekoekstraat 25, 2630 Aartselaar." },
     "hero": { "badge": "Contactez-nous", "title": "Discutons de Votre Projet", "subtitle": "Parlez-nous de votre projet et recevez un devis gratuit sur mesure. Nous répondons dans les 24 heures." },
-    "form": { "name": "Nom", "namePlaceholder": "Votre nom complet", "email": "Adresse e-mail", "emailPlaceholder": "votre@email.be", "phone": "Téléphone", "phonePlaceholder": "+32 ...", "product": "Produit d'intérêt", "productPlaceholder": "Sélectionnez un produit", "productOptions": { "balustrades": "Balustrades", "ramen": "Fenêtres", "deuren": "Portes", "garagepoorten": "Portes de garage", "trappen": "Escaliers", "balkons": "Balcons", "other": "Autre" }, "message": "Message", "messagePlaceholder": "Parlez-nous de votre projet...", "submit": "Envoyer la Demande", "sending": "Envoi en cours...", "success": "Merci pour votre demande ! Nous vous contacterons dans les 24 heures.", "error": "Une erreur s'est produite. Réessayez ou appelez-nous directement.", "required": "Ce champ est obligatoire", "invalidEmail": "Veuillez entrer une adresse e-mail valide" },
+    "form": { "name": "Nom", "namePlaceholder": "Votre nom complet", "email": "Adresse e-mail", "emailPlaceholder": "votre@email.be", "phone": "Téléphone", "phonePlaceholder": "+32 ...", "product": "Produit d'intérêt", "productPlaceholder": "Sélectionnez un produit", "productOptions": { "balustrades": "Balustrades", "ramen": "Fenêtres", "deuren": "Portes", "garagepoorten": "Portes de garage", "trappen": "Balustrades d'escalier", "balkons": "Balcons", "other": "Autre" }, "message": "Message", "messagePlaceholder": "Parlez-nous de votre projet...", "submit": "Envoyer la Demande", "sending": "Envoi en cours...", "success": "Merci pour votre demande ! Nous vous contacterons dans les 24 heures.", "error": "Une erreur s'est produite. Réessayez ou appelez-nous directement.", "required": "Ce champ est obligatoire", "invalidEmail": "Veuillez entrer une adresse e-mail valide" },
     "info": { "title": "Coordonnées", "address": "Adresse", "phone": "Téléphone", "email": "E-mail", "vat": "Numéro de TVA", "hours": "Heures d'ouverture", "weekdays": "Lundi - Vendredi : 08:00 - 18:00", "saturday": "Samedi : 09:00 - 14:00", "sunday": "Dimanche : Fermé" }
   },
   "Footer": {
