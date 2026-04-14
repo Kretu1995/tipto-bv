@@ -399,8 +399,9 @@ function PostBase({ mounting, finishColor, postW, postD, postH }) {
 
 function RailSection({ lengthM, heightM, selection, finishColor, showStartPost = true, showEndPost = true, startIsFreeEnd = true, endIsFreeEnd = true }) {
   const depthM    = Math.max(0.04, (selection.depth ?? 6) / 100);
-  // Same geometry for ALL materials — only finish changes
-  const showHandrail = selection.infill !== "glas"; // glass infill = no top rail by default
+  // Glass: no handrail by default, unless "handrail-glas" extra option is selected
+  const hasHandrailOption = (selection.extraOptions ?? []).includes("handrail-glas");
+  const showHandrail = selection.infill !== "glas" || hasHandrailOption;
 
   const postW  = 0.044;
   const postD  = depthM * 0.7;

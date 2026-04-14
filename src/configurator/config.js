@@ -53,6 +53,7 @@ const config = {
       { value: 'zijmontage', label: 'Zijmontage', description: 'Maximale loopruimte met strakke gevelbevestiging.' },
     ],
     extra_options: [
+      { value: 'handrail-glas', label: 'Handrail bij glas' },
       { value: 'zaokraglenia', label: 'Afrondingen' },
     ],
   },
@@ -86,6 +87,7 @@ const config = {
       'zijmontage': 120,
     },
     extra_option_prices: {
+      'handrail-glas': 45,
       'zaokraglenia': 140,
     },
   },
