@@ -4,6 +4,7 @@ import { generatePageMetadata, jsonLdProduct, jsonLdBreadcrumb } from '@/lib/met
 import { SITE_URL } from '@/lib/constants';
 import type { Metadata } from 'next';
 import ProductPageTemplate from '@/components/sections/ProductPageTemplate';
+import { IMAGES } from '@/lib/images';
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -25,6 +26,7 @@ export default async function BalkonsPage({ params }: Props) {
       <ProductPageTemplate
         namespace="BalkonsPage"
         materialKeys={['aluminum', 'steel', 'glass']}
+        materialImages={[IMAGES.materials.aluminum, IMAGES.materials.inox, IMAGES.materials.glass]}
         featureKeys={['weatherproof', 'loadBearing', 'drainage', 'custom', 'safety', 'finish']}
         breadcrumbLabel="Balkons"
       />

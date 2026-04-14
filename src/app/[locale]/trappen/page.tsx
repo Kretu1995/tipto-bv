@@ -4,6 +4,7 @@ import { generatePageMetadata, jsonLdProduct, jsonLdBreadcrumb } from '@/lib/met
 import { SITE_URL } from '@/lib/constants';
 import type { Metadata } from 'next';
 import ProductPageTemplate from '@/components/sections/ProductPageTemplate';
+import { IMAGES } from '@/lib/images';
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -25,6 +26,7 @@ export default async function TrappenPage({ params }: Props) {
       <ProductPageTemplate
         namespace="TrappenPage"
         materialKeys={['wood', 'steel', 'concrete']}
+        materialImages={[IMAGES.materials.wood, IMAGES.materials.inox, IMAGES.materials.composite]}
         featureKeys={['custom', 'design', 'safety', 'durable', 'lighting', 'combination']}
         breadcrumbLabel="Trappen"
       />

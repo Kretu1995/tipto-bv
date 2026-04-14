@@ -1,9 +1,11 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
 import ScrollReveal from '@/components/ui/ScrollReveal';
+import { IMAGES } from '@/lib/images';
 
 export default function SimulatorTeaser() {
   const t = useTranslations('HomePage.simulator');
@@ -28,30 +30,21 @@ export default function SimulatorTeaser() {
           </ScrollReveal>
 
           <ScrollReveal direction="right" delay={0.2}>
-            <div className="relative aspect-[4/3] bg-charcoal rounded-sm overflow-hidden">
-              {/* 3D Preview placeholder */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gold/10 flex items-center justify-center">
-                    <svg className="w-10 h-10 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-                      <path d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
-                    </svg>
-                  </div>
-                  <p className="text-gray-400 text-sm">3D Simulator Preview</p>
+            <div className="relative aspect-[4/3] rounded-sm overflow-hidden group">
+              <Image
+                src={IMAGES.simulator.preview}
+                alt="3D Balustrade Simulator Preview"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              {/* Overlay with 3D icon */}
+              <div className="absolute inset-0 bg-charcoal/30 flex items-center justify-center transition-colors group-hover:bg-charcoal/20">
+                <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center">
+                  <svg className="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+                  </svg>
                 </div>
-              </div>
-              {/* Decorative lines */}
-              <div className="absolute inset-0 opacity-10">
-                <svg className="w-full h-full" viewBox="0 0 400 300">
-                  <line x1="50" y1="250" x2="50" y2="100" stroke="#c9a84c" strokeWidth="2" />
-                  <line x1="150" y1="250" x2="150" y2="100" stroke="#c9a84c" strokeWidth="2" />
-                  <line x1="250" y1="250" x2="250" y2="100" stroke="#c9a84c" strokeWidth="2" />
-                  <line x1="350" y1="250" x2="350" y2="100" stroke="#c9a84c" strokeWidth="2" />
-                  <line x1="50" y1="100" x2="350" y2="100" stroke="#c9a84c" strokeWidth="2" />
-                  <rect x="55" y="110" width="90" height="135" fill="#c9a84c" opacity="0.15" rx="1" />
-                  <rect x="155" y="110" width="90" height="135" fill="#c9a84c" opacity="0.15" rx="1" />
-                  <rect x="255" y="110" width="90" height="135" fill="#c9a84c" opacity="0.15" rx="1" />
-                </svg>
               </div>
             </div>
           </ScrollReveal>

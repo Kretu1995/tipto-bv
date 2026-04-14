@@ -13,6 +13,7 @@ type MaterialKey = string;
 type ProductPageTemplateProps = {
   namespace: string;
   materialKeys: MaterialKey[];
+  materialImages?: string[];
   featureKeys: string[];
   breadcrumbLabel: string;
   showSimulatorCta?: boolean;
@@ -21,6 +22,7 @@ type ProductPageTemplateProps = {
 export default function ProductPageTemplate({
   namespace,
   materialKeys,
+  materialImages,
   featureKeys,
   breadcrumbLabel,
   showSimulatorCta = false,
@@ -28,9 +30,10 @@ export default function ProductPageTemplate({
   const t = useTranslations(namespace);
   const common = useTranslations('Common');
 
-  const materials = materialKeys.map((key) => ({
+  const materials = materialKeys.map((key, i) => ({
     title: t(`materials.${key}.title`),
     description: t(`materials.${key}.description`),
+    image: materialImages?.[i],
   }));
 
   const features = featureKeys.map((key) => ({

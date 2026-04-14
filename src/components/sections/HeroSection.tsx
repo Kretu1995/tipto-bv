@@ -3,8 +3,10 @@
 import { useTranslations } from 'next-intl';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
+import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
+import { IMAGES } from '@/lib/images';
 
 export default function HeroSection() {
   const t = useTranslations('HomePage.hero');
@@ -20,31 +22,29 @@ export default function HeroSection() {
 
   return (
     <section ref={ref} className="relative min-h-[100svh] flex items-center overflow-hidden bg-charcoal-dark">
-      {/* Animated grid background */}
-      <motion.div
-        style={{ y: gridY }}
-        className="absolute inset-0 opacity-[0.04]"
-      >
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage:
-              'linear-gradient(rgba(201,168,76,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,.3) 1px, transparent 1px)',
-            backgroundSize: '80px 80px',
-          }}
+      {/* Background photo */}
+      <motion.div style={{ y: gridY }} className="absolute inset-0">
+        <Image
+          src={IMAGES.hero}
+          alt={IMAGES.heroAlt}
+          fill
+          className="object-cover"
+          priority
+          sizes="100vw"
         />
+        {/* Dark overlay with gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-charcoal-dark/95 via-charcoal-dark/85 to-charcoal-dark/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-charcoal-dark/80 via-transparent to-charcoal-dark/40" />
       </motion.div>
 
-      {/* Floating accent shapes */}
-      <motion.div
-        animate={{ y: [0, -15, 0], rotate: [0, 2, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute top-[15%] right-[10%] w-72 h-72 rounded-full bg-gold/[0.03] blur-3xl"
-      />
-      <motion.div
-        animate={{ y: [0, 12, 0], rotate: [0, -1, 0] }}
-        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-        className="absolute bottom-[20%] left-[5%] w-96 h-96 rounded-full bg-gold/[0.02] blur-3xl"
+      {/* Subtle grid overlay */}
+      <div
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(201,168,76,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,.3) 1px, transparent 1px)',
+          backgroundSize: '80px 80px',
+        }}
       />
 
       {/* Vertical gold line left accent */}
