@@ -18,7 +18,7 @@ type MaterialShowcaseProps = {
 
 export default function MaterialShowcase({ sectionTitle, items }: MaterialShowcaseProps) {
   return (
-    <section className="py-20 lg:py-28 bg-off-white">
+    <section className="py-12 sm:py-16 lg:py-28 bg-off-white">
       <Container>
         <SectionHeader title={sectionTitle} />
 

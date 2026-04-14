@@ -19,7 +19,7 @@ export default function FaqAccordion({ title, items }: FaqAccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-20 lg:py-28 bg-off-white">
+    <section className="py-12 sm:py-16 lg:py-28 bg-off-white">
       <Container>
         <SectionHeader title={title} />
 

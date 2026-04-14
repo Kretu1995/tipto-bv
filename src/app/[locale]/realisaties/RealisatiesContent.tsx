@@ -20,16 +20,16 @@ export default function RealisatiesContent() {
   const filtered = filter === 'all' ? projects : projects.filter((p) => p.category === filter);
 
   return (
-    <section className="py-20 lg:py-28 bg-off-white">
+    <section className="py-12 sm:py-16 lg:py-28 bg-off-white">
       <Container>
         {/* Filter tabs */}
-        <div className="flex flex-wrap gap-2 justify-center mb-12">
+        <div className="flex flex-wrap gap-2 justify-center mb-8 sm:mb-12">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => { setFilter(cat); setLightboxIndex(null); }}
               className={cn(
-                'px-4 py-2 text-sm font-medium rounded-sm border transition-all cursor-pointer',
+                'px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium rounded-sm border transition-all cursor-pointer',
                 filter === cat
                   ? 'bg-gold text-white border-gold'
                   : 'bg-white text-gray-600 border-gray-200 hover:border-gold/50'

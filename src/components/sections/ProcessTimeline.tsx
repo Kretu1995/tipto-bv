@@ -9,7 +9,7 @@ export default function ProcessTimeline() {
   const steps = [0, 1, 2, 3, 4, 5];
 
   return (
-    <section className="py-20 lg:py-28 bg-off-white">
+    <section className="py-12 sm:py-16 lg:py-28 bg-off-white">
       <Container>
         <div className="max-w-3xl mx-auto">
           {steps.map((i) => (

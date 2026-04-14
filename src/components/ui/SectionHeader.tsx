@@ -27,7 +27,7 @@ export default function SectionHeader({
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.6 }}
       className={cn(
-        'mb-12 lg:mb-16',
+        'mb-8 sm:mb-12 lg:mb-16',
         align === 'center' && 'text-center mx-auto max-w-3xl',
         className
       )}
@@ -41,14 +41,14 @@ export default function SectionHeader({
         </span>
       )}
       <h2 className={cn(
-        'text-3xl sm:text-4xl lg:text-5xl font-bold font-[family-name:var(--font-playfair)] leading-tight',
+        'text-2xl sm:text-3xl lg:text-5xl font-bold font-[family-name:var(--font-playfair)] leading-tight',
         light ? 'text-white' : 'text-charcoal'
       )}>
         {title}
       </h2>
       {subtitle && (
         <p className={cn(
-          'mt-4 text-lg lg:text-xl leading-relaxed',
+          'mt-3 sm:mt-4 text-base sm:text-lg lg:text-xl leading-relaxed',
           light ? 'text-gray-300' : 'text-gray-500'
         )}>
           {subtitle}

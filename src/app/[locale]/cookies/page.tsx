@@ -16,7 +16,7 @@ export default async function CookiesPage({ params }: Props) {
   setRequestLocale(locale);
 
   return (
-    <div className="pt-28 pb-20 lg:pt-36 lg:pb-28 bg-off-white">
+    <div className="pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-36 lg:pb-28 bg-off-white">
       <Container>
         <div className="max-w-3xl mx-auto prose prose-gray">
           <h1 className="text-3xl sm:text-4xl font-bold font-[family-name:var(--font-playfair)] text-charcoal mb-8">Cookiebeleid</h1>

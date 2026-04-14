@@ -16,7 +16,7 @@ export default function CoreValues() {
   const keys = ['craftsmanship', 'innovation', 'reliability'] as const;
 
   return (
-    <section className="py-20 lg:py-28 bg-white">
+    <section className="py-12 sm:py-16 lg:py-28 bg-white">
       <Container>
         <SectionHeader
           label={t('sectionLabel')}

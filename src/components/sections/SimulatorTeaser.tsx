@@ -9,14 +9,14 @@ export default function SimulatorTeaser() {
   const t = useTranslations('HomePage.simulator');
 
   return (
-    <section className="py-20 lg:py-28 bg-off-white overflow-hidden">
+    <section className="py-12 sm:py-16 lg:py-28 bg-off-white overflow-hidden">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           <ScrollReveal direction="left">
             <span className="inline-block text-sm font-semibold tracking-widest uppercase text-gold mb-4">
               {t('sectionLabel')}
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-[family-name:var(--font-playfair)] text-charcoal leading-tight mb-6">
+            <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold font-[family-name:var(--font-playfair)] text-charcoal leading-tight mb-4 sm:mb-6">
               {t('sectionTitle')}
             </h2>
             <p className="text-lg text-gray-500 leading-relaxed mb-8">

@@ -27,7 +27,7 @@ export default function TrustBar() {
   return (
     <section className="relative z-10 -mt-px bg-white border-b border-gray-100">
       <Container>
-        <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-gray-100">
+        <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-100">
           {items.map((item, i) => (
             <motion.div
               key={i}
@@ -37,8 +37,8 @@ export default function TrustBar() {
               transition={{ delay: i * 0.1, duration: 0.4 }}
               className="flex items-center justify-center gap-3 py-5 lg:py-6 px-4"
             >
-              <span className="text-gold">{icons[i]}</span>
-              <span className="text-sm font-semibold text-charcoal whitespace-nowrap">{item}</span>
+              <span className="text-gold shrink-0">{icons[i]}</span>
+              <span className="text-xs sm:text-sm font-semibold text-charcoal text-center sm:text-left leading-tight">{item}</span>
             </motion.div>
           ))}
         </div>

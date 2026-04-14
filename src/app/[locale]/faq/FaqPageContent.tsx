@@ -27,7 +27,7 @@ export default function FaqPageContent() {
   const filteredItems = allItems.filter((item) => item.category === activeCategory);
 
   return (
-    <section className="py-20 lg:py-28 bg-off-white">
+    <section className="py-12 sm:py-16 lg:py-28 bg-off-white">
       <Container>
         {/* Category tabs */}
         <div className="flex flex-wrap gap-2 justify-center mb-12">

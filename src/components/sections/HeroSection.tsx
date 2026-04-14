@@ -54,7 +54,7 @@ export default function HeroSection() {
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
 
       <Container className="relative z-10">
-        <motion.div style={{ y: textY, opacity }} className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center pt-24 pb-20 lg:pt-0 lg:pb-0">
+        <motion.div style={{ y: textY, opacity }} className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-0 lg:pb-0">
           {/* Text block */}
           <div className="lg:col-span-7">
             <motion.div
@@ -75,7 +75,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.15 }}
-              className="text-[2.75rem] sm:text-5xl md:text-6xl lg:text-[4.25rem] xl:text-7xl font-bold text-white font-[family-name:var(--font-playfair)] leading-[1.05] tracking-tight mb-7"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-[4.25rem] xl:text-7xl font-bold text-white font-[family-name:var(--font-playfair)] leading-[1.1] tracking-tight mb-6"
             >
               {titleWords.map((word, i) => (
                 <span key={i}>
@@ -93,7 +93,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.25 }}
-              className="text-base sm:text-lg text-gray-400 leading-relaxed max-w-xl mb-10"
+              className="text-sm sm:text-base md:text-lg text-gray-400 leading-relaxed max-w-xl mb-8"
             >
               {t('subtitle')}
             </motion.p>

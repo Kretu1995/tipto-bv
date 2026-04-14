@@ -11,7 +11,7 @@ type ProductFeaturesProps = {
 
 export default function ProductFeatures({ sectionTitle, features }: ProductFeaturesProps) {
   return (
-    <section className="py-20 lg:py-28 bg-white">
+    <section className="py-12 sm:py-16 lg:py-28 bg-white">
       <Container>
         <SectionHeader title={sectionTitle} />
 

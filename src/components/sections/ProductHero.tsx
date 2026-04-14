@@ -28,7 +28,7 @@ export default function ProductHero({ badge, title, subtitle, breadcrumbs, ctaLa
 
       <Container className="relative z-10">
         {/* Breadcrumbs */}
-        <nav className="flex items-center gap-2 text-sm text-gray-500 mb-8">
+        <nav className="flex items-center gap-2 text-xs sm:text-sm text-gray-500 mb-6 sm:mb-8">
           {breadcrumbs.map((crumb, i) => (
             <span key={i} className="flex items-center gap-2">
               {i > 0 && <span>/</span>}
@@ -52,11 +52,11 @@ export default function ProductHero({ badge, title, subtitle, breadcrumbs, ctaLa
             {badge}
           </span>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white font-[family-name:var(--font-playfair)] leading-tight mb-6">
+          <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-white font-[family-name:var(--font-playfair)] leading-tight mb-4 sm:mb-6">
             {title}
           </h1>
 
-          <p className="text-lg text-gray-400 leading-relaxed mb-8 max-w-2xl">
+          <p className="text-base sm:text-lg text-gray-400 leading-relaxed mb-6 sm:mb-8 max-w-2xl">
             {subtitle}
           </p>
 

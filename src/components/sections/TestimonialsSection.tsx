@@ -18,7 +18,7 @@ export default function TestimonialsSection() {
   }));
 
   return (
-    <section className="py-20 lg:py-28 bg-charcoal">
+    <section className="py-12 sm:py-16 lg:py-28 bg-charcoal">
       <Container>
         <SectionHeader
           label={t('sectionLabel')}

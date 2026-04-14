@@ -51,9 +51,9 @@ export default function ContactContent() {
   const productOptions = ['balustrades', 'ramen', 'deuren', 'garagepoorten', 'trappen', 'balkons', 'other'] as const;
 
   return (
-    <section className="py-20 lg:py-28 bg-off-white">
+    <section className="py-12 sm:py-16 lg:py-28 bg-off-white">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8 lg:gap-16">
           {/* Form */}
           <ScrollReveal>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">

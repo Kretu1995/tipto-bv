@@ -46,7 +46,7 @@ export default function StatsSection() {
   ];
 
   return (
-    <section className="py-20 lg:py-28 bg-charcoal relative overflow-hidden">
+    <section className="py-12 sm:py-16 lg:py-28 bg-charcoal relative overflow-hidden">
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
@@ -65,7 +65,7 @@ export default function StatsSection() {
               transition={{ delay: i * 0.1, duration: 0.5 }}
               className="text-center"
             >
-              <div className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gold font-[family-name:var(--font-playfair)] mb-2">
+              <div className="text-3xl sm:text-4xl lg:text-6xl font-bold text-gold font-[family-name:var(--font-playfair)] mb-2">
                 <AnimatedCounter target={stat.value} suffix={stat.suffix} />
               </div>
               <div className="text-sm text-gray-400 font-medium uppercase tracking-wider">
