@@ -1,0 +1,242 @@
+{
+  "Navigation": {
+    "home": "Accueil",
+    "about": "À propos",
+    "products": "Produits",
+    "balustrades": "Balustrades",
+    "ramen": "Fenêtres",
+    "deuren": "Portes",
+    "garagepoorten": "Portes de garage",
+    "trappen": "Escaliers",
+    "balkons": "Balcons",
+    "simulator": "Simulateur 3D",
+    "realisaties": "Réalisations",
+    "werkwijze": "Notre méthode",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "requestQuote": "Demander un devis"
+  },
+  "HomePage": {
+    "hero": {
+      "badge": "17+ ans de savoir-faire",
+      "title": "Savoir-faire en Aluminium, Verre & Acier",
+      "subtitle": "Nous créons des balustrades, fenêtres, portes, portes de garage, escaliers et balcons sur mesure qui transforment votre espace. Artisanat belge, design intemporel.",
+      "ctaPrimary": "Demander un devis",
+      "ctaSecondary": "Découvrir nos produits"
+    },
+    "trust": {
+      "experience": "17+ Ans d'Expérience",
+      "availability": "Disponible 24h/24",
+      "custom": "Sur Mesure",
+      "freeQuote": "Devis Gratuit"
+    },
+    "products": {
+      "sectionLabel": "Nos Spécialisations",
+      "sectionTitle": "Solutions Premium Sur Mesure pour Chaque Projet",
+      "sectionSubtitle": "Des balustrades élégantes aux fenêtres écoénergétiques — chaque produit est conçu et fabriqué sur mesure selon les normes de qualité les plus élevées.",
+      "balustrades": { "title": "Balustrades", "description": "Balustrades élégantes en inox, aluminium ou verre. Sécurité et design en parfaite harmonie." },
+      "ramen": { "title": "Fenêtres", "description": "Fenêtres écoénergétiques en PVC, aluminium ou bois. Isolation maximale, consommation minimale." },
+      "deuren": { "title": "Portes", "description": "Portes extérieures et intérieures sur mesure. Du bois classique à l'aluminium moderne." },
+      "garagepoorten": { "title": "Portes de garage", "description": "Portes sectionnelles, basculantes et enroulables avec commande automatique." },
+      "trappen": { "title": "Escaliers", "description": "Escaliers sur mesure en bois, acier ou béton. Un design fonctionnel qui inspire." },
+      "balkons": { "title": "Balcons", "description": "Balcons modernes et classiques avec des matériaux durables et un design raffiné." }
+    },
+    "values": {
+      "sectionLabel": "Pourquoi Tipto",
+      "sectionTitle": "Trois Piliers d'Excellence",
+      "craftsmanship": { "title": "Savoir-faire", "description": "Plus de 17 ans d'expérience dans la conception et la réalisation de solutions premium sur mesure. Chaque détail est fini avec soin et précision." },
+      "innovation": { "title": "Innovation", "description": "Nous combinons l'artisanat traditionnel avec les dernières technologies. De la production automatisée à l'intégration domotique." },
+      "reliability": { "title": "Fiabilité", "description": "Prix transparents, délais respectés et service client 24h/24. Nous sommes toujours là pour vous." }
+    },
+    "stats": {
+      "years": "Ans d'Expérience",
+      "projects": "Projets Réalisés",
+      "satisfaction": "Satisfaction Client",
+      "materials": "Options de Matériaux"
+    },
+    "simulator": {
+      "sectionLabel": "Exclusif",
+      "sectionTitle": "Concevez Votre Balustrade en 3D",
+      "sectionSubtitle": "Utilisez notre simulateur 3D interactif pour composer votre balustrade idéale. Choisissez les matériaux, couleurs et styles — et demandez un devis directement.",
+      "cta": "Lancer le Simulateur 3D"
+    },
+    "energy": {
+      "sectionLabel": "Économies d'Énergie",
+      "sectionTitle": "Investissez dans l'Efficacité Énergétique",
+      "sectionSubtitle": "Les fenêtres et portes modernes réduisent considérablement votre consommation d'énergie et augmentent le confort de votre habitation.",
+      "heatLoss": "Réduction des pertes de chaleur",
+      "energySavings": "Économies d'énergie par an",
+      "epcImprovement": "Amélioration PEB",
+      "noiseReduction": "Amélioration de l'isolation acoustique",
+      "burglarResistance": "Résistance aux effractions"
+    },
+    "testimonials": {
+      "sectionLabel": "Témoignages Clients",
+      "sectionTitle": "La Confiance de Centaines de Clients Satisfaits",
+      "items": [
+        { "name": "Martijn De Vries", "role": "Propriétaire, Anvers", "content": "Tipto a installé de magnifiques balustrades en verre sur notre terrasse. La qualité et la finition sont exceptionnelles. Tout le processus s'est déroulé de manière professionnelle et dans les délais convenus.", "rating": 5 },
+        { "name": "Sophie Van den Berg", "role": "Architecte, Bruxelles", "content": "En tant qu'architecte, je collabore régulièrement avec Tipto pour mes projets. Leur savoir-faire et leur souci du détail en font un partenaire fiable pour tout projet de construction.", "rating": 5 },
+        { "name": "Thomas Janssen", "role": "Entrepreneur, Malines", "content": "Les portes de garage et fenêtres livrées par Tipto pour nos projets de construction neuve sont d'excellente qualité. Service fiable et prix compétitifs.", "rating": 5 }
+      ]
+    },
+    "cta": {
+      "title": "Prêt pour Votre Projet ?",
+      "subtitle": "Demandez un devis gratuit et sans engagement dès aujourd'hui et découvrez ce que Tipto peut faire pour vous.",
+      "button": "Demander un Devis"
+    }
+  },
+  "AboutPage": {
+    "meta": { "title": "À propos de Tipto BV — 17+ Ans de Savoir-faire en Belgique", "description": "Découvrez l'histoire de Tipto BV. Depuis plus de 17 ans votre spécialiste en balustrades, fenêtres, portes, portes de garage, escaliers et balcons sur mesure en Belgique." },
+    "hero": { "badge": "Notre Histoire", "title": "17+ Ans de Passion pour le Savoir-faire", "subtitle": "Tipto BV est une entreprise belge de premier plan spécialisée dans les solutions sur mesure pour les projets résidentiels et commerciaux." },
+    "story": { "title": "De la Vision au Savoir-faire", "content": "Depuis notre création, nous nous efforçons de livrer la plus haute qualité en solutions sur mesure. Avec plus de 17 ans d'expérience, nous combinons l'artisanat traditionnel avec les technologies innovantes. Nos matériaux — verre trempé, inox, aluminium et bois durable — sont soigneusement sélectionnés pour leur qualité et durabilité." },
+    "services": { "title": "Ce Que Nous Offrons", "installation": "Installation professionnelle par des artisans qualifiés", "maintenance": "Entretien et réparation de tous vos produits", "emergency": "Disponibilité 24h/24 pour les urgences", "commercial": "Accompagnement complet pour les projets commerciaux", "smart": "Intégration domotique et solutions écoénergétiques", "custom": "Conceptions entièrement sur mesure" },
+    "reasons": { "title": "Pourquoi Choisir Tipto", "experience": "17+ ans d'expérience", "available": "Toujours disponible (24h/24)", "specialists": "Spécialistes qualifiés", "solutions": "Meilleures solutions", "pricing": "Prix transparents", "emergency": "Service d'urgence disponible" }
+  },
+  "BalustradesPage": {
+    "meta": { "title": "Balustrades Sur Mesure — Inox, Aluminium & Verre | Tipto BV", "description": "Balustrades premium sur mesure en inox, aluminium et verre. Découvrez notre collection et concevez votre balustrade idéale avec notre simulateur 3D." },
+    "hero": { "badge": "Balustrades", "title": "Des Balustrades qui Allient Élégance et Sécurité", "subtitle": "Balustrades sur mesure en inox, aluminium ou verre. Chaque design est réalisé avec précision pour une combinaison parfaite de sécurité et d'esthétique." },
+    "materials": {
+      "title": "Matériaux & Finitions",
+      "inox": { "title": "Balustrades en Inox", "description": "Acier inoxydable à l'apparence intemporelle. Extrêmement durable et nécessitant peu d'entretien." },
+      "powderCoated": { "title": "Inox avec Poudrage", "description": "Couleur au choix avec la durabilité de l'inox. La combinaison parfaite de style et de fonctionnalité." },
+      "aluminum": { "title": "Balustrades en Aluminium", "description": "Légères et polyvalentes. Idéales pour l'architecture moderne avec une finition épurée." },
+      "glass": { "title": "Balustrades en Verre", "description": "Transparentes et élégantes. Vue maximale avec une sécurité optimale." }
+    },
+    "features": { "title": "Caractéristiques", "safety": "Conforme à toutes les normes de sécurité", "custom": "Entièrement sur mesure", "durable": "Matériaux durables", "design": "Design moderne et intemporel", "install": "Installation professionnelle", "warranty": "Garantie étendue" },
+    "simulatorCta": { "title": "Concevez Votre Propre Balustrade", "subtitle": "Utilisez notre simulateur 3D pour composer votre balustrade idéale.", "button": "Ouvrir le Simulateur 3D" },
+    "faq": {
+      "title": "Questions Fréquentes sur les Balustrades",
+      "items": [
+        { "question": "Quels matériaux proposez-vous pour les balustrades ?", "answer": "Nous proposons des balustrades en inox, inox avec poudrage, aluminium et verre. Chaque matériau peut être fini sur mesure selon vos souhaits." },
+        { "question": "Combien de temps dure l'installation d'une balustrade ?", "answer": "Le temps d'installation dépend de la complexité et de l'ampleur du projet. Une balustrade standard est généralement installée en 1 à 2 jours." },
+        { "question": "Les balustrades en verre sont-elles sûres ?", "answer": "Absolument. Nos balustrades en verre sont fabriquées en verre de sécurité trempé conforme à toutes les normes européennes de sécurité." },
+        { "question": "Offrez-vous une garantie sur les balustrades ?", "answer": "Oui, toutes nos balustrades sont livrées avec une garantie étendue. Nous discutons volontiers des conditions exactes lors du processus de devis." }
+      ]
+    }
+  },
+  "RamenPage": {
+    "meta": { "title": "Fenêtres Sur Mesure — PVC, Aluminium & Bois | Tipto BV", "description": "Fenêtres écoénergétiques sur mesure en PVC, aluminium et bois. Jusqu'à 30% d'économies d'énergie. Installation experte par Tipto BV dans toute la Belgique." },
+    "hero": { "badge": "Fenêtres", "title": "Des Fenêtres qui Allient Confort et Efficacité Énergétique", "subtitle": "Fenêtres de haute qualité sur mesure en PVC, aluminium ou bois. Isolation maximale, consommation d'énergie minimale et une apparence raffinée." },
+    "materials": {
+      "title": "Matériaux & Profilés",
+      "pvc": { "title": "Fenêtres PVC", "description": "Excellente isolation à un prix compétitif. Sans entretien et disponibles en de nombreuses couleurs." },
+      "aluminum": { "title": "Fenêtres Aluminium", "description": "Fines et modernes. Profilés solides avec une surface vitrée maximale." },
+      "wood": { "title": "Fenêtres en Bois", "description": "Apparence chaleureuse et naturelle. Bois durable avec d'excellentes propriétés isolantes." }
+    },
+    "features": { "title": "Avantages", "insulation": "Isolation thermique supérieure", "noise": "Jusqu'à 50% d'isolation acoustique", "security": "Serrures anti-effraction", "energy": "Jusqu'à 30% d'économies d'énergie", "maintenance": "Peu d'entretien", "custom": "Toute forme et taille possible" },
+    "faq": { "title": "Questions Fréquentes sur les Fenêtres", "items": [
+      { "question": "Quel type de fenêtre est le plus écoénergétique ?", "answer": "Tous nos types de fenêtres offrent une excellente isolation. Les fenêtres PVC obtiennent généralement les meilleurs résultats en isolation thermique." },
+      { "question": "Combien de temps faut-il pour installer de nouvelles fenêtres ?", "answer": "Le délai de production est en moyenne de 4 à 6 semaines après la prise de mesures. L'installation elle-même dure 1 à 3 jours." },
+      { "question": "Puis-je obtenir des primes pour de nouvelles fenêtres ?", "answer": "Oui, il existe diverses primes en Belgique pour les fenêtres écoénergétiques. Nous vous aidons volontiers dans les démarches." }
+    ] }
+  },
+  "DeurenPage": {
+    "meta": { "title": "Portes Sur Mesure — Intérieures & Extérieures | Tipto BV", "description": "Portes premium sur mesure en bois, aluminium et composite. Des portes intérieures classiques aux portes extérieures modernes." },
+    "hero": { "badge": "Portes", "title": "Des Portes qui Impressionnent à Chaque Seuil", "subtitle": "Des portes intérieures élégantes aux portes extérieures robustes — chaque porte est fabriquée sur mesure avec des matériaux premium." },
+    "materials": { "title": "Matériaux & Styles", "wood": { "title": "Portes en Bois", "description": "Élégance intemporelle en bois massif. Disponibles en diverses essences et finitions." }, "aluminum": { "title": "Portes en Aluminium", "description": "Modernes et nécessitant peu d'entretien. Profilés fins avec une isolation supérieure." }, "composite": { "title": "Portes Composites", "description": "Le meilleur des deux mondes. L'apparence du bois avec la durabilité des matériaux modernes." } },
+    "features": { "title": "Caractéristiques", "security": "Systèmes de verrouillage avancés", "insulation": "Isolation thermique et acoustique", "design": "Possibilités de design infinies", "durability": "Finition résistante aux intempéries", "smart": "Compatible serrure connectée", "custom": "Sur mesure" },
+    "faq": { "title": "Questions Fréquentes sur les Portes", "items": [
+      { "question": "Quel matériau est le mieux pour une porte extérieure ?", "answer": "L'aluminium et le composite sont d'excellents choix pour les portes extérieures grâce à leur durabilité et résistance aux intempéries." },
+      { "question": "Pouvez-vous fournir des portes avec des serrures connectées ?", "answer": "Oui, nous pouvons équiper toutes nos portes de systèmes de serrures connectées." }
+    ] }
+  },
+  "GaragepoortenPage": {
+    "meta": { "title": "Portes de Garage Sur Mesure — Sectionnelles & Enroulables | Tipto BV", "description": "Portes de garage automatiques sur mesure. Sectionnelles, basculantes et enroulables avec installation professionnelle." },
+    "hero": { "badge": "Portes de garage", "title": "Des Portes de Garage Alliant Fonctionnalité et Design", "subtitle": "Portes sectionnelles, basculantes et enroulables — chaque porte de garage est fabriquée sur mesure avec commande automatique et finition premium." },
+    "materials": { "title": "Types & Configurations", "sectional": { "title": "Portes Sectionnelles", "description": "Le choix le plus populaire. Gain de place et disponibles en divers panneaux et couleurs." }, "tilt": { "title": "Portes Basculantes", "description": "Classiques et fiables. Un choix solide pour les garages standards." }, "roller": { "title": "Portes Enroulables", "description": "Gain de place maximal. Idéales pour les garages avec un espace limité." } },
+    "features": { "title": "Caractéristiques", "automatic": "Commande automatique", "insulation": "Panneaux isolés", "security": "Résistant aux effractions", "quiet": "Fonctionnement ultra-silencieux", "smart": "Intégration domotique", "design": "Diverses options de design" },
+    "faq": { "title": "Questions Fréquentes sur les Portes de Garage", "items": [
+      { "question": "Quel type de porte de garage est le plus populaire ?", "answer": "Les portes sectionnelles sont de loin les plus populaires grâce à leur conception gain de place et leur excellente isolation." },
+      { "question": "Les portes de garage existantes peuvent-elles être automatisées ?", "answer": "Dans de nombreux cas, oui. Nous nous déplaçons volontiers pour évaluer les possibilités." }
+    ] }
+  },
+  "TrappenPage": {
+    "meta": { "title": "Escaliers Sur Mesure — Bois, Acier & Béton | Tipto BV", "description": "Escaliers sur mesure en bois, acier et béton. Des escaliers flottants aux escaliers en colimaçon classiques." },
+    "hero": { "badge": "Escaliers", "title": "Des Escaliers qui Élèvent Votre Intérieur", "subtitle": "Escaliers sur mesure alliant fonctionnalité et design. Des escaliers flottants modernes aux colimaçons classiques — chaque projet est unique." },
+    "materials": { "title": "Matériaux & Styles", "wood": { "title": "Escaliers en Bois", "description": "Apparence chaleureuse et design intemporel. Disponibles en diverses essences." }, "steel": { "title": "Escaliers en Acier", "description": "Industriels et modernes. Solides, fins et parfaits pour les intérieurs contemporains." }, "concrete": { "title": "Escaliers en Béton", "description": "Robustes et polyvalents. La base parfaite pour toute finition." } },
+    "features": { "title": "Caractéristiques", "custom": "Entièrement sur mesure", "design": "Options de design infinies", "safety": "Finition antidérapante", "durable": "Qualité durable", "lighting": "Éclairage LED possible", "combination": "Combiner les matériaux" },
+    "faq": { "title": "Questions Fréquentes sur les Escaliers", "items": [
+      { "question": "Quel matériau est le mieux pour un escalier ?", "answer": "Le meilleur choix dépend de votre style d'intérieur et de votre budget. Les escaliers en bois sont intemporels, en acier sont modernes, et en béton offrent une flexibilité maximale." },
+      { "question": "Combien de temps faut-il pour fabriquer un escalier sur mesure ?", "answer": "Le délai de production est en moyenne de 6 à 8 semaines après approbation du design. L'installation dure généralement 2 à 3 jours." }
+    ] }
+  },
+  "BalkonsPage": {
+    "meta": { "title": "Balcons Sur Mesure — Modernes & Classiques | Tipto BV", "description": "Balcons premium sur mesure en aluminium, acier et verre. Designs modernes et classiques avec des matériaux durables." },
+    "hero": { "badge": "Balcons", "title": "Des Balcons qui Transforment Votre Espace Extérieur", "subtitle": "Des balcons modernes épurés aux designs classiques en fer forgé — nous créons des balcons qui augmentent la valeur et le confort de votre habitation." },
+    "materials": { "title": "Matériaux & Styles", "aluminum": { "title": "Balcons en Aluminium", "description": "Légers, durables et nécessitant peu d'entretien. Le choix le plus populaire." }, "steel": { "title": "Balcons en Acier", "description": "Robustes et polyvalents. Du style industriel au fer forgé classique." }, "glass": { "title": "Balcons en Verre", "description": "Transparents et modernes. Vue maximale avec une apparence élégante." } },
+    "features": { "title": "Caractéristiques", "weatherproof": "Résistant aux intempéries", "loadBearing": "Haute capacité de charge", "drainage": "Drainage intégré", "custom": "Sur mesure", "safety": "Conforme à toutes les normes", "finish": "Finition premium" },
+    "faq": { "title": "Questions Fréquentes sur les Balcons", "items": [
+      { "question": "Faut-il un permis de construire pour un balcon ?", "answer": "Dans la plupart des cas, un permis est requis. Nous vous conseillons volontiers sur les exigences de votre commune." },
+      { "question": "Comment entretenir mon balcon ?", "answer": "Les balcons en aluminium et verre ne nécessitent pratiquement pas d'entretien. Les balcons en acier demandent un traitement protecteur périodique." }
+    ] }
+  },
+  "SimulatorPage": {
+    "meta": { "title": "Simulateur 3D de Balustrades — Concevez en Ligne | Tipto BV", "description": "Concevez votre balustrade idéale avec notre simulateur 3D interactif. Choisissez matériaux, couleurs et styles et demandez un devis directement." },
+    "hero": { "badge": "Simulateur 3D", "title": "Concevez Votre Balustrade Idéale", "subtitle": "Utilisez notre simulateur 3D interactif pour composer votre balustrade de rêve. Tournez, zoomez et ajustez matériaux, couleurs et styles en temps réel." },
+    "controls": { "material": "Matériau", "color": "Couleur", "style": "Style", "postStyle": "Style de poteau", "height": "Hauteur", "panels": "Panneaux", "glass": "Verre", "steel": "Acier", "aluminum": "Aluminium", "glassPanel": "Panneau en verre", "horizontalBars": "Barres horizontales", "verticalBars": "Barres verticales", "cable": "Câbles", "round": "Rond", "square": "Carré", "clear": "Clair", "greenTint": "Teinte verte", "blueTint": "Teinte bleue", "frosted": "Mat", "brushed": "Brossé", "matteBlack": "Noir mat", "anthracite": "Anthracite", "bronze": "Bronze", "natural": "Naturel", "white": "Blanc", "black": "Noir", "goldAnodized": "Or anodisé" },
+    "quote": { "title": "Votre Configuration", "material": "Matériau", "color": "Couleur", "style": "Style", "height": "Hauteur", "panels": "Panneaux", "cta": "Demander un Devis pour Ce Design", "description": "Sur base de votre configuration, nous établirons un devis gratuit et sans engagement." },
+    "instructions": { "drag": "Glissez pour tourner", "scroll": "Scrollez pour zoomer", "touch": "Pincez pour zoomer" },
+    "loading": "Chargement du modèle 3D...",
+    "unsupported": "Votre navigateur ne supporte pas le rendu 3D. Contactez-nous pour un conseil personnalisé."
+  },
+  "RealisatiesPage": {
+    "meta": { "title": "Nos Réalisations — Galerie de Projets | Tipto BV", "description": "Découvrez nos projets réalisés. Des balustrades aux escaliers — découvrez le savoir-faire de Tipto BV." },
+    "hero": { "badge": "Portfolio", "title": "Nos Réalisations", "subtitle": "Découvrez une sélection de nos projets les plus récents. Chaque projet est la preuve de notre savoir-faire." },
+    "filter": { "all": "Tous les Projets", "balustrades": "Balustrades", "ramen": "Fenêtres", "deuren": "Portes", "garagepoorten": "Portes de garage", "trappen": "Escaliers", "balkons": "Balcons" }
+  },
+  "WerkwijzePage": {
+    "meta": { "title": "Notre Méthode — Du Contact à l'Installation | Tipto BV", "description": "Découvrez comment Tipto BV travaille. Du premier contact à l'installation — nous vous guidons à chaque étape." },
+    "hero": { "badge": "Notre Méthode", "title": "Notre Méthode de Travail", "subtitle": "Du premier entretien à l'installation parfaite — nous vous accompagnons à chaque étape du processus." },
+    "steps": [
+      { "title": "Contact & Conseil", "description": "Contactez-nous et parlez-nous de votre projet. Nous écoutons vos souhaits et vous donnons un conseil personnalisé." },
+      { "title": "Prise de Mesures", "description": "Notre spécialiste se rend chez vous pour des mesures précises et discute des possibilités sur place." },
+      { "title": "Conception & Devis", "description": "Sur base des mesures, nous concevons votre produit et préparons un devis transparent sur mesure." },
+      { "title": "Production", "description": "Après approbation, nous lançons la production selon les normes de qualité les plus élevées." },
+      { "title": "Installation", "description": "Nos artisans installent votre produit de manière experte et soignée, dans le respect de votre habitation." },
+      { "title": "Suivi & Service", "description": "Après l'installation, nous restons disponibles pour l'entretien, les réparations et vos questions. Service client 24h/24." }
+    ]
+  },
+  "FaqPage": {
+    "meta": { "title": "Questions Fréquentes — FAQ | Tipto BV", "description": "Réponses aux questions fréquentes sur nos produits, services, prix et méthode de travail." },
+    "hero": { "badge": "FAQ", "title": "Questions Fréquentes", "subtitle": "Trouvez rapidement des réponses aux questions les plus courantes sur nos produits et services." },
+    "categories": { "general": "Général", "products": "Produits", "pricing": "Prix & Devis", "installation": "Installation" },
+    "items": [
+      { "category": "general", "question": "Dans quelles régions Tipto est-il actif ?", "answer": "Tipto BV est actif dans toute la Belgique, avec un focus sur Anvers et ses environs." },
+      { "category": "general", "question": "Comment contacter Tipto ?", "answer": "Par téléphone (0466 49 18 51), email (info@tiptobv.be) ou le formulaire de contact. Nous sommes disponibles 24h/24." },
+      { "category": "products", "question": "Quels produits Tipto propose-t-il ?", "answer": "Nous sommes spécialisés en balustrades, fenêtres, portes, portes de garage, escaliers et balcons. Tous sur mesure avec des matériaux premium." },
+      { "category": "products", "question": "Pouvez-vous rénover des produits existants ?", "answer": "Oui, nous proposons aussi la rénovation et l'entretien de produits existants." },
+      { "category": "pricing", "question": "Comment fonctionne le processus de devis ?", "answer": "Après une prise de mesures gratuite chez vous, nous établissons un devis détaillé et transparent. Sans engagement." },
+      { "category": "pricing", "question": "Proposez-vous des facilités de paiement ?", "answer": "Nous discutons volontiers des possibilités de paiement avec vous." },
+      { "category": "installation", "question": "Combien de temps dure une installation moyenne ?", "answer": "Le temps d'installation varie selon le produit. En moyenne 1 à 5 jours. Nous vous donnons toujours un planning réaliste." },
+      { "category": "installation", "question": "Nettoyez-vous après l'installation ?", "answer": "Bien sûr. Nos artisans laissent votre habitation propre après l'installation." }
+    ]
+  },
+  "ContactPage": {
+    "meta": { "title": "Contact & Demande de Devis | Tipto BV", "description": "Contactez Tipto BV pour un devis gratuit. Appelez, envoyez un email ou remplissez le formulaire. Koekoekstraat 25, 2630 Aartselaar." },
+    "hero": { "badge": "Contactez-nous", "title": "Discutons de Votre Projet", "subtitle": "Parlez-nous de votre projet et recevez un devis gratuit sur mesure. Nous répondons dans les 24 heures." },
+    "form": { "name": "Nom", "namePlaceholder": "Votre nom complet", "email": "Adresse e-mail", "emailPlaceholder": "votre@email.be", "phone": "Téléphone", "phonePlaceholder": "+32 ...", "product": "Produit d'intérêt", "productPlaceholder": "Sélectionnez un produit", "productOptions": { "balustrades": "Balustrades", "ramen": "Fenêtres", "deuren": "Portes", "garagepoorten": "Portes de garage", "trappen": "Escaliers", "balkons": "Balcons", "other": "Autre" }, "message": "Message", "messagePlaceholder": "Parlez-nous de votre projet...", "submit": "Envoyer la Demande", "sending": "Envoi en cours...", "success": "Merci pour votre demande ! Nous vous contacterons dans les 24 heures.", "error": "Une erreur s'est produite. Réessayez ou appelez-nous directement.", "required": "Ce champ est obligatoire", "invalidEmail": "Veuillez entrer une adresse e-mail valide" },
+    "info": { "title": "Coordonnées", "address": "Adresse", "phone": "Téléphone", "email": "E-mail", "vat": "Numéro de TVA", "hours": "Heures d'ouverture", "weekdays": "Lundi - Vendredi : 08:00 - 18:00", "saturday": "Samedi : 09:00 - 14:00", "sunday": "Dimanche : Fermé" }
+  },
+  "Footer": {
+    "description": "Tipto BV est votre spécialiste en balustrades, fenêtres, portes, portes de garage, escaliers et balcons sur mesure. Plus de 17 ans de savoir-faire en Belgique.",
+    "products": "Produits",
+    "company": "Entreprise",
+    "contact": "Contact",
+    "vat": "TVA",
+    "copyright": "Tipto BV. Tous droits réservés.",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions générales"
+  },
+  "Common": {
+    "requestQuote": "Demander un Devis",
+    "learnMore": "En Savoir Plus",
+    "viewProjects": "Voir les Projets",
+    "callUs": "Appelez-nous",
+    "backToHome": "Retour à l'accueil",
+    "readMore": "Lire la Suite",
+    "allProducts": "Tous les Produits",
+    "close": "Fermer",
+    "menu": "Menu",
+    "loading": "Chargement..."
+  }
+}

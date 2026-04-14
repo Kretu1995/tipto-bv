@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://tiptobv.be
+
+# Sitemaps
+Sitemap: https://tiptobv.be/sitemap.xml

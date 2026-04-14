@@ -1,0 +1,33 @@
+import { setRequestLocale } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
+import { generatePageMetadata, jsonLdProduct, jsonLdBreadcrumb } from '@/lib/metadata';
+import { SITE_URL } from '@/lib/constants';
+import type { Metadata } from 'next';
+import ProductPageTemplate from '@/components/sections/ProductPageTemplate';
+
+type Props = { params: Promise<{ locale: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'BalkonsPage.meta' });
+  return generatePageMetadata({ title: t('title'), description: t('description'), locale, path: '/balkons' });
+}
+
+export default async function BalkonsPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: 'BalkonsPage' });
+
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdProduct(t('meta.title'), t('meta.description'), 'Balconies')) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumb([{ name: 'Home', url: SITE_URL }, { name: 'Balkons', url: `${SITE_URL}/balkons` }])) }} />
+      <ProductPageTemplate
+        namespace="BalkonsPage"
+        materialKeys={['aluminum', 'steel', 'glass']}
+        featureKeys={['weatherproof', 'loadBearing', 'drainage', 'custom', 'safety', 'finish']}
+        breadcrumbLabel="Balkons"
+      />
+    </>
+  );
+}

@@ -1,0 +1,716 @@
+{
+  "Navigation": {
+    "home": "Home",
+    "about": "Over ons",
+    "products": "Producten",
+    "balustrades": "Balustrades",
+    "ramen": "Ramen",
+    "deuren": "Deuren",
+    "garagepoorten": "Garagepoorten",
+    "trappen": "Trappen",
+    "balkons": "Balkons",
+    "simulator": "3D Simulator",
+    "realisaties": "Realisaties",
+    "werkwijze": "Werkwijze",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "requestQuote": "Offerte aanvragen"
+  },
+  "HomePage": {
+    "hero": {
+      "badge": "17+ jaar vakmanschap",
+      "title": "Vakmanschap in Aluminium, Glas & Staal",
+      "subtitle": "Wij creëren op maat gemaakte balustrades, ramen, deuren, garagepoorten, trappen en balkons die uw ruimte transformeren. Belgisch vakmanschap, tijdloos ontwerp.",
+      "ctaPrimary": "Offerte aanvragen",
+      "ctaSecondary": "Ontdek onze producten"
+    },
+    "trust": {
+      "experience": "17+ Jaar Ervaring",
+      "availability": "24/7 Bereikbaar",
+      "custom": "Op Maat Gemaakt",
+      "freeQuote": "Gratis Offerte"
+    },
+    "products": {
+      "sectionLabel": "Onze Specialisaties",
+      "sectionTitle": "Premium Maatwerk voor Elk Project",
+      "sectionSubtitle": "Van elegante balustrades tot energiezuinige ramen — elk product wordt op maat ontworpen en geproduceerd met de hoogste kwaliteitsnormen.",
+      "balustrades": {
+        "title": "Balustrades",
+        "description": "Elegante balustrades in inox, aluminium of glas. Veiligheid en design in perfecte harmonie."
+      },
+      "ramen": {
+        "title": "Ramen",
+        "description": "Energiezuinige ramen in PVC, aluminium of hout. Maximale isolatie, minimaal energieverbruik."
+      },
+      "deuren": {
+        "title": "Deuren",
+        "description": "Buitendeuren en binnendeuren op maat. Van klassiek hout tot modern aluminium."
+      },
+      "garagepoorten": {
+        "title": "Garagepoorten",
+        "description": "Sectionaalpoorten, kantelpoorten en rolpoorten met automatische bediening."
+      },
+      "trappen": {
+        "title": "Trappen",
+        "description": "Maatwerk trappen in hout, staal of beton. Functioneel design dat inspireert."
+      },
+      "balkons": {
+        "title": "Balkons",
+        "description": "Moderne en klassieke balkons met duurzame materialen en verfijnd design."
+      }
+    },
+    "values": {
+      "sectionLabel": "Waarom Tipto",
+      "sectionTitle": "Drie Pijlers van Excellentie",
+      "craftsmanship": {
+        "title": "Vakmanschap",
+        "description": "Meer dan 17 jaar ervaring in het ontwerpen en realiseren van premium maatwerkoplossingen. Elk detail wordt met zorg en precisie afgewerkt."
+      },
+      "innovation": {
+        "title": "Innovatie",
+        "description": "Wij combineren traditioneel vakmanschap met de nieuwste technologieën. Van geautomatiseerde productie tot smart home integratie."
+      },
+      "reliability": {
+        "title": "Betrouwbaarheid",
+        "description": "Transparante prijzen, stipte deadlines en een 24/7 klantenservice. Wij staan altijd voor u klaar."
+      }
+    },
+    "stats": {
+      "years": "Jaren Ervaring",
+      "projects": "Projecten Gerealiseerd",
+      "satisfaction": "Klanttevredenheid",
+      "materials": "Materiaalopties"
+    },
+    "simulator": {
+      "sectionLabel": "Exclusief",
+      "sectionTitle": "Ontwerp Uw Balustrade in 3D",
+      "sectionSubtitle": "Gebruik onze interactieve 3D-simulator om uw ideale balustrade samen te stellen. Kies materialen, kleuren en stijlen — en vraag direct een offerte aan.",
+      "cta": "Start de 3D Simulator"
+    },
+    "energy": {
+      "sectionLabel": "Energiebesparing",
+      "sectionTitle": "Investeer in Energiezuinigheid",
+      "sectionSubtitle": "Moderne ramen en deuren verminderen uw energieverbruik aanzienlijk en verhogen het comfort in uw woning.",
+      "heatLoss": "Warmteverlies vermindering",
+      "energySavings": "Energiebesparing per jaar",
+      "epcImprovement": "EPC-verbetering",
+      "noiseReduction": "Geluidsisolatie verbetering",
+      "burglarResistance": "Inbraakbestendigheid"
+    },
+    "testimonials": {
+      "sectionLabel": "Wat Klanten Zeggen",
+      "sectionTitle": "Vertrouwd door Honderden Tevreden Klanten",
+      "items": [
+        {
+          "name": "Martijn De Vries",
+          "role": "Huiseigenaar, Antwerpen",
+          "content": "Tipto heeft prachtige glazen balustrades geplaatst op ons terras. De kwaliteit en afwerking zijn uitzonderlijk. Het hele proces verliep professioneel en binnen de afgesproken termijn.",
+          "rating": 5
+        },
+        {
+          "name": "Sophie Van den Berg",
+          "role": "Architecte, Brussel",
+          "content": "Als architect werk ik regelmatig samen met Tipto voor mijn projecten. Hun vakmanschap en oog voor detail maken hen een betrouwbare partner voor elk bouwproject.",
+          "rating": 5
+        },
+        {
+          "name": "Thomas Janssen",
+          "role": "Aannemer, Mechelen",
+          "content": "De garagepoorten en ramen die Tipto heeft geleverd voor onze nieuwbouwprojecten zijn van uitstekende kwaliteit. Betrouwbare service en scherpe prijzen.",
+          "rating": 5
+        }
+      ]
+    },
+    "cta": {
+      "title": "Klaar voor Uw Project?",
+      "subtitle": "Vraag vandaag nog een vrijblijvende offerte aan en ontdek wat Tipto voor u kan betekenen.",
+      "button": "Vraag Offerte Aan"
+    }
+  },
+  "AboutPage": {
+    "meta": {
+      "title": "Over Tipto BV — 17+ Jaar Vakmanschap in België",
+      "description": "Ontdek het verhaal achter Tipto BV. Al meer dan 17 jaar uw specialist in op maat gemaakte balustrades, ramen, deuren, garagepoorten, trappen en balkons in België."
+    },
+    "hero": {
+      "badge": "Ons Verhaal",
+      "title": "17+ Jaar Passie voor Vakmanschap",
+      "subtitle": "Tipto BV is een toonaangevend Belgisch bedrijf gespecialiseerd in maatwerkoplossingen voor zowel residentiële als commerciële projecten."
+    },
+    "story": {
+      "title": "Van Visie tot Vakmanschap",
+      "content": "Sinds onze oprichting streven we ernaar om de hoogste kwaliteit te leveren in maatwerkoplossingen. Met meer dan 17 jaar ervaring combineren we traditioneel vakmanschap met innovatieve technologieën. Onze materialen — gehard glas, inox, aluminium en duurzaam hout — worden zorgvuldig geselecteerd voor hun kwaliteit en duurzaamheid."
+    },
+    "services": {
+      "title": "Wat Wij Bieden",
+      "installation": "Professionele installatie door gekwalificeerde vakmensen",
+      "maintenance": "Onderhoud en reparatie van al uw producten",
+      "emergency": "24/7 beschikbaarheid voor noodgevallen",
+      "commercial": "Complete begeleiding voor commerciële projecten",
+      "smart": "Smart home integratie en energiezuinige oplossingen",
+      "custom": "Volledig op maat gemaakte ontwerpen"
+    },
+    "reasons": {
+      "title": "Waarom Kiezen voor Tipto",
+      "experience": "17+ jaar ervaring",
+      "available": "Altijd bereikbaar (24/7)",
+      "specialists": "Gekwalificeerde specialisten",
+      "solutions": "Beste oplossingen",
+      "pricing": "Transparante prijzen",
+      "emergency": "Spoedservice beschikbaar"
+    }
+  },
+  "BalustradesPage": {
+    "meta": {
+      "title": "Balustrades op Maat — Inox, Aluminium & Glas | Tipto BV",
+      "description": "Premium balustrades op maat in inox, aluminium en glas. Ontdek onze collectie en ontwerp uw ideale balustrade met onze 3D-simulator. Vakmanschap uit België."
+    },
+    "hero": {
+      "badge": "Balustrades",
+      "title": "Balustrades die Elegantie en Veiligheid Verenigen",
+      "subtitle": "Op maat gemaakte balustrades in inox, aluminium of glas. Elk ontwerp wordt met precisie vervaardigd voor een perfecte combinatie van veiligheid en esthetiek."
+    },
+    "materials": {
+      "title": "Materialen & Afwerkingen",
+      "inox": {
+        "title": "Inox Balustrades",
+        "description": "Roestvrij staal met een tijdloze uitstraling. Extreem duurzaam en onderhoudsarm."
+      },
+      "powderCoated": {
+        "title": "Inox met Poedercoating",
+        "description": "Kleur naar keuze met de duurzaamheid van inox. De perfecte combinatie van stijl en functionaliteit."
+      },
+      "aluminum": {
+        "title": "Aluminium Balustrades",
+        "description": "Lichtgewicht en veelzijdig. Ideaal voor moderne architectuur met een strakke afwerking."
+      },
+      "glass": {
+        "title": "Glazen Balustrades",
+        "description": "Transparant en elegant. Maximaal uitzicht met optimale veiligheid."
+      }
+    },
+    "features": {
+      "title": "Kenmerken",
+      "safety": "Voldoet aan alle veiligheidsnormen",
+      "custom": "Volledig op maat gemaakt",
+      "durable": "Duurzame materialen",
+      "design": "Modern en tijdloos design",
+      "install": "Professionele installatie",
+      "warranty": "Uitgebreide garantie"
+    },
+    "simulatorCta": {
+      "title": "Ontwerp Uw Eigen Balustrade",
+      "subtitle": "Gebruik onze 3D-simulator om uw ideale balustrade samen te stellen.",
+      "button": "Open 3D Simulator"
+    },
+    "faq": {
+      "title": "Veelgestelde Vragen over Balustrades",
+      "items": [
+        {
+          "question": "Welke materialen bieden jullie aan voor balustrades?",
+          "answer": "Wij bieden balustrades aan in inox (roestvrij staal), inox met poedercoating, aluminium en glas. Elk materiaal kan op maat worden afgewerkt naar uw wensen."
+        },
+        {
+          "question": "Hoe lang duurt de installatie van een balustrade?",
+          "answer": "De installatietijd hangt af van de complexiteit en omvang van het project. Een standaard balustrade wordt doorgaans binnen 1-2 dagen geïnstalleerd."
+        },
+        {
+          "question": "Zijn glazen balustrades veilig?",
+          "answer": "Absoluut. Onze glazen balustrades worden gemaakt van gehard veiligheidsglas dat voldoet aan alle Europese veiligheidsnormen. Ze zijn extreem sterk en duurzaam."
+        },
+        {
+          "question": "Bieden jullie garantie op balustrades?",
+          "answer": "Ja, al onze balustrades worden geleverd met een uitgebreide garantie. De exacte garantievoorwaarden bespreken we graag met u tijdens het offerteproces."
+        }
+      ]
+    }
+  },
+  "RamenPage": {
+    "meta": {
+      "title": "Ramen op Maat — PVC, Aluminium & Hout | Tipto BV",
+      "description": "Energiezuinige ramen op maat in PVC, aluminium en hout. Tot 30% energiebesparing. Vakkundig geïnstalleerd door Tipto BV in heel België."
+    },
+    "hero": {
+      "badge": "Ramen",
+      "title": "Ramen die Comfort en Energie-efficiëntie Samenbrengen",
+      "subtitle": "Hoogwaardige ramen op maat in PVC, aluminium of hout. Maximale isolatie, minimaal energieverbruik en een verfijnde uitstraling voor elke woning."
+    },
+    "materials": {
+      "title": "Materialen & Profielen",
+      "pvc": {
+        "title": "PVC Ramen",
+        "description": "Uitstekende isolatie tegen een scherpe prijs. Onderhoudsvrij en beschikbaar in vele kleuren."
+      },
+      "aluminum": {
+        "title": "Aluminium Ramen",
+        "description": "Slank en modern. Sterke profielen met maximale glasoppervlakte voor meer lichtinval."
+      },
+      "wood": {
+        "title": "Houten Ramen",
+        "description": "Warme, natuurlijke uitstraling. Duurzaam hout met uitstekende isolatie-eigenschappen."
+      }
+    },
+    "features": {
+      "title": "Voordelen",
+      "insulation": "Superieure thermische isolatie",
+      "noise": "Tot 50% geluidsisolatie",
+      "security": "Inbraakwerende sluitingen",
+      "energy": "Tot 30% energiebesparing",
+      "maintenance": "Onderhoudsarm",
+      "custom": "Elke vorm en maat mogelijk"
+    },
+    "faq": {
+      "title": "Veelgestelde Vragen over Ramen",
+      "items": [
+        {
+          "question": "Welk type raam is het meest energiezuinig?",
+          "answer": "Alle onze raamtypes bieden uitstekende isolatie. PVC-ramen scoren doorgaans het best op thermische isolatie, maar aluminium en houten ramen bieden vergelijkbare prestaties met drievoudige beglazing."
+        },
+        {
+          "question": "Hoe lang duurt het om nieuwe ramen te laten plaatsen?",
+          "answer": "De productietijd bedraagt gemiddeld 4-6 weken na opmeting. De installatie zelf duurt 1-3 dagen, afhankelijk van het aantal ramen."
+        },
+        {
+          "question": "Kan ik premies krijgen voor nieuwe ramen?",
+          "answer": "Ja, in België bestaan er verschillende premies voor energiezuinige ramen. Wij helpen u graag bij het aanvragen van de beschikbare premies in uw regio."
+        }
+      ]
+    }
+  },
+  "DeurenPage": {
+    "meta": {
+      "title": "Deuren op Maat — Binnen- & Buitendeuren | Tipto BV",
+      "description": "Premium deuren op maat in hout, aluminium en composiet. Van klassieke binnendeuren tot moderne buitendeuren. Vakwerk door Tipto BV."
+    },
+    "hero": {
+      "badge": "Deuren",
+      "title": "Deuren die Indruk Maken bij Elke Drempel",
+      "subtitle": "Van stijlvolle binnendeuren tot robuuste buitendeuren — elke deur wordt op maat vervaardigd met premium materialen en een oog voor detail."
+    },
+    "materials": {
+      "title": "Materialen & Stijlen",
+      "wood": {
+        "title": "Houten Deuren",
+        "description": "Tijdloze elegantie in massief hout. Beschikbaar in diverse houtsoorten en afwerkingen."
+      },
+      "aluminum": {
+        "title": "Aluminium Deuren",
+        "description": "Modern en onderhoudsarm. Slanke profielen met superieure isolatie."
+      },
+      "composite": {
+        "title": "Composiet Deuren",
+        "description": "Het beste van twee werelden. De uitstraling van hout met de duurzaamheid van moderne materialen."
+      }
+    },
+    "features": {
+      "title": "Kenmerken",
+      "security": "Geavanceerde sluitsystemen",
+      "insulation": "Thermische en akoestische isolatie",
+      "design": "Eindeloze designmogelijkheden",
+      "durability": "Weerbestendige afwerking",
+      "smart": "Smart lock compatibel",
+      "custom": "Op maat gemaakt"
+    },
+    "faq": {
+      "title": "Veelgestelde Vragen over Deuren",
+      "items": [
+        {
+          "question": "Welk materiaal is het beste voor een buitendeur?",
+          "answer": "Aluminium en composiet zijn uitstekende keuzes voor buitendeuren vanwege hun duurzaamheid en weerbestendigheid. Houten buitendeuren bieden een warme uitstraling maar vragen meer onderhoud."
+        },
+        {
+          "question": "Kunnen jullie deuren leveren met smart lock systemen?",
+          "answer": "Ja, wij kunnen al onze deuren uitrusten met smart lock systemen. Van vingerafdrukscanners tot app-gestuurde sloten — wij adviseren u over de beste oplossing."
+        }
+      ]
+    }
+  },
+  "GaragepoortenPage": {
+    "meta": {
+      "title": "Garagepoorten op Maat — Sectionaal, Kantel & Rol | Tipto BV",
+      "description": "Automatische garagepoorten op maat. Sectionaalpoorten, kantelpoorten en rolpoorten met professionele installatie. Belgisch vakmanschap door Tipto BV."
+    },
+    "hero": {
+      "badge": "Garagepoorten",
+      "title": "Garagepoorten die Functionaliteit en Design Combineren",
+      "subtitle": "Sectionaalpoorten, kantelpoorten en rolpoorten — elke garagepoort wordt op maat gemaakt met automatische bediening en premium afwerking."
+    },
+    "materials": {
+      "title": "Types & Uitvoeringen",
+      "sectional": {
+        "title": "Sectionaalpoorten",
+        "description": "De populairste keuze. Ruimtebesparend en beschikbaar in diverse panelen en kleuren."
+      },
+      "tilt": {
+        "title": "Kantelpoorten",
+        "description": "Klassiek en betrouwbaar. Een solide keuze voor standaard garages."
+      },
+      "roller": {
+        "title": "Rolpoorten",
+        "description": "Maximale ruimtebesparing. Ideaal voor garages met beperkte ruimte."
+      }
+    },
+    "features": {
+      "title": "Kenmerken",
+      "automatic": "Automatische bediening",
+      "insulation": "Geïsoleerde panelen",
+      "security": "Inbraakbestendig",
+      "quiet": "Fluisterstille werking",
+      "smart": "Smart home integratie",
+      "design": "Diverse designopties"
+    },
+    "faq": {
+      "title": "Veelgestelde Vragen over Garagepoorten",
+      "items": [
+        {
+          "question": "Welk type garagepoort is het meest populair?",
+          "answer": "Sectionaalpoorten zijn veruit het populairst dankzij hun ruimtebesparend ontwerp, uitstekende isolatie en de brede keuze aan designs en kleuren."
+        },
+        {
+          "question": "Kunnen bestaande garagepoorten geautomatiseerd worden?",
+          "answer": "In veel gevallen kan een bestaande garagepoort worden uitgerust met een automatisch bedieningssysteem. Wij komen graag ter plaatse om de mogelijkheden te beoordelen."
+        }
+      ]
+    }
+  },
+  "TrappenPage": {
+    "meta": {
+      "title": "Trappen op Maat — Hout, Staal & Beton | Tipto BV",
+      "description": "Maatwerk trappen in hout, staal en beton. Van zwevende trappen tot klassieke draaitrappen. Design en functionaliteit door Tipto BV."
+    },
+    "hero": {
+      "badge": "Trappen",
+      "title": "Trappen die Uw Interieur naar een Hoger Niveau Tillen",
+      "subtitle": "Maatwerk trappen die functionaliteit en design samenbrengen. Van moderne zwevende trappen tot klassieke draaitrappen — elk project is uniek."
+    },
+    "materials": {
+      "title": "Materialen & Stijlen",
+      "wood": {
+        "title": "Houten Trappen",
+        "description": "Warme uitstraling en tijdloos design. Beschikbaar in diverse houtsoorten."
+      },
+      "steel": {
+        "title": "Stalen Trappen",
+        "description": "Industrieel en modern. Sterk, slank en perfect voor hedendaagse interieurs."
+      },
+      "concrete": {
+        "title": "Betonnen Trappen",
+        "description": "Robuust en veelzijdig. De perfecte basis voor elke afwerking."
+      }
+    },
+    "features": {
+      "title": "Kenmerken",
+      "custom": "Volledig op maat",
+      "design": "Eindeloze designopties",
+      "safety": "Antislip afwerking",
+      "durable": "Langdurige kwaliteit",
+      "lighting": "LED-verlichting mogelijk",
+      "combination": "Materiaalen combineren"
+    },
+    "faq": {
+      "title": "Veelgestelde Vragen over Trappen",
+      "items": [
+        {
+          "question": "Welk materiaal is het beste voor een trap?",
+          "answer": "De beste keuze hangt af van uw interieurstijl en budget. Houten trappen zijn tijdloos, stalen trappen zijn modern en compact, en betonnen trappen bieden maximale flexibiliteit in afwerking."
+        },
+        {
+          "question": "Hoe lang duurt het om een trap op maat te maken?",
+          "answer": "De productietijd bedraagt gemiddeld 6-8 weken na goedkeuring van het ontwerp. De installatie duurt doorgaans 2-3 dagen."
+        }
+      ]
+    }
+  },
+  "BalkonsPage": {
+    "meta": {
+      "title": "Balkons op Maat — Modern & Klassiek | Tipto BV",
+      "description": "Premium balkons op maat in aluminium, staal en glas. Moderne en klassieke designs met duurzame materialen. Vakkundig geïnstalleerd door Tipto BV."
+    },
+    "hero": {
+      "badge": "Balkons",
+      "title": "Balkons die Uw Buitenruimte Transformeren",
+      "subtitle": "Van moderne strakke balkons tot klassieke smeedijzeren designs — wij creëren balkons die de waarde en het comfort van uw woning verhogen."
+    },
+    "materials": {
+      "title": "Materialen & Stijlen",
+      "aluminum": {
+        "title": "Aluminium Balkons",
+        "description": "Lichtgewicht, duurzaam en onderhoudsarm. De populairste keuze voor moderne woningen."
+      },
+      "steel": {
+        "title": "Stalen Balkons",
+        "description": "Robuust en veelzijdig. Van industrieel tot klassiek smeedijzer."
+      },
+      "glass": {
+        "title": "Glazen Balkons",
+        "description": "Transparant en modern. Maximaal uitzicht met een elegante uitstraling."
+      }
+    },
+    "features": {
+      "title": "Kenmerken",
+      "weatherproof": "Weerbestendig",
+      "loadBearing": "Hoge draagkracht",
+      "drainage": "Geïntegreerde waterafvoer",
+      "custom": "Op maat gemaakt",
+      "safety": "Voldoet aan alle normen",
+      "finish": "Premium afwerking"
+    },
+    "faq": {
+      "title": "Veelgestelde Vragen over Balkons",
+      "items": [
+        {
+          "question": "Hebben jullie een bouwvergunning nodig voor een balkon?",
+          "answer": "In de meeste gevallen is een bouwvergunning vereist voor het plaatsen of renoveren van een balkon. Wij adviseren u graag over de vergunningsvereisten in uw gemeente."
+        },
+        {
+          "question": "Hoe onderhoud ik mijn balkon?",
+          "answer": "Aluminium en glazen balkons zijn vrijwel onderhoudsvrij — een jaarlijkse reiniging volstaat. Stalen balkons vragen periodiek een beschermende behandeling."
+        }
+      ]
+    }
+  },
+  "SimulatorPage": {
+    "meta": {
+      "title": "3D Balustrade Simulator — Ontwerp Online | Tipto BV",
+      "description": "Ontwerp uw ideale balustrade met onze interactieve 3D-simulator. Kies materialen, kleuren en stijlen en vraag direct een offerte aan."
+    },
+    "hero": {
+      "badge": "3D Simulator",
+      "title": "Ontwerp Uw Ideale Balustrade",
+      "subtitle": "Gebruik onze interactieve 3D-simulator om uw droombalustrade samen te stellen. Draai, zoom en pas materialen, kleuren en stijlen aan in real-time."
+    },
+    "controls": {
+      "material": "Materiaal",
+      "color": "Kleur",
+      "style": "Stijl",
+      "postStyle": "Paalstijl",
+      "height": "Hoogte",
+      "panels": "Panelen",
+      "glass": "Glas",
+      "steel": "Staal",
+      "aluminum": "Aluminium",
+      "glassPanel": "Glazen Paneel",
+      "horizontalBars": "Horizontale Staven",
+      "verticalBars": "Verticale Staven",
+      "cable": "Kabels",
+      "round": "Rond",
+      "square": "Vierkant",
+      "clear": "Helder",
+      "greenTint": "Groene Tint",
+      "blueTint": "Blauwe Tint",
+      "frosted": "Mat",
+      "brushed": "Geborsteld",
+      "matteBlack": "Mat Zwart",
+      "anthracite": "Antraciet",
+      "bronze": "Brons",
+      "natural": "Naturel",
+      "white": "Wit",
+      "black": "Zwart",
+      "goldAnodized": "Goud Geanodiseerd"
+    },
+    "quote": {
+      "title": "Uw Configuratie",
+      "material": "Materiaal",
+      "color": "Kleur",
+      "style": "Stijl",
+      "height": "Hoogte",
+      "panels": "Panelen",
+      "cta": "Offerte Aanvragen voor Dit Ontwerp",
+      "description": "Op basis van uw configuratie stellen wij een vrijblijvende offerte op maat samen."
+    },
+    "instructions": {
+      "drag": "Sleep om te draaien",
+      "scroll": "Scroll om te zoomen",
+      "touch": "Knijp om te zoomen"
+    },
+    "loading": "3D-model wordt geladen...",
+    "unsupported": "Uw browser ondersteunt geen 3D-weergave. Neem contact met ons op voor persoonlijk advies."
+  },
+  "RealisatiesPage": {
+    "meta": {
+      "title": "Onze Realisaties — Projectgalerij | Tipto BV",
+      "description": "Bekijk onze gerealiseerde projecten. Van balustrades en ramen tot trappen en balkons — ontdek het vakmanschap van Tipto BV."
+    },
+    "hero": {
+      "badge": "Portfolio",
+      "title": "Onze Realisaties",
+      "subtitle": "Bekijk een selectie van onze meest recente projecten. Elk project is een bewijs van ons vakmanschap en onze toewijding aan kwaliteit."
+    },
+    "filter": {
+      "all": "Alle Projecten",
+      "balustrades": "Balustrades",
+      "ramen": "Ramen",
+      "deuren": "Deuren",
+      "garagepoorten": "Garagepoorten",
+      "trappen": "Trappen",
+      "balkons": "Balkons"
+    }
+  },
+  "WerkwijzePage": {
+    "meta": {
+      "title": "Onze Werkwijze — Van Contact tot Installatie | Tipto BV",
+      "description": "Ontdek hoe Tipto BV werkt. Van het eerste contact en de opmeting tot de productie en installatie — wij begeleiden u bij elke stap."
+    },
+    "hero": {
+      "badge": "Hoe Wij Werken",
+      "title": "Onze Werkwijze",
+      "subtitle": "Van het eerste gesprek tot de perfecte installatie — wij begeleiden u bij elke stap van het proces."
+    },
+    "steps": [
+      {
+        "title": "Contact & Advies",
+        "description": "Neem contact op en vertel ons over uw project. Wij luisteren naar uw wensen en geven u persoonlijk advies."
+      },
+      {
+        "title": "Opmeting",
+        "description": "Onze specialist komt bij u thuis voor een nauwkeurige opmeting en bespreekt de mogelijkheden ter plaatse."
+      },
+      {
+        "title": "Ontwerp & Offerte",
+        "description": "Op basis van de opmeting ontwerpen wij uw product en stellen we een transparante offerte op maat samen."
+      },
+      {
+        "title": "Productie",
+        "description": "Na goedkeuring starten wij de productie met de hoogste kwaliteitsnormen en zorgvuldig geselecteerde materialen."
+      },
+      {
+        "title": "Installatie",
+        "description": "Onze vakmensen installeren uw product vakkundig en netjes, met respect voor uw woning."
+      },
+      {
+        "title": "Nazorg & Service",
+        "description": "Na de installatie blijven wij beschikbaar voor onderhoud, reparaties en vragen. 24/7 klantenservice."
+      }
+    ]
+  },
+  "FaqPage": {
+    "meta": {
+      "title": "Veelgestelde Vragen — FAQ | Tipto BV",
+      "description": "Antwoorden op veelgestelde vragen over onze producten, diensten, prijzen en werkwijze. Alles wat u wilt weten over Tipto BV."
+    },
+    "hero": {
+      "badge": "FAQ",
+      "title": "Veelgestelde Vragen",
+      "subtitle": "Vind snel antwoorden op de meest gestelde vragen over onze producten en diensten."
+    },
+    "categories": {
+      "general": "Algemeen",
+      "products": "Producten",
+      "pricing": "Prijzen & Offertes",
+      "installation": "Installatie"
+    },
+    "items": [
+      {
+        "category": "general",
+        "question": "In welke regio's is Tipto actief?",
+        "answer": "Tipto BV is actief in heel België, met een focus op Antwerpen en omgeving. Wij komen graag bij u langs voor een vrijblijvende opmeting."
+      },
+      {
+        "category": "general",
+        "question": "Hoe kan ik contact opnemen met Tipto?",
+        "answer": "U kunt ons bereiken via telefoon (0466 49 18 51), e-mail (info@tiptobv.be) of het contactformulier op onze website. Wij zijn 24/7 bereikbaar."
+      },
+      {
+        "category": "products",
+        "question": "Welke producten biedt Tipto aan?",
+        "answer": "Wij zijn gespecialiseerd in balustrades, ramen, deuren, garagepoorten, trappen en balkons. Alle producten worden op maat gemaakt met premium materialen."
+      },
+      {
+        "category": "products",
+        "question": "Kunnen jullie bestaande producten renoveren?",
+        "answer": "Ja, naast nieuwe installaties bieden wij ook renovatie en onderhoud van bestaande producten aan. Neem contact op voor een beoordeling."
+      },
+      {
+        "category": "pricing",
+        "question": "Hoe werkt het offerteproces?",
+        "answer": "Na een gratis opmeting bij u thuis stellen wij een gedetailleerde, transparante offerte op. Er zijn geen verplichtingen verbonden aan de offerte."
+      },
+      {
+        "category": "pricing",
+        "question": "Bieden jullie financieringsmogelijkheden?",
+        "answer": "Wij bespreken graag de betalingsmogelijkheden met u. Neem contact op voor meer informatie over onze betalingsregelingen."
+      },
+      {
+        "category": "installation",
+        "question": "Hoe lang duurt een gemiddelde installatie?",
+        "answer": "De installatietijd varieert per product en project. Gemiddeld duurt een installatie 1-5 dagen. Wij geven u altijd vooraf een realistische planning."
+      },
+      {
+        "category": "installation",
+        "question": "Ruimen jullie op na de installatie?",
+        "answer": "Uiteraard. Onze vakmensen laten uw woning netjes achter na de installatie. Wij nemen al het afval en verpakkingsmateriaal mee."
+      }
+    ]
+  },
+  "ContactPage": {
+    "meta": {
+      "title": "Contact & Offerte Aanvragen | Tipto BV",
+      "description": "Neem contact op met Tipto BV voor een vrijblijvende offerte. Bel, mail of vul het formulier in. Koekoekstraat 25, 2630 Aartselaar."
+    },
+    "hero": {
+      "badge": "Neem Contact Op",
+      "title": "Laten We Uw Project Bespreken",
+      "subtitle": "Vertel ons over uw project en ontvang een vrijblijvende offerte op maat. Wij reageren binnen 24 uur."
+    },
+    "form": {
+      "name": "Naam",
+      "namePlaceholder": "Uw volledige naam",
+      "email": "E-mailadres",
+      "emailPlaceholder": "uw@email.be",
+      "phone": "Telefoonnummer",
+      "phonePlaceholder": "+32 ...",
+      "product": "Product interesse",
+      "productPlaceholder": "Selecteer een product",
+      "productOptions": {
+        "balustrades": "Balustrades",
+        "ramen": "Ramen",
+        "deuren": "Deuren",
+        "garagepoorten": "Garagepoorten",
+        "trappen": "Trappen",
+        "balkons": "Balkons",
+        "other": "Anders"
+      },
+      "message": "Bericht",
+      "messagePlaceholder": "Vertel ons over uw project...",
+      "submit": "Verstuur Aanvraag",
+      "sending": "Verzenden...",
+      "success": "Bedankt voor uw aanvraag! Wij nemen binnen 24 uur contact met u op.",
+      "error": "Er is iets misgegaan. Probeer het opnieuw of bel ons direct.",
+      "required": "Dit veld is verplicht",
+      "invalidEmail": "Voer een geldig e-mailadres in"
+    },
+    "info": {
+      "title": "Contactgegevens",
+      "address": "Adres",
+      "phone": "Telefoon",
+      "email": "E-mail",
+      "vat": "BTW-nummer",
+      "hours": "Openingsuren",
+      "weekdays": "Maandag - Vrijdag: 08:00 - 18:00",
+      "saturday": "Zaterdag: 09:00 - 14:00",
+      "sunday": "Zondag: Gesloten"
+    }
+  },
+  "Footer": {
+    "description": "Tipto BV is uw specialist in op maat gemaakte balustrades, ramen, deuren, garagepoorten, trappen en balkons. Al meer dan 17 jaar vakmanschap in België.",
+    "products": "Producten",
+    "company": "Bedrijf",
+    "contact": "Contact",
+    "vat": "BTW",
+    "copyright": "Tipto BV. Alle rechten voorbehouden.",
+    "privacy": "Privacybeleid",
+    "terms": "Algemene Voorwaarden"
+  },
+  "Common": {
+    "requestQuote": "Offerte Aanvragen",
+    "learnMore": "Meer Info",
+    "viewProjects": "Bekijk Projecten",
+    "callUs": "Bel Ons",
+    "backToHome": "Terug naar Home",
+    "readMore": "Lees Meer",
+    "allProducts": "Alle Producten",
+    "close": "Sluiten",
+    "menu": "Menu",
+    "loading": "Laden..."
+  }
+}

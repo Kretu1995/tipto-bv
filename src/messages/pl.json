@@ -1,0 +1,228 @@
+{
+  "Navigation": {
+    "home": "Strona główna",
+    "about": "O nas",
+    "products": "Produkty",
+    "balustrades": "Balustrady",
+    "ramen": "Okna",
+    "deuren": "Drzwi",
+    "garagepoorten": "Bramy garażowe",
+    "trappen": "Schody",
+    "balkons": "Balkony",
+    "simulator": "Symulator 3D",
+    "realisaties": "Realizacje",
+    "werkwijze": "Sposób pracy",
+    "faq": "FAQ",
+    "contact": "Kontakt",
+    "requestQuote": "Zapytaj o wycenę"
+  },
+  "HomePage": {
+    "hero": {
+      "badge": "17+ lat doświadczenia",
+      "title": "Rzemiosło w Aluminium, Szkle i Stali",
+      "subtitle": "Tworzymy na wymiar balustrady, okna, drzwi, bramy garażowe, schody i balkony, które odmienią Twoją przestrzeń. Belgijskie rzemiosło, ponadczasowy design.",
+      "ctaPrimary": "Zapytaj o wycenę",
+      "ctaSecondary": "Odkryj nasze produkty"
+    },
+    "trust": {
+      "experience": "17+ Lat Doświadczenia",
+      "availability": "Dostępni 24/7",
+      "custom": "Na Wymiar",
+      "freeQuote": "Bezpłatna Wycena"
+    },
+    "products": {
+      "sectionLabel": "Nasze Specjalizacje",
+      "sectionTitle": "Rozwiązania Premium Na Wymiar dla Każdego Projektu",
+      "sectionSubtitle": "Od eleganckich balustrad po energooszczędne okna — każdy produkt jest projektowany i wytwarzany na wymiar według najwyższych standardów jakości.",
+      "balustrades": { "title": "Balustrady", "description": "Eleganckie balustrady ze stali nierdzewnej, aluminium lub szkła. Bezpieczeństwo i design w doskonałej harmonii." },
+      "ramen": { "title": "Okna", "description": "Energooszczędne okna z PVC, aluminium lub drewna. Maksymalna izolacja, minimalne zużycie energii." },
+      "deuren": { "title": "Drzwi", "description": "Drzwi zewnętrzne i wewnętrzne na wymiar. Od klasycznego drewna po nowoczesne aluminium." },
+      "garagepoorten": { "title": "Bramy garażowe", "description": "Bramy segmentowe, uchylne i rolowane z automatycznym sterowaniem." },
+      "trappen": { "title": "Schody", "description": "Schody na wymiar z drewna, stali lub betonu. Funkcjonalny design, który inspiruje." },
+      "balkons": { "title": "Balkony", "description": "Nowoczesne i klasyczne balkony z trwałych materiałów i wyrafinowanym designem." }
+    },
+    "values": {
+      "sectionLabel": "Dlaczego Tipto",
+      "sectionTitle": "Trzy Filary Doskonałości",
+      "craftsmanship": { "title": "Rzemiosło", "description": "Ponad 17 lat doświadczenia w projektowaniu i realizacji rozwiązań premium na wymiar. Każdy detal jest wykończony z dbałością i precyzją." },
+      "innovation": { "title": "Innowacja", "description": "Łączymy tradycyjne rzemiosło z najnowszymi technologiami. Od zautomatyzowanej produkcji po integrację ze smart home." },
+      "reliability": { "title": "Niezawodność", "description": "Przejrzyste ceny, dotrzymane terminy i obsługa klienta 24/7. Zawsze jesteśmy do Twojej dyspozycji." }
+    },
+    "stats": {
+      "years": "Lat Doświadczenia",
+      "projects": "Zrealizowanych Projektów",
+      "satisfaction": "Zadowolenie Klientów",
+      "materials": "Opcji Materiałowych"
+    },
+    "simulator": {
+      "sectionLabel": "Ekskluzywnie",
+      "sectionTitle": "Zaprojektuj Swoją Balustradę w 3D",
+      "sectionSubtitle": "Użyj naszego interaktywnego symulatora 3D, aby skomponować idealną balustradę. Wybierz materiały, kolory i style — i zamów wycenę bezpośrednio.",
+      "cta": "Uruchom Symulator 3D"
+    },
+    "energy": {
+      "sectionLabel": "Oszczędność Energii",
+      "sectionTitle": "Zainwestuj w Efektywność Energetyczną",
+      "sectionSubtitle": "Nowoczesne okna i drzwi znacząco zmniejszają zużycie energii i zwiększają komfort w Twoim domu.",
+      "heatLoss": "Redukcja strat ciepła",
+      "energySavings": "Oszczędność energii rocznie",
+      "epcImprovement": "Poprawa EPC",
+      "noiseReduction": "Poprawa izolacji akustycznej",
+      "burglarResistance": "Odporność na włamanie"
+    },
+    "testimonials": {
+      "sectionLabel": "Opinie Klientów",
+      "sectionTitle": "Zaufanie Setek Zadowolonych Klientów",
+      "items": [
+        { "name": "Martijn De Vries", "role": "Właściciel domu, Antwerpia", "content": "Tipto zainstalowało piękne szklane balustrady na naszym tarasie. Jakość i wykończenie są wyjątkowe. Cały proces przebiegł profesjonalnie i w ustalonym terminie.", "rating": 5 },
+        { "name": "Sophie Van den Berg", "role": "Architekt, Bruksela", "content": "Jako architekt regularnie współpracuję z Tipto przy moich projektach. Ich rzemiosło i dbałość o detale czynią ich niezawodnym partnerem.", "rating": 5 },
+        { "name": "Thomas Janssen", "role": "Wykonawca, Mechelen", "content": "Bramy garażowe i okna dostarczone przez Tipto do naszych nowych inwestycji są doskonałej jakości. Niezawodna obsługa i konkurencyjne ceny.", "rating": 5 }
+      ]
+    },
+    "cta": {
+      "title": "Gotowy na Swój Projekt?",
+      "subtitle": "Zamów bezpłatną, niezobowiązującą wycenę już dziś i odkryj, co Tipto może dla Ciebie zrobić.",
+      "button": "Zamów Wycenę"
+    }
+  },
+  "AboutPage": {
+    "meta": { "title": "O Tipto BV — 17+ Lat Rzemiosła w Belgii", "description": "Poznaj historię Tipto BV. Od ponad 17 lat Twój specjalista w zakresie balustrad, okien, drzwi, bram garażowych, schodów i balkonów na wymiar w Belgii." },
+    "hero": { "badge": "Nasza Historia", "title": "17+ Lat Pasji do Rzemiosła", "subtitle": "Tipto BV to wiodąca belgijska firma specjalizująca się w rozwiązaniach na wymiar dla projektów mieszkaniowych i komercyjnych." },
+    "story": { "title": "Od Wizji do Rzemiosła", "content": "Od naszego powstania dążymy do dostarczania najwyższej jakości rozwiązań na wymiar. Z ponad 17-letnim doświadczeniem łączymy tradycyjne rzemiosło z innowacyjnymi technologiami. Nasze materiały — hartowane szkło, stal nierdzewna, aluminium i trwałe drewno — są starannie dobierane pod kątem jakości i trwałości." },
+    "services": { "title": "Co Oferujemy", "installation": "Profesjonalny montaż przez wykwalifikowanych rzemieślników", "maintenance": "Konserwacja i naprawa wszystkich produktów", "emergency": "Dostępność 24/7 w nagłych przypadkach", "commercial": "Kompleksowe wsparcie projektów komercyjnych", "smart": "Integracja smart home i rozwiązania energooszczędne", "custom": "Projekty w pełni na wymiar" },
+    "reasons": { "title": "Dlaczego Tipto", "experience": "17+ lat doświadczenia", "available": "Zawsze dostępni (24/7)", "specialists": "Wykwalifikowani specjaliści", "solutions": "Najlepsze rozwiązania", "pricing": "Przejrzyste ceny", "emergency": "Serwis awaryjny" }
+  },
+  "BalustradesPage": {
+    "meta": { "title": "Balustrady Na Wymiar — Stal Nierdzewna, Aluminium & Szkło | Tipto BV", "description": "Balustrady premium na wymiar ze stali nierdzewnej, aluminium i szkła. Odkryj naszą kolekcję i zaprojektuj idealną balustradę w symulatorze 3D." },
+    "hero": { "badge": "Balustrady", "title": "Balustrady Łączące Elegancję i Bezpieczeństwo", "subtitle": "Balustrady na wymiar ze stali nierdzewnej, aluminium lub szkła. Każdy projekt jest realizowany z precyzją dla idealnego połączenia bezpieczeństwa i estetyki." },
+    "materials": { "title": "Materiały i Wykończenia", "inox": { "title": "Balustrady ze Stali Nierdzewnej", "description": "Stal nierdzewna o ponadczasowym wyglądzie. Niezwykle trwała i łatwa w utrzymaniu." }, "powderCoated": { "title": "Stal z Malowaniem Proszkowym", "description": "Kolor do wyboru z trwałością stali nierdzewnej. Idealne połączenie stylu i funkcjonalności." }, "aluminum": { "title": "Balustrady Aluminiowe", "description": "Lekkie i wszechstronne. Idealne do nowoczesnej architektury." }, "glass": { "title": "Balustrady Szklane", "description": "Przezroczyste i eleganckie. Maksymalny widok z optymalnym bezpieczeństwem." } },
+    "features": { "title": "Cechy", "safety": "Spełnia wszystkie normy bezpieczeństwa", "custom": "W pełni na wymiar", "durable": "Trwałe materiały", "design": "Nowoczesny i ponadczasowy design", "install": "Profesjonalny montaż", "warranty": "Rozszerzona gwarancja" },
+    "simulatorCta": { "title": "Zaprojektuj Własną Balustradę", "subtitle": "Użyj symulatora 3D, aby skomponować idealną balustradę.", "button": "Otwórz Symulator 3D" },
+    "faq": { "title": "Najczęstsze Pytania o Balustrady", "items": [
+      { "question": "Jakie materiały oferujecie na balustrady?", "answer": "Oferujemy balustrady ze stali nierdzewnej, stali z malowaniem proszkowym, aluminium i szkła. Każdy materiał można wykończyć na wymiar." },
+      { "question": "Ile trwa montaż balustrady?", "answer": "Czas montażu zależy od złożoności projektu. Standardowa balustrada jest montowana w ciągu 1-2 dni." },
+      { "question": "Czy szklane balustrady są bezpieczne?", "answer": "Absolutnie. Nasze szklane balustrady wykonane są z hartowanego szkła bezpiecznego, spełniającego wszystkie europejskie normy." },
+      { "question": "Czy oferujecie gwarancję na balustrady?", "answer": "Tak, wszystkie nasze balustrady objęte są rozszerzoną gwarancją." }
+    ] }
+  },
+  "RamenPage": {
+    "meta": { "title": "Okna Na Wymiar — PVC, Aluminium & Drewno | Tipto BV", "description": "Energooszczędne okna na wymiar z PVC, aluminium i drewna. Do 30% oszczędności energii. Fachowy montaż przez Tipto BV." },
+    "hero": { "badge": "Okna", "title": "Okna Łączące Komfort i Efektywność Energetyczną", "subtitle": "Wysokiej jakości okna na wymiar z PVC, aluminium lub drewna. Maksymalna izolacja i wyrafinowany wygląd." },
+    "materials": { "title": "Materiały i Profile", "pvc": { "title": "Okna PVC", "description": "Doskonała izolacja w konkurencyjnej cenie. Bezobsługowe i dostępne w wielu kolorach." }, "aluminum": { "title": "Okna Aluminiowe", "description": "Smukłe i nowoczesne. Mocne profile z maksymalną powierzchnią szklenia." }, "wood": { "title": "Okna Drewniane", "description": "Ciepły, naturalny wygląd. Trwałe drewno z doskonałymi właściwościami izolacyjnymi." } },
+    "features": { "title": "Zalety", "insulation": "Doskonała izolacja termiczna", "noise": "Do 50% izolacji akustycznej", "security": "Zamki antywłamaniowe", "energy": "Do 30% oszczędności energii", "maintenance": "Niskie wymagania konserwacyjne", "custom": "Dowolny kształt i rozmiar" },
+    "faq": { "title": "Najczęstsze Pytania o Okna", "items": [
+      { "question": "Jaki typ okna jest najbardziej energooszczędny?", "answer": "Wszystkie nasze typy okien oferują doskonałą izolację. Okna PVC zazwyczaj osiągają najlepsze wyniki w izolacji termicznej." },
+      { "question": "Ile trwa montaż nowych okien?", "answer": "Czas produkcji to średnio 4-6 tygodni po pomiarze. Sam montaż trwa 1-3 dni." },
+      { "question": "Czy mogę uzyskać dotacje na nowe okna?", "answer": "Tak, w Belgii istnieją różne dotacje na energooszczędne okna. Chętnie pomożemy w ich uzyskaniu." }
+    ] }
+  },
+  "DeurenPage": {
+    "meta": { "title": "Drzwi Na Wymiar — Wewnętrzne & Zewnętrzne | Tipto BV", "description": "Drzwi premium na wymiar z drewna, aluminium i kompozytu. Od klasycznych drzwi wewnętrznych po nowoczesne drzwi zewnętrzne." },
+    "hero": { "badge": "Drzwi", "title": "Drzwi, Które Robią Wrażenie przy Każdym Progu", "subtitle": "Od stylowych drzwi wewnętrznych po solidne drzwi zewnętrzne — każde drzwi są wykonane na wymiar z materiałów premium." },
+    "materials": { "title": "Materiały i Style", "wood": { "title": "Drzwi Drewniane", "description": "Ponadczasowa elegancja w litym drewnie. Dostępne w różnych gatunkach i wykończeniach." }, "aluminum": { "title": "Drzwi Aluminiowe", "description": "Nowoczesne i łatwe w utrzymaniu. Smukłe profile z doskonałą izolacją." }, "composite": { "title": "Drzwi Kompozytowe", "description": "Najlepsze z dwóch światów. Wygląd drewna z trwałością nowoczesnych materiałów." } },
+    "features": { "title": "Cechy", "security": "Zaawansowane systemy zamków", "insulation": "Izolacja termiczna i akustyczna", "design": "Nieskończone możliwości projektowe", "durability": "Wykończenie odporne na warunki atmosferyczne", "smart": "Kompatybilność ze smart lock", "custom": "Na wymiar" },
+    "faq": { "title": "Najczęstsze Pytania o Drzwi", "items": [
+      { "question": "Jaki materiał jest najlepszy na drzwi zewnętrzne?", "answer": "Aluminium i kompozyt to doskonałe wybory ze względu na trwałość i odporność na warunki atmosferyczne." },
+      { "question": "Czy możecie dostarczyć drzwi z systemem smart lock?", "answer": "Tak, możemy wyposażyć wszystkie nasze drzwi w systemy smart lock." }
+    ] }
+  },
+  "GaragepoortenPage": {
+    "meta": { "title": "Bramy Garażowe Na Wymiar — Segmentowe & Rolowane | Tipto BV", "description": "Automatyczne bramy garażowe na wymiar. Segmentowe, uchylne i rolowane z profesjonalnym montażem." },
+    "hero": { "badge": "Bramy garażowe", "title": "Bramy Garażowe Łączące Funkcjonalność i Design", "subtitle": "Bramy segmentowe, uchylne i rolowane — każda brama jest wykonana na wymiar z automatycznym sterowaniem." },
+    "materials": { "title": "Typy i Konfiguracje", "sectional": { "title": "Bramy Segmentowe", "description": "Najpopularniejszy wybór. Oszczędność miejsca i dostępne w różnych panelach i kolorach." }, "tilt": { "title": "Bramy Uchylne", "description": "Klasyczne i niezawodne. Solidny wybór dla standardowych garaży." }, "roller": { "title": "Bramy Rolowane", "description": "Maksymalna oszczędność miejsca. Idealne dla garaży z ograniczoną przestrzenią." } },
+    "features": { "title": "Cechy", "automatic": "Automatyczne sterowanie", "insulation": "Izolowane panele", "security": "Odporność na włamanie", "quiet": "Ultra-cicha praca", "smart": "Integracja smart home", "design": "Różne opcje designu" },
+    "faq": { "title": "Najczęstsze Pytania o Bramy Garażowe", "items": [
+      { "question": "Jaki typ bramy garażowej jest najpopularniejszy?", "answer": "Bramy segmentowe są zdecydowanie najpopularniejsze dzięki oszczędności miejsca i doskonałej izolacji." },
+      { "question": "Czy istniejące bramy garażowe można zautomatyzować?", "answer": "W wielu przypadkach tak. Chętnie przyjedziemy, aby ocenić możliwości." }
+    ] }
+  },
+  "TrappenPage": {
+    "meta": { "title": "Schody Na Wymiar — Drewno, Stal & Beton | Tipto BV", "description": "Schody na wymiar z drewna, stali i betonu. Od schodów podwieszanych po klasyczne kręcone." },
+    "hero": { "badge": "Schody", "title": "Schody, Które Wynoszą Wnętrze na Wyższy Poziom", "subtitle": "Schody na wymiar łączące funkcjonalność i design. Od nowoczesnych schodów podwieszanych po klasyczne kręcone — każdy projekt jest unikalny." },
+    "materials": { "title": "Materiały i Style", "wood": { "title": "Schody Drewniane", "description": "Ciepły wygląd i ponadczasowy design. Dostępne w różnych gatunkach drewna." }, "steel": { "title": "Schody Stalowe", "description": "Industrialne i nowoczesne. Mocne, smukłe i idealne do współczesnych wnętrz." }, "concrete": { "title": "Schody Betonowe", "description": "Solidne i wszechstronne. Idealna baza pod każde wykończenie." } },
+    "features": { "title": "Cechy", "custom": "W pełni na wymiar", "design": "Nieskończone opcje designu", "safety": "Wykończenie antypoślizgowe", "durable": "Długotrwała jakość", "lighting": "Oświetlenie LED możliwe", "combination": "Łączenie materiałów" },
+    "faq": { "title": "Najczęstsze Pytania o Schody", "items": [
+      { "question": "Jaki materiał jest najlepszy na schody?", "answer": "Zależy od stylu wnętrza i budżetu. Schody drewniane są ponadczasowe, stalowe nowoczesne, a betonowe oferują maksymalną elastyczność." },
+      { "question": "Ile trwa produkcja schodów na wymiar?", "answer": "Czas produkcji to średnio 6-8 tygodni po zatwierdzeniu projektu. Montaż trwa 2-3 dni." }
+    ] }
+  },
+  "BalkonsPage": {
+    "meta": { "title": "Balkony Na Wymiar — Nowoczesne & Klasyczne | Tipto BV", "description": "Balkony premium na wymiar z aluminium, stali i szkła. Nowoczesne i klasyczne projekty z trwałych materiałów." },
+    "hero": { "badge": "Balkony", "title": "Balkony, Które Odmienią Twoją Przestrzeń Zewnętrzną", "subtitle": "Od nowoczesnych minimalistycznych balkonów po klasyczne projekty z kutego żelaza — tworzymy balkony zwiększające wartość i komfort." },
+    "materials": { "title": "Materiały i Style", "aluminum": { "title": "Balkony Aluminiowe", "description": "Lekkie, trwałe i łatwe w utrzymaniu. Najpopularniejszy wybór." }, "steel": { "title": "Balkony Stalowe", "description": "Solidne i wszechstronne. Od industrialnego po klasyczne kute żelazo." }, "glass": { "title": "Balkony Szklane", "description": "Przezroczyste i nowoczesne. Maksymalny widok z eleganckim wyglądem." } },
+    "features": { "title": "Cechy", "weatherproof": "Odporność na warunki atmosferyczne", "loadBearing": "Wysoka nośność", "drainage": "Zintegrowany drenaż", "custom": "Na wymiar", "safety": "Spełnia wszystkie normy", "finish": "Wykończenie premium" },
+    "faq": { "title": "Najczęstsze Pytania o Balkony", "items": [
+      { "question": "Czy na balkon potrzebne jest pozwolenie na budowę?", "answer": "W większości przypadków tak. Chętnie doradzimy w kwestii wymagań w Twojej gminie." },
+      { "question": "Jak konserwować balkon?", "answer": "Balkony aluminiowe i szklane są praktycznie bezobsługowe. Balkony stalowe wymagają okresowej konserwacji ochronnej." }
+    ] }
+  },
+  "SimulatorPage": {
+    "meta": { "title": "Symulator 3D Balustrad — Projektuj Online | Tipto BV", "description": "Zaprojektuj idealną balustradę w naszym interaktywnym symulatorze 3D. Wybierz materiały, kolory i style, a następnie zamów wycenę." },
+    "hero": { "badge": "Symulator 3D", "title": "Zaprojektuj Idealną Balustradę", "subtitle": "Użyj naszego interaktywnego symulatora 3D, aby skomponować wymarzoną balustradę. Obracaj, przybliżaj i dostosowuj materiały, kolory i style w czasie rzeczywistym." },
+    "controls": { "material": "Materiał", "color": "Kolor", "style": "Styl", "postStyle": "Styl słupka", "height": "Wysokość", "panels": "Panele", "glass": "Szkło", "steel": "Stal", "aluminum": "Aluminium", "glassPanel": "Panel szklany", "horizontalBars": "Pręty poziome", "verticalBars": "Pręty pionowe", "cable": "Linki", "round": "Okrągły", "square": "Kwadratowy", "clear": "Przezroczysty", "greenTint": "Zielony odcień", "blueTint": "Niebieski odcień", "frosted": "Matowy", "brushed": "Szczotkowany", "matteBlack": "Matowy czarny", "anthracite": "Antracyt", "bronze": "Brąz", "natural": "Naturalny", "white": "Biały", "black": "Czarny", "goldAnodized": "Złoto anodowane" },
+    "quote": { "title": "Twoja Konfiguracja", "material": "Materiał", "color": "Kolor", "style": "Styl", "height": "Wysokość", "panels": "Panele", "cta": "Zamów Wycenę dla Tego Projektu", "description": "Na podstawie Twojej konfiguracji przygotujemy bezpłatną, niezobowiązującą wycenę." },
+    "instructions": { "drag": "Przeciągnij, aby obrócić", "scroll": "Przewiń, aby przybliżyć", "touch": "Ściśnij, aby przybliżyć" },
+    "loading": "Ładowanie modelu 3D...",
+    "unsupported": "Twoja przeglądarka nie obsługuje renderowania 3D. Skontaktuj się z nami po osobistą poradę."
+  },
+  "RealisatiesPage": {
+    "meta": { "title": "Nasze Realizacje — Galeria Projektów | Tipto BV", "description": "Zobacz nasze zrealizowane projekty. Od balustrad i okien po schody i balkony — odkryj rzemiosło Tipto BV." },
+    "hero": { "badge": "Portfolio", "title": "Nasze Realizacje", "subtitle": "Zobacz wybór naszych najnowszych projektów. Każdy projekt jest dowodem naszego rzemiosła i zaangażowania w jakość." },
+    "filter": { "all": "Wszystkie Projekty", "balustrades": "Balustrady", "ramen": "Okna", "deuren": "Drzwi", "garagepoorten": "Bramy garażowe", "trappen": "Schody", "balkons": "Balkony" }
+  },
+  "WerkwijzePage": {
+    "meta": { "title": "Nasz Sposób Pracy — Od Kontaktu do Montażu | Tipto BV", "description": "Dowiedz się, jak pracuje Tipto BV. Od pierwszego kontaktu po montaż — prowadzimy Cię przez każdy etap." },
+    "hero": { "badge": "Jak Pracujemy", "title": "Nasz Sposób Pracy", "subtitle": "Od pierwszej rozmowy do idealnego montażu — prowadzimy Cię przez każdy etap procesu." },
+    "steps": [
+      { "title": "Kontakt i Doradztwo", "description": "Skontaktuj się z nami i opowiedz o swoim projekcie. Słuchamy Twoich potrzeb i udzielamy indywidualnych porad." },
+      { "title": "Pomiar", "description": "Nasz specjalista odwiedza Twój dom w celu dokładnego pomiaru i omówienia możliwości na miejscu." },
+      { "title": "Projekt i Wycena", "description": "Na podstawie pomiarów projektujemy Twój produkt i przygotowujemy przejrzystą wycenę na wymiar." },
+      { "title": "Produkcja", "description": "Po zatwierdzeniu rozpoczynamy produkcję według najwyższych standardów jakości." },
+      { "title": "Montaż", "description": "Nasi rzemieślnicy montują Twój produkt fachowo i starannie, z szacunkiem dla Twojego domu." },
+      { "title": "Serwis Posprzedażowy", "description": "Po montażu jesteśmy dostępni do konserwacji, napraw i pytań. Obsługa klienta 24/7." }
+    ]
+  },
+  "FaqPage": {
+    "meta": { "title": "Najczęściej Zadawane Pytania — FAQ | Tipto BV", "description": "Odpowiedzi na najczęstsze pytania o nasze produkty, usługi, ceny i sposób pracy." },
+    "hero": { "badge": "FAQ", "title": "Najczęściej Zadawane Pytania", "subtitle": "Znajdź szybko odpowiedzi na najczęstsze pytania o nasze produkty i usługi." },
+    "categories": { "general": "Ogólne", "products": "Produkty", "pricing": "Ceny i Wyceny", "installation": "Montaż" },
+    "items": [
+      { "category": "general", "question": "W jakich regionach działa Tipto?", "answer": "Tipto BV działa w całej Belgii, ze szczególnym uwzględnieniem Antwerpii i okolic." },
+      { "category": "general", "question": "Jak skontaktować się z Tipto?", "answer": "Telefonicznie (0466 49 18 51), mailem (info@tiptobv.be) lub przez formularz kontaktowy. Jesteśmy dostępni 24/7." },
+      { "category": "products", "question": "Jakie produkty oferuje Tipto?", "answer": "Specjalizujemy się w balustradach, oknach, drzwiach, bramach garażowych, schodach i balkonach. Wszystko na wymiar z materiałów premium." },
+      { "category": "products", "question": "Czy możecie odnowić istniejące produkty?", "answer": "Tak, oprócz nowych instalacji oferujemy również renowację i konserwację istniejących produktów." },
+      { "category": "pricing", "question": "Jak wygląda proces wyceny?", "answer": "Po bezpłatnym pomiarze u Ciebie w domu przygotowujemy szczegółową, przejrzystą wycenę. Bez zobowiązań." },
+      { "category": "pricing", "question": "Czy oferujecie możliwości finansowania?", "answer": "Chętnie omówimy możliwości płatności. Skontaktuj się z nami po więcej informacji." },
+      { "category": "installation", "question": "Ile trwa przeciętny montaż?", "answer": "Czas montażu zależy od produktu. Średnio 1-5 dni. Zawsze podajemy realistyczny harmonogram." },
+      { "category": "installation", "question": "Czy sprzątacie po montażu?", "answer": "Oczywiście. Nasi rzemieślnicy zostawiają Twój dom w czystości. Zabieramy wszystkie odpady." }
+    ]
+  },
+  "ContactPage": {
+    "meta": { "title": "Kontakt i Wycena | Tipto BV", "description": "Skontaktuj się z Tipto BV po bezpłatną wycenę. Zadzwoń, napisz lub wypełnij formularz. Koekoekstraat 25, 2630 Aartselaar." },
+    "hero": { "badge": "Skontaktuj się", "title": "Porozmawiajmy o Twoim Projekcie", "subtitle": "Opowiedz nam o swoim projekcie i otrzymaj bezpłatną wycenę na wymiar. Odpowiadamy w ciągu 24 godzin." },
+    "form": { "name": "Imię i nazwisko", "namePlaceholder": "Twoje pełne imię i nazwisko", "email": "Adres e-mail", "emailPlaceholder": "twoj@email.be", "phone": "Numer telefonu", "phonePlaceholder": "+32 ...", "product": "Produkt", "productPlaceholder": "Wybierz produkt", "productOptions": { "balustrades": "Balustrady", "ramen": "Okna", "deuren": "Drzwi", "garagepoorten": "Bramy garażowe", "trappen": "Schody", "balkons": "Balkony", "other": "Inne" }, "message": "Wiadomość", "messagePlaceholder": "Opowiedz nam o swoim projekcie...", "submit": "Wyślij Zapytanie", "sending": "Wysyłanie...", "success": "Dziękujemy za zapytanie! Skontaktujemy się w ciągu 24 godzin.", "error": "Coś poszło nie tak. Spróbuj ponownie lub zadzwoń.", "required": "To pole jest wymagane", "invalidEmail": "Podaj prawidłowy adres e-mail" },
+    "info": { "title": "Dane kontaktowe", "address": "Adres", "phone": "Telefon", "email": "E-mail", "vat": "Numer VAT", "hours": "Godziny otwarcia", "weekdays": "Poniedziałek - Piątek: 08:00 - 18:00", "saturday": "Sobota: 09:00 - 14:00", "sunday": "Niedziela: Zamknięte" }
+  },
+  "Footer": {
+    "description": "Tipto BV to Twój specjalista w zakresie balustrad, okien, drzwi, bram garażowych, schodów i balkonów na wymiar. Ponad 17 lat rzemiosła w Belgii.",
+    "products": "Produkty",
+    "company": "Firma",
+    "contact": "Kontakt",
+    "vat": "VAT",
+    "copyright": "Tipto BV. Wszelkie prawa zastrzeżone.",
+    "privacy": "Polityka prywatności",
+    "terms": "Regulamin"
+  },
+  "Common": {
+    "requestQuote": "Zamów Wycenę",
+    "learnMore": "Więcej Informacji",
+    "viewProjects": "Zobacz Projekty",
+    "callUs": "Zadzwoń",
+    "backToHome": "Powrót do strony głównej",
+    "readMore": "Czytaj Więcej",
+    "allProducts": "Wszystkie Produkty",
+    "close": "Zamknij",
+    "menu": "Menu",
+    "loading": "Ładowanie..."
+  }
+}

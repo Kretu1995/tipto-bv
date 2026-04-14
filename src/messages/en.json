@@ -1,0 +1,588 @@
+{
+  "Navigation": {
+    "home": "Home",
+    "about": "About Us",
+    "products": "Products",
+    "balustrades": "Balustrades",
+    "ramen": "Windows",
+    "deuren": "Doors",
+    "garagepoorten": "Garage Doors",
+    "trappen": "Stairs",
+    "balkons": "Balconies",
+    "simulator": "3D Simulator",
+    "realisaties": "Projects",
+    "werkwijze": "Our Process",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "requestQuote": "Request Quote"
+  },
+  "HomePage": {
+    "hero": {
+      "badge": "17+ years of craftsmanship",
+      "title": "Craftsmanship in Aluminium, Glass & Steel",
+      "subtitle": "We create custom-made balustrades, windows, doors, garage doors, stairs and balconies that transform your space. Belgian craftsmanship, timeless design.",
+      "ctaPrimary": "Request a Quote",
+      "ctaSecondary": "Discover Our Products"
+    },
+    "trust": {
+      "experience": "17+ Years Experience",
+      "availability": "24/7 Available",
+      "custom": "Custom Made",
+      "freeQuote": "Free Quote"
+    },
+    "products": {
+      "sectionLabel": "Our Specializations",
+      "sectionTitle": "Premium Custom Solutions for Every Project",
+      "sectionSubtitle": "From elegant balustrades to energy-efficient windows — every product is custom designed and manufactured to the highest quality standards.",
+      "balustrades": {
+        "title": "Balustrades",
+        "description": "Elegant balustrades in stainless steel, aluminium or glass. Safety and design in perfect harmony."
+      },
+      "ramen": {
+        "title": "Windows",
+        "description": "Energy-efficient windows in PVC, aluminium or wood. Maximum insulation, minimum energy consumption."
+      },
+      "deuren": {
+        "title": "Doors",
+        "description": "Custom exterior and interior doors. From classic wood to modern aluminium."
+      },
+      "garagepoorten": {
+        "title": "Garage Doors",
+        "description": "Sectional doors, tilting doors and roller doors with automatic operation."
+      },
+      "trappen": {
+        "title": "Stairs",
+        "description": "Custom stairs in wood, steel or concrete. Functional design that inspires."
+      },
+      "balkons": {
+        "title": "Balconies",
+        "description": "Modern and classic balconies with durable materials and refined design."
+      }
+    },
+    "values": {
+      "sectionLabel": "Why Tipto",
+      "sectionTitle": "Three Pillars of Excellence",
+      "craftsmanship": {
+        "title": "Craftsmanship",
+        "description": "Over 17 years of experience in designing and realizing premium custom solutions. Every detail is finished with care and precision."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "We combine traditional craftsmanship with the latest technologies. From automated production to smart home integration."
+      },
+      "reliability": {
+        "title": "Reliability",
+        "description": "Transparent pricing, punctual deadlines and 24/7 customer service. We are always there for you."
+      }
+    },
+    "stats": {
+      "years": "Years Experience",
+      "projects": "Projects Completed",
+      "satisfaction": "Client Satisfaction",
+      "materials": "Material Options"
+    },
+    "simulator": {
+      "sectionLabel": "Exclusive",
+      "sectionTitle": "Design Your Balustrade in 3D",
+      "sectionSubtitle": "Use our interactive 3D simulator to compose your ideal balustrade. Choose materials, colours and styles — and request a quote directly.",
+      "cta": "Start the 3D Simulator"
+    },
+    "energy": {
+      "sectionLabel": "Energy Savings",
+      "sectionTitle": "Invest in Energy Efficiency",
+      "sectionSubtitle": "Modern windows and doors significantly reduce your energy consumption and increase comfort in your home.",
+      "heatLoss": "Heat loss reduction",
+      "energySavings": "Energy savings per year",
+      "epcImprovement": "EPC improvement",
+      "noiseReduction": "Noise insulation improvement",
+      "burglarResistance": "Burglary resistance"
+    },
+    "testimonials": {
+      "sectionLabel": "What Clients Say",
+      "sectionTitle": "Trusted by Hundreds of Satisfied Clients",
+      "items": [
+        {
+          "name": "Martijn De Vries",
+          "role": "Homeowner, Antwerp",
+          "content": "Tipto installed beautiful glass balustrades on our terrace. The quality and finish are exceptional. The entire process was professional and within the agreed timeframe.",
+          "rating": 5
+        },
+        {
+          "name": "Sophie Van den Berg",
+          "role": "Architect, Brussels",
+          "content": "As an architect, I regularly work with Tipto on my projects. Their craftsmanship and attention to detail make them a reliable partner for any construction project.",
+          "rating": 5
+        },
+        {
+          "name": "Thomas Janssen",
+          "role": "Contractor, Mechelen",
+          "content": "The garage doors and windows Tipto delivered for our new construction projects are of excellent quality. Reliable service and competitive prices.",
+          "rating": 5
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready for Your Project?",
+      "subtitle": "Request a free, no-obligation quote today and discover what Tipto can do for you.",
+      "button": "Request a Quote"
+    }
+  },
+  "AboutPage": {
+    "meta": {
+      "title": "About Tipto BV — 17+ Years of Craftsmanship in Belgium",
+      "description": "Discover the story behind Tipto BV. For over 17 years your specialist in custom balustrades, windows, doors, garage doors, stairs and balconies in Belgium."
+    },
+    "hero": {
+      "badge": "Our Story",
+      "title": "17+ Years of Passion for Craftsmanship",
+      "subtitle": "Tipto BV is a leading Belgian company specializing in custom solutions for both residential and commercial projects."
+    },
+    "story": {
+      "title": "From Vision to Craftsmanship",
+      "content": "Since our founding, we have strived to deliver the highest quality in custom solutions. With over 17 years of experience, we combine traditional craftsmanship with innovative technologies. Our materials — tempered glass, stainless steel, aluminium and sustainable wood — are carefully selected for their quality and durability."
+    },
+    "services": {
+      "title": "What We Offer",
+      "installation": "Professional installation by qualified craftsmen",
+      "maintenance": "Maintenance and repair of all your products",
+      "emergency": "24/7 availability for emergencies",
+      "commercial": "Complete guidance for commercial projects",
+      "smart": "Smart home integration and energy-efficient solutions",
+      "custom": "Fully custom-made designs"
+    },
+    "reasons": {
+      "title": "Why Choose Tipto",
+      "experience": "17+ years experience",
+      "available": "Always available (24/7)",
+      "specialists": "Qualified specialists",
+      "solutions": "Best solutions",
+      "pricing": "Transparent pricing",
+      "emergency": "Emergency service available"
+    }
+  },
+  "BalustradesPage": {
+    "meta": {
+      "title": "Custom Balustrades — Stainless Steel, Aluminium & Glass | Tipto BV",
+      "description": "Premium custom balustrades in stainless steel, aluminium and glass. Discover our collection and design your ideal balustrade with our 3D simulator."
+    },
+    "hero": {
+      "badge": "Balustrades",
+      "title": "Balustrades that Unite Elegance and Safety",
+      "subtitle": "Custom-made balustrades in stainless steel, aluminium or glass. Every design is crafted with precision for a perfect combination of safety and aesthetics."
+    },
+    "materials": {
+      "title": "Materials & Finishes",
+      "inox": {
+        "title": "Stainless Steel Balustrades",
+        "description": "Stainless steel with a timeless appearance. Extremely durable and low maintenance."
+      },
+      "powderCoated": {
+        "title": "Powder-Coated Stainless Steel",
+        "description": "Colour of your choice with the durability of stainless steel. The perfect combination of style and functionality."
+      },
+      "aluminum": {
+        "title": "Aluminium Balustrades",
+        "description": "Lightweight and versatile. Ideal for modern architecture with a sleek finish."
+      },
+      "glass": {
+        "title": "Glass Balustrades",
+        "description": "Transparent and elegant. Maximum view with optimal safety."
+      }
+    },
+    "features": {
+      "title": "Features",
+      "safety": "Meets all safety standards",
+      "custom": "Fully custom made",
+      "durable": "Durable materials",
+      "design": "Modern and timeless design",
+      "install": "Professional installation",
+      "warranty": "Extended warranty"
+    },
+    "simulatorCta": {
+      "title": "Design Your Own Balustrade",
+      "subtitle": "Use our 3D simulator to compose your ideal balustrade.",
+      "button": "Open 3D Simulator"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions about Balustrades",
+      "items": [
+        {
+          "question": "What materials do you offer for balustrades?",
+          "answer": "We offer balustrades in stainless steel, powder-coated stainless steel, aluminium and glass. Each material can be custom finished to your preferences."
+        },
+        {
+          "question": "How long does balustrade installation take?",
+          "answer": "Installation time depends on the complexity and scope of the project. A standard balustrade is typically installed within 1-2 days."
+        },
+        {
+          "question": "Are glass balustrades safe?",
+          "answer": "Absolutely. Our glass balustrades are made from tempered safety glass that meets all European safety standards. They are extremely strong and durable."
+        },
+        {
+          "question": "Do you offer warranty on balustrades?",
+          "answer": "Yes, all our balustrades come with an extended warranty. We are happy to discuss the exact warranty conditions with you during the quote process."
+        }
+      ]
+    }
+  },
+  "RamenPage": {
+    "meta": {
+      "title": "Custom Windows — PVC, Aluminium & Wood | Tipto BV",
+      "description": "Energy-efficient custom windows in PVC, aluminium and wood. Up to 30% energy savings. Expertly installed by Tipto BV throughout Belgium."
+    },
+    "hero": {
+      "badge": "Windows",
+      "title": "Windows that Combine Comfort and Energy Efficiency",
+      "subtitle": "High-quality custom windows in PVC, aluminium or wood. Maximum insulation, minimum energy consumption and a refined appearance for every home."
+    },
+    "materials": {
+      "title": "Materials & Profiles",
+      "pvc": { "title": "PVC Windows", "description": "Excellent insulation at a competitive price. Maintenance-free and available in many colours." },
+      "aluminum": { "title": "Aluminium Windows", "description": "Slim and modern. Strong profiles with maximum glass surface for more light." },
+      "wood": { "title": "Wooden Windows", "description": "Warm, natural appearance. Durable wood with excellent insulation properties." }
+    },
+    "features": {
+      "title": "Benefits",
+      "insulation": "Superior thermal insulation",
+      "noise": "Up to 50% noise insulation",
+      "security": "Burglar-resistant locks",
+      "energy": "Up to 30% energy savings",
+      "maintenance": "Low maintenance",
+      "custom": "Any shape and size possible"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions about Windows",
+      "items": [
+        { "question": "Which type of window is most energy efficient?", "answer": "All our window types offer excellent insulation. PVC windows typically score best on thermal insulation, but aluminium and wooden windows offer comparable performance with triple glazing." },
+        { "question": "How long does it take to install new windows?", "answer": "Production time averages 4-6 weeks after measurement. Installation itself takes 1-3 days, depending on the number of windows." },
+        { "question": "Can I get subsidies for new windows?", "answer": "Yes, various subsidies exist in Belgium for energy-efficient windows. We are happy to help you apply for available subsidies in your region." }
+      ]
+    }
+  },
+  "DeurenPage": {
+    "meta": {
+      "title": "Custom Doors — Interior & Exterior | Tipto BV",
+      "description": "Premium custom doors in wood, aluminium and composite. From classic interior doors to modern exterior doors. Craftsmanship by Tipto BV."
+    },
+    "hero": {
+      "badge": "Doors",
+      "title": "Doors that Make an Impression at Every Threshold",
+      "subtitle": "From stylish interior doors to robust exterior doors — every door is custom crafted with premium materials and an eye for detail."
+    },
+    "materials": {
+      "title": "Materials & Styles",
+      "wood": { "title": "Wooden Doors", "description": "Timeless elegance in solid wood. Available in various wood types and finishes." },
+      "aluminum": { "title": "Aluminium Doors", "description": "Modern and low maintenance. Slim profiles with superior insulation." },
+      "composite": { "title": "Composite Doors", "description": "The best of both worlds. The appearance of wood with the durability of modern materials." }
+    },
+    "features": {
+      "title": "Features",
+      "security": "Advanced locking systems",
+      "insulation": "Thermal and acoustic insulation",
+      "design": "Endless design possibilities",
+      "durability": "Weather-resistant finish",
+      "smart": "Smart lock compatible",
+      "custom": "Custom made"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions about Doors",
+      "items": [
+        { "question": "What material is best for an exterior door?", "answer": "Aluminium and composite are excellent choices for exterior doors due to their durability and weather resistance. Wooden exterior doors offer a warm appearance but require more maintenance." },
+        { "question": "Can you supply doors with smart lock systems?", "answer": "Yes, we can equip all our doors with smart lock systems. From fingerprint scanners to app-controlled locks — we advise you on the best solution." }
+      ]
+    }
+  },
+  "GaragepoortenPage": {
+    "meta": {
+      "title": "Custom Garage Doors — Sectional, Tilting & Roller | Tipto BV",
+      "description": "Automatic custom garage doors. Sectional doors, tilting doors and roller doors with professional installation. Belgian craftsmanship by Tipto BV."
+    },
+    "hero": {
+      "badge": "Garage Doors",
+      "title": "Garage Doors that Combine Functionality and Design",
+      "subtitle": "Sectional doors, tilting doors and roller doors — every garage door is custom made with automatic operation and premium finish."
+    },
+    "materials": {
+      "title": "Types & Configurations",
+      "sectional": { "title": "Sectional Doors", "description": "The most popular choice. Space-saving and available in various panels and colours." },
+      "tilt": { "title": "Tilting Doors", "description": "Classic and reliable. A solid choice for standard garages." },
+      "roller": { "title": "Roller Doors", "description": "Maximum space savings. Ideal for garages with limited space." }
+    },
+    "features": {
+      "title": "Features",
+      "automatic": "Automatic operation",
+      "insulation": "Insulated panels",
+      "security": "Burglar resistant",
+      "quiet": "Whisper-quiet operation",
+      "smart": "Smart home integration",
+      "design": "Various design options"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions about Garage Doors",
+      "items": [
+        { "question": "Which type of garage door is most popular?", "answer": "Sectional doors are by far the most popular thanks to their space-saving design, excellent insulation and wide range of designs and colours." },
+        { "question": "Can existing garage doors be automated?", "answer": "In many cases, an existing garage door can be equipped with an automatic operating system. We are happy to visit to assess the possibilities." }
+      ]
+    }
+  },
+  "TrappenPage": {
+    "meta": {
+      "title": "Custom Stairs — Wood, Steel & Concrete | Tipto BV",
+      "description": "Custom stairs in wood, steel and concrete. From floating stairs to classic spiral staircases. Design and functionality by Tipto BV."
+    },
+    "hero": {
+      "badge": "Stairs",
+      "title": "Stairs that Elevate Your Interior to the Next Level",
+      "subtitle": "Custom stairs that bring functionality and design together. From modern floating stairs to classic spiral staircases — every project is unique."
+    },
+    "materials": {
+      "title": "Materials & Styles",
+      "wood": { "title": "Wooden Stairs", "description": "Warm appearance and timeless design. Available in various wood types." },
+      "steel": { "title": "Steel Stairs", "description": "Industrial and modern. Strong, slim and perfect for contemporary interiors." },
+      "concrete": { "title": "Concrete Stairs", "description": "Robust and versatile. The perfect foundation for any finish." }
+    },
+    "features": {
+      "title": "Features",
+      "custom": "Fully custom made",
+      "design": "Endless design options",
+      "safety": "Anti-slip finish",
+      "durable": "Long-lasting quality",
+      "lighting": "LED lighting possible",
+      "combination": "Combine materials"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions about Stairs",
+      "items": [
+        { "question": "What material is best for stairs?", "answer": "The best choice depends on your interior style and budget. Wooden stairs are timeless, steel stairs are modern and compact, and concrete stairs offer maximum flexibility in finishing." },
+        { "question": "How long does it take to make custom stairs?", "answer": "Production time averages 6-8 weeks after design approval. Installation typically takes 2-3 days." }
+      ]
+    }
+  },
+  "BalkonsPage": {
+    "meta": {
+      "title": "Custom Balconies — Modern & Classic | Tipto BV",
+      "description": "Premium custom balconies in aluminium, steel and glass. Modern and classic designs with durable materials. Expertly installed by Tipto BV."
+    },
+    "hero": {
+      "badge": "Balconies",
+      "title": "Balconies that Transform Your Outdoor Space",
+      "subtitle": "From modern sleek balconies to classic wrought iron designs — we create balconies that increase the value and comfort of your home."
+    },
+    "materials": {
+      "title": "Materials & Styles",
+      "aluminum": { "title": "Aluminium Balconies", "description": "Lightweight, durable and low maintenance. The most popular choice for modern homes." },
+      "steel": { "title": "Steel Balconies", "description": "Robust and versatile. From industrial to classic wrought iron." },
+      "glass": { "title": "Glass Balconies", "description": "Transparent and modern. Maximum view with an elegant appearance." }
+    },
+    "features": {
+      "title": "Features",
+      "weatherproof": "Weatherproof",
+      "loadBearing": "High load capacity",
+      "drainage": "Integrated drainage",
+      "custom": "Custom made",
+      "safety": "Meets all standards",
+      "finish": "Premium finish"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions about Balconies",
+      "items": [
+        { "question": "Do you need a building permit for a balcony?", "answer": "In most cases, a building permit is required for installing or renovating a balcony. We are happy to advise you on the permit requirements in your municipality." },
+        { "question": "How do I maintain my balcony?", "answer": "Aluminium and glass balconies are virtually maintenance-free — annual cleaning is sufficient. Steel balconies require periodic protective treatment." }
+      ]
+    }
+  },
+  "SimulatorPage": {
+    "meta": {
+      "title": "3D Balustrade Simulator — Design Online | Tipto BV",
+      "description": "Design your ideal balustrade with our interactive 3D simulator. Choose materials, colours and styles and request a quote directly."
+    },
+    "hero": {
+      "badge": "3D Simulator",
+      "title": "Design Your Ideal Balustrade",
+      "subtitle": "Use our interactive 3D simulator to compose your dream balustrade. Rotate, zoom and adjust materials, colours and styles in real-time."
+    },
+    "controls": {
+      "material": "Material",
+      "color": "Colour",
+      "style": "Style",
+      "postStyle": "Post Style",
+      "height": "Height",
+      "panels": "Panels",
+      "glass": "Glass",
+      "steel": "Steel",
+      "aluminum": "Aluminium",
+      "glassPanel": "Glass Panel",
+      "horizontalBars": "Horizontal Bars",
+      "verticalBars": "Vertical Bars",
+      "cable": "Cables",
+      "round": "Round",
+      "square": "Square",
+      "clear": "Clear",
+      "greenTint": "Green Tint",
+      "blueTint": "Blue Tint",
+      "frosted": "Frosted",
+      "brushed": "Brushed",
+      "matteBlack": "Matte Black",
+      "anthracite": "Anthracite",
+      "bronze": "Bronze",
+      "natural": "Natural",
+      "white": "White",
+      "black": "Black",
+      "goldAnodized": "Gold Anodized"
+    },
+    "quote": {
+      "title": "Your Configuration",
+      "material": "Material",
+      "color": "Colour",
+      "style": "Style",
+      "height": "Height",
+      "panels": "Panels",
+      "cta": "Request Quote for This Design",
+      "description": "Based on your configuration, we will prepare a free, no-obligation custom quote."
+    },
+    "instructions": {
+      "drag": "Drag to rotate",
+      "scroll": "Scroll to zoom",
+      "touch": "Pinch to zoom"
+    },
+    "loading": "Loading 3D model...",
+    "unsupported": "Your browser does not support 3D rendering. Contact us for personal advice."
+  },
+  "RealisatiesPage": {
+    "meta": {
+      "title": "Our Projects — Project Gallery | Tipto BV",
+      "description": "View our completed projects. From balustrades and windows to stairs and balconies — discover the craftsmanship of Tipto BV."
+    },
+    "hero": {
+      "badge": "Portfolio",
+      "title": "Our Projects",
+      "subtitle": "View a selection of our most recent projects. Each project is proof of our craftsmanship and dedication to quality."
+    },
+    "filter": {
+      "all": "All Projects",
+      "balustrades": "Balustrades",
+      "ramen": "Windows",
+      "deuren": "Doors",
+      "garagepoorten": "Garage Doors",
+      "trappen": "Stairs",
+      "balkons": "Balconies"
+    }
+  },
+  "WerkwijzePage": {
+    "meta": {
+      "title": "Our Process — From Contact to Installation | Tipto BV",
+      "description": "Discover how Tipto BV works. From the first contact and measurement to production and installation — we guide you at every step."
+    },
+    "hero": {
+      "badge": "How We Work",
+      "title": "Our Process",
+      "subtitle": "From the first conversation to the perfect installation — we guide you at every step of the process."
+    },
+    "steps": [
+      { "title": "Contact & Advice", "description": "Get in touch and tell us about your project. We listen to your wishes and give you personal advice." },
+      { "title": "Measurement", "description": "Our specialist visits your home for precise measurements and discusses the possibilities on site." },
+      { "title": "Design & Quote", "description": "Based on the measurements, we design your product and prepare a transparent custom quote." },
+      { "title": "Production", "description": "After approval, we start production with the highest quality standards and carefully selected materials." },
+      { "title": "Installation", "description": "Our craftsmen install your product expertly and neatly, with respect for your home." },
+      { "title": "Aftercare & Service", "description": "After installation, we remain available for maintenance, repairs and questions. 24/7 customer service." }
+    ]
+  },
+  "FaqPage": {
+    "meta": {
+      "title": "Frequently Asked Questions — FAQ | Tipto BV",
+      "description": "Answers to frequently asked questions about our products, services, prices and process. Everything you want to know about Tipto BV."
+    },
+    "hero": {
+      "badge": "FAQ",
+      "title": "Frequently Asked Questions",
+      "subtitle": "Find quick answers to the most common questions about our products and services."
+    },
+    "categories": {
+      "general": "General",
+      "products": "Products",
+      "pricing": "Pricing & Quotes",
+      "installation": "Installation"
+    },
+    "items": [
+      { "category": "general", "question": "In which regions is Tipto active?", "answer": "Tipto BV is active throughout Belgium, with a focus on Antwerp and surroundings. We are happy to visit you for a free measurement." },
+      { "category": "general", "question": "How can I contact Tipto?", "answer": "You can reach us by phone (0466 49 18 51), email (info@tiptobv.be) or the contact form on our website. We are available 24/7." },
+      { "category": "products", "question": "What products does Tipto offer?", "answer": "We specialize in balustrades, windows, doors, garage doors, stairs and balconies. All products are custom made with premium materials." },
+      { "category": "products", "question": "Can you renovate existing products?", "answer": "Yes, in addition to new installations, we also offer renovation and maintenance of existing products. Contact us for an assessment." },
+      { "category": "pricing", "question": "How does the quote process work?", "answer": "After a free measurement at your home, we prepare a detailed, transparent quote. There are no obligations attached to the quote." },
+      { "category": "pricing", "question": "Do you offer financing options?", "answer": "We are happy to discuss payment options with you. Contact us for more information about our payment arrangements." },
+      { "category": "installation", "question": "How long does an average installation take?", "answer": "Installation time varies per product and project. On average, an installation takes 1-5 days. We always give you a realistic schedule in advance." },
+      { "category": "installation", "question": "Do you clean up after installation?", "answer": "Of course. Our craftsmen leave your home tidy after installation. We take all waste and packaging materials with us." }
+    ]
+  },
+  "ContactPage": {
+    "meta": {
+      "title": "Contact & Request a Quote | Tipto BV",
+      "description": "Contact Tipto BV for a free, no-obligation quote. Call, email or fill in the form. Koekoekstraat 25, 2630 Aartselaar."
+    },
+    "hero": {
+      "badge": "Get in Touch",
+      "title": "Let's Discuss Your Project",
+      "subtitle": "Tell us about your project and receive a free, no-obligation custom quote. We respond within 24 hours."
+    },
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your full name",
+      "email": "Email Address",
+      "emailPlaceholder": "your@email.be",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+32 ...",
+      "product": "Product Interest",
+      "productPlaceholder": "Select a product",
+      "productOptions": {
+        "balustrades": "Balustrades",
+        "ramen": "Windows",
+        "deuren": "Doors",
+        "garagepoorten": "Garage Doors",
+        "trappen": "Stairs",
+        "balkons": "Balconies",
+        "other": "Other"
+      },
+      "message": "Message",
+      "messagePlaceholder": "Tell us about your project...",
+      "submit": "Send Request",
+      "sending": "Sending...",
+      "success": "Thank you for your request! We will contact you within 24 hours.",
+      "error": "Something went wrong. Please try again or call us directly.",
+      "required": "This field is required",
+      "invalidEmail": "Please enter a valid email address"
+    },
+    "info": {
+      "title": "Contact Information",
+      "address": "Address",
+      "phone": "Phone",
+      "email": "Email",
+      "vat": "VAT Number",
+      "hours": "Opening Hours",
+      "weekdays": "Monday - Friday: 08:00 - 18:00",
+      "saturday": "Saturday: 09:00 - 14:00",
+      "sunday": "Sunday: Closed"
+    }
+  },
+  "Footer": {
+    "description": "Tipto BV is your specialist in custom balustrades, windows, doors, garage doors, stairs and balconies. Over 17 years of craftsmanship in Belgium.",
+    "products": "Products",
+    "company": "Company",
+    "contact": "Contact",
+    "vat": "VAT",
+    "copyright": "Tipto BV. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions"
+  },
+  "Common": {
+    "requestQuote": "Request a Quote",
+    "learnMore": "Learn More",
+    "viewProjects": "View Projects",
+    "callUs": "Call Us",
+    "backToHome": "Back to Home",
+    "readMore": "Read More",
+    "allProducts": "All Products",
+    "close": "Close",
+    "menu": "Menu",
+    "loading": "Loading..."
+  }
+}
