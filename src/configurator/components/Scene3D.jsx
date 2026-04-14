@@ -165,21 +165,23 @@ function VerticalSpijlen({ railLength, panelH, finishColor, material }) {
   const isRvs = material === "rvs";
   const count = Math.max(4, Math.round(railLength / 0.105));
   const spacing = railLength / (count + 1);
-  // Bars span from base rail to underside of handrail
-  const barH = panelH - 0.04;
+  // Bars from bottom rail (y≈0.03) to top of panelH
+  const bottomEdge = 0.03;
+  const topEdge = panelH;
+  const barH = topEdge - bottomEdge;
+  const barCenter = (bottomEdge + topEdge) / 2;
 
   return (
     <group>
       {Array.from({ length: count }, (_, i) => {
         const x = -railLength / 2 + spacing * (i + 1);
-        const y = barH / 2 + 0.03;
         return isRvs ? (
-          <mesh key={i} position={[x, y, 0]} castShadow>
+          <mesh key={i} position={[x, barCenter, 0]} castShadow>
             <cylinderGeometry args={[0.006, 0.006, barH, 16]} />
             <meshPhysicalMaterial {...mp} />
           </mesh>
         ) : (
-          <mesh key={i} position={[x, y, 0]} castShadow>
+          <mesh key={i} position={[x, barCenter, 0]} castShadow>
             <boxGeometry args={[0.012, barH, 0.012]} />
             <meshPhysicalMaterial {...mp} />
           </mesh>
@@ -554,31 +556,62 @@ function RoundedCornerConnector({ corner, selection, finishColor }) {
   const isRvs = selection.material === "rvs";
   const railH = isRvs ? 0.04 : 0.05;
   const railD = isRvs ? 0.042 : depthM * 0.82;
+  const postW = isRvs ? 0.042 : 0.044;
+  const postD = isRvs ? 0.042 : depthM * 0.7;
   const isFrameless = selection.infill === "glas" && !isRvs;
   const heightM = Math.max(0.6, (selection.height ?? 105) / 100);
-  // Match exact Y of handrail in RailSection + bottom rail
+  const mp = frameMat(finishColor, selection.material);
+
+  // Rail levels that match RailSection exactly
+  const handrailY = heightM + (isRvs ? 0 : railH / 2);
+  const baseRailY = 0.018;
   const levels = isFrameless
     ? [0.04, Math.max(0.02, heightM * 0.45)]
-    : [heightM + (isRvs ? 0 : railH / 2), 0.018];
+    : [handrailY, baseRailY];
 
   const corner3D = { ...corner, direction: -corner.direction };
-  const points = sampleRoundedCorner(corner3D, 12).map(planPointToWorld);
+  const points = sampleRoundedCorner(corner3D, 16).map(planPointToWorld);
   if (points.length < 2) return null;
+
+  // Corner vertex position in world space (for the corner post)
+  const cornerWorld = planPointToWorld({ x: corner.x, y: corner.y });
 
   return (
     <group>
+      {/* Corner post */}
+      {!isFrameless && (
+        <group position={[cornerWorld.x, heightM / 2, cornerWorld.z]}>
+          <Post isRvs={isRvs} finishColor={finishColor} postH={heightM} postW={postW} postD={postD} material={selection.material} />
+          <PostBase mounting={selection.mounting} finishColor={finishColor} postW={postW} postD={postD} postH={heightM} isRvs={isRvs} />
+        </group>
+      )}
+
+      {/* Curved rail segments at each level */}
       {levels.map((y, levelIndex) => (
         points.slice(0, -1).map((point, index) => {
           const next = points[index + 1];
           const dx = next.x - point.x;
           const dz = next.z - point.z;
           const length = Math.hypot(dx, dz);
-          if (length < 0.01) return null;
-          return (
-            <mesh key={`${corner.vertexId}-${levelIndex}-${index}`} position={[(point.x + next.x) / 2, y, (point.z + next.z) / 2]}
+          if (length < 0.005) return null;
+
+          const segH = levelIndex === 0 ? (isRvs ? railH : railH) : 0.018;
+          const segD = levelIndex === 0 ? railD : postD * 0.8;
+
+          return isRvs && levelIndex === 0 ? (
+            // Round rail for RVS handrail
+            <mesh key={`${corner.vertexId}-${levelIndex}-${index}`}
+              position={[(point.x + next.x) / 2, y, (point.z + next.z) / 2]}
+              rotation={[0, Math.atan2(-dz, dx), Math.PI / 2]} castShadow>
+              <cylinderGeometry args={[0.02, 0.02, length, 12]} />
+              <meshPhysicalMaterial {...mp} />
+            </mesh>
+          ) : (
+            <mesh key={`${corner.vertexId}-${levelIndex}-${index}`}
+              position={[(point.x + next.x) / 2, y, (point.z + next.z) / 2]}
               rotation={[0, Math.atan2(-dz, dx), 0]} castShadow receiveShadow>
-              <boxGeometry args={[length, isFrameless ? 0.02 : railH, isFrameless ? 0.02 : railD]} />
-              <meshPhysicalMaterial color={finishColor} metalness={0.82} roughness={0.24} clearcoat={0.4} />
+              <boxGeometry args={[length + 0.002, segH, segD]} />
+              <meshPhysicalMaterial {...mp} />
             </mesh>
           );
         })
