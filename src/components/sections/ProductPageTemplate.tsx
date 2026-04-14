@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 import ProductHero from './ProductHero';
 import MaterialShowcase from './MaterialShowcase';
 import ProductFeatures from './ProductFeatures';
@@ -92,12 +93,12 @@ function SimulatorCtaBlock() {
           {t('title')}
         </h2>
         <p className="text-gray-400 mb-6">{t('subtitle')}</p>
-        <a
+        <Link
           href="/3d-simulator"
           className="inline-flex items-center px-6 py-3 bg-gold text-white rounded-sm font-medium hover:bg-gold-hover transition-colors"
         >
           {t('button')}
-        </a>
+        </Link>
       </div>
     </section>
   );

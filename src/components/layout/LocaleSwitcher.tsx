@@ -1,7 +1,7 @@
 'use client';
 
 import { useLocale } from 'next-intl';
-import { useRouter, usePathname } from 'next/navigation';
+import { useRouter, usePathname } from '@/i18n/navigation';
 import { useState, useRef, useEffect } from 'react';
 import { routing } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
@@ -29,14 +29,7 @@ export default function LocaleSwitcher() {
   }, []);
 
   const switchLocale = (newLocale: string) => {
-    const segments = pathname.split('/').filter(Boolean);
-    if (routing.locales.includes(segments[0] as typeof routing.locales[number])) {
-      segments.shift();
-    }
-    const newPath = newLocale === routing.defaultLocale
-      ? `/${segments.join('/')}`
-      : `/${newLocale}/${segments.join('/')}`;
-    router.push(newPath || '/');
+    router.replace(pathname, { locale: newLocale as typeof routing.locales[number] });
     setOpen(false);
   };
 

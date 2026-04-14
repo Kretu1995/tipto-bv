@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { motion } from 'framer-motion';
 import Container from '@/components/ui/Container';
 import SectionHeader from '@/components/ui/SectionHeader';
