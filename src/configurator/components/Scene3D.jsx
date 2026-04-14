@@ -69,10 +69,11 @@ function frameMat(finishColor, material) {
 
 const GLASS_MAT = {
   color: "#d8e8f0", transmission: 0.88, roughness: 0.01, metalness: 0, ior: 1.52,
-  thickness: 0.012, envMapIntensity: 1.5, transparent: true, opacity: 0.85,
+  thickness: 0.01, envMapIntensity: 1.5, transparent: true, opacity: 0.85,
   attenuationDistance: 1.8, attenuationColor: "#e8f4ff", specularIntensity: 1.0,
   specularColor: "#ffffff", side: 2,
 };
+const GLASS_THICKNESS = 0.01; // 10mm glass
 
 // ─── Infill components ────────────────────────────────────────────────────────
 
@@ -109,12 +110,12 @@ function GlassInfill({ railLength, panelH, postXs, finishColor, postW }) {
       {panels.map((p, i) => (
         <group key={`glass-${i}`}>
           <mesh position={[p.cx, glassY, 0]}>
-            <boxGeometry args={[p.w, glassH, 0.012]} />
+            <boxGeometry args={[p.w, glassH, GLASS_THICKNESS]} />
             <meshPhysicalMaterial {...GLASS_MAT} />
           </mesh>
           {/* Green edge at top */}
           <mesh position={[p.cx, glassTop, 0]}>
-            <boxGeometry args={[p.w, 0.003, 0.012]} />
+            <boxGeometry args={[p.w, 0.003, GLASS_THICKNESS]} />
             <meshPhysicalMaterial color="#b8dcc8" transparent opacity={0.5} roughness={0.1} />
           </mesh>
         </group>
@@ -200,11 +201,10 @@ function FramelessGlass({ railLength, panelH }) {
 
 function VerticalSpijlen({ railLength, panelH, finishColor, material }) {
   const mp = frameMat(finishColor, material);
-  const isRvs = material === "rvs";
+  const barSize = 0.016; // same thickness as posts and rails
   const count = Math.max(4, Math.round(railLength / 0.105));
   const spacing = railLength / (count + 1);
-  // Bars from just above floor to panelH (=heightM, underside of handrail)
-  const barBottom = 0.028;
+  const barBottom = 0.02;
   const barTop = panelH;
   const barH = barTop - barBottom;
   const barY = (barBottom + barTop) / 2;
@@ -213,14 +213,9 @@ function VerticalSpijlen({ railLength, panelH, finishColor, material }) {
     <group>
       {Array.from({ length: count }, (_, i) => {
         const x = -railLength / 2 + spacing * (i + 1);
-        return isRvs ? (
+        return (
           <mesh key={i} position={[x, barY, 0]} castShadow>
-            <cylinderGeometry args={[0.006, 0.006, barH, 16]} />
-            <meshPhysicalMaterial {...mp} />
-          </mesh>
-        ) : (
-          <mesh key={i} position={[x, barY, 0]} castShadow>
-            <boxGeometry args={[0.012, barH, 0.012]} />
+            <boxGeometry args={[barSize, barH, barSize]} />
             <meshPhysicalMaterial {...mp} />
           </mesh>
         );
@@ -438,11 +433,13 @@ function RailSection({ lengthM, heightM, selection, finishColor, showStartPost =
   const hasHandrailOption = (selection.extraOptions ?? []).includes("handrail-glas");
   const showHandrail = selection.infill !== "glas" || hasHandrailOption;
 
-  const postW  = 0.044;
-  const postD  = depthM * 0.7;
+  // Uniform profile thickness for spijlen-style: posts = bars = rails
+  const isSpijlenStyle = selection.infill === "verticale-spijlen";
+  const postW  = isSpijlenStyle ? 0.016 : 0.044;
+  const postD  = isSpijlenStyle ? 0.016 : depthM * 0.7;
   const postH  = heightM;
-  const railH  = 0.05;
-  const railD  = depthM * 0.82;
+  const railH  = isSpijlenStyle ? 0.016 : 0.05;
+  const railD  = isSpijlenStyle ? 0.016 : depthM * 0.82;
   const panelH = heightM;
 
   // At free ends: handrail extends postW/2 PAST the end post center (flush with outer edge).
@@ -510,10 +507,10 @@ function RailSection({ lengthM, heightM, selection, finishColor, showStartPost =
         </group>
       ))}
 
-      {/* ── Bottom rail ── */}
+      {/* ── Bottom rail — same profile as handrail ── */}
       {selection.infill !== "glas" && (
-        <mesh position={[fillOffsetX, 0.018, 0]} castShadow>
-          <boxGeometry args={[fillSpan, 0.018, postD * 0.8]} />
+        <mesh position={[fillOffsetX, railH / 2, 0]} castShadow>
+          <boxGeometry args={[fillSpan, railH, railD]} />
           <meshPhysicalMaterial {...mp} />
         </mesh>
       )}
