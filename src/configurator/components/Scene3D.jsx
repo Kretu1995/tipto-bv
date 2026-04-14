@@ -447,14 +447,13 @@ function RailSection({ lengthM, heightM, selection, finishColor, showStartPost =
   const railD  = isRvs ? 0.042 : depthM * 0.82;
   const panelH = heightM;
 
-  // At junctions, trim rails so they stop at the center of the shared corner post.
-  // At free ends, rails extend to the outer edge of the end post.
-  const startTrim = startIsFreeEnd ? 0 : postW / 2;
-  const endTrim   = endIsFreeEnd   ? 0 : postW / 2;
-  const railSpan  = lengthM - startTrim - endTrim;
-  const railOffsetX = (startTrim - endTrim) / 2;
-  // Fill spans between inner faces of the two outermost VISIBLE posts
-  const fillSpan  = Math.max(0.12, railSpan);
+  // At free ends: handrail extends postW/2 PAST the end post center (flush with outer edge).
+  // At junctions: handrail stops at the center of the shared corner post.
+  const startExtra = startIsFreeEnd ? postW / 2 : -(postW / 2);
+  const endExtra   = endIsFreeEnd   ? postW / 2 : -(postW / 2);
+  const railSpan   = lengthM + startExtra + endExtra;
+  const railOffsetX = (endExtra - startExtra) / 2;
+  const fillSpan   = Math.max(0.12, railSpan);
   const fillOffsetX = railOffsetX;
 
   // Post spacing: ~85cm, always at least 2
