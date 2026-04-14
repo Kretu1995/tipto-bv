@@ -17,7 +17,7 @@ export default async function SimulatorPage({ params }: Props) {
   setRequestLocale(locale);
 
   return (
-    <div className="h-[calc(100vh-4rem)] lg:h-[calc(100vh-5rem)] mt-16 lg:mt-20">
+    <div className="h-screen w-screen">
       <SimulatorWrapper />
     </div>
   );
