@@ -12,30 +12,9 @@ import {
 // ─── Camera fitting ───────────────────────────────────────────────────────────
 
 const QUALITY_PRESETS = {
-  lightweight: {
-    dpr: [1, 1.25],
-    shadowMap: 1024,
-    envResolution: 128,
-    gridFade: 8,
-    contactBlur: 1.4,
-    lineOpacity: 0.9,
-  },
-  balanced: {
-    dpr: [1, 1.6],
-    shadowMap: 1536,
-    envResolution: 256,
-    gridFade: 10,
-    contactBlur: 1.8,
-    lineOpacity: 0.94,
-  },
-  high: {
-    dpr: [1.2, 2],
-    shadowMap: 2048,
-    envResolution: 512,
-    gridFade: 12,
-    contactBlur: 2.2,
-    lineOpacity: 0.98,
-  },
+  lightweight: { dpr: [1, 1.25], shadowMap: 1024, envResolution: 128, gridFade: 8, contactBlur: 1.4, lineOpacity: 0.9 },
+  balanced:    { dpr: [1, 1.6],  shadowMap: 1536, envResolution: 256, gridFade: 10, contactBlur: 1.8, lineOpacity: 0.94 },
+  high:        { dpr: [1.2, 2],  shadowMap: 2048, envResolution: 512, gridFade: 12, contactBlur: 2.2, lineOpacity: 0.98 },
 };
 
 function getCameraSetup(bbox) {
@@ -79,93 +58,71 @@ function CameraFitter({ bbox }) {
 // ─── Material helpers ─────────────────────────────────────────────────────────
 
 function frameMat(finishColor, material) {
-  const isRvs = material === "rvs";
-  const isPowder = material === "gepoedercoat-staal";
-  if (isRvs) {
-    return {
-      color: finishColor,
-      metalness: 0.95,
-      roughness: 0.12,
-      clearcoat: 0.85,
-      clearcoatRoughness: 0.06,
-      envMapIntensity: 1.4,
-      reflectivity: 0.9,
-    };
+  if (material === "rvs") {
+    return { color: finishColor, metalness: 0.96, roughness: 0.08, clearcoat: 0.9, clearcoatRoughness: 0.04, envMapIntensity: 1.6, reflectivity: 0.95 };
   }
-  if (isPowder) {
-    return {
-      color: finishColor,
-      metalness: 0.35,
-      roughness: 0.45,
-      clearcoat: 0.65,
-      clearcoatRoughness: 0.25,
-      envMapIntensity: 0.8,
-    };
+  if (material === "gepoedercoat-staal") {
+    return { color: finishColor, metalness: 0.3, roughness: 0.5, clearcoat: 0.7, clearcoatRoughness: 0.22, envMapIntensity: 0.75 };
   }
-  // Aluminium
-  return {
-    color: finishColor,
-    metalness: 0.88,
-    roughness: 0.22,
-    clearcoat: 0.48,
-    clearcoatRoughness: 0.18,
-    envMapIntensity: 1.05,
-  };
+  return { color: finishColor, metalness: 0.9, roughness: 0.18, clearcoat: 0.5, clearcoatRoughness: 0.15, envMapIntensity: 1.1 };
 }
+
+const GLASS_MAT = {
+  color: "#d8e8f0", transmission: 0.88, roughness: 0.01, metalness: 0, ior: 1.52,
+  thickness: 0.012, envMapIntensity: 1.5, transparent: true, opacity: 0.85,
+  attenuationDistance: 1.8, attenuationColor: "#e8f4ff", specularIntensity: 1.0,
+  specularColor: "#ffffff", side: 2,
+};
 
 // ─── Infill components ────────────────────────────────────────────────────────
 
 function GlassInfill({ railLength, panelH, postXs, finishColor, postW }) {
+  const clampMp = { color: finishColor, metalness: 0.9, roughness: 0.15, clearcoat: 0.6 };
   return (
     <group>
+      {/* Glass panel */}
       <mesh position={[0, panelH / 2 + 0.02, 0]}>
-        <boxGeometry args={[railLength - 0.08, panelH, 0.014]} />
-        <meshPhysicalMaterial
-          color="#e0ecf4"
-          transmission={0.92}
-          roughness={0.02}
-          metalness={0}
-          ior={1.52}
-          thickness={0.014}
-          envMapIntensity={1.3}
-          transparent
-          opacity={0.82}
-          attenuationDistance={2.2}
-          attenuationColor="#eaf4ff"
-          specularIntensity={0.8}
-          specularColor="#ffffff"
-          side={2}
-        />
+        <boxGeometry args={[railLength - 0.07, panelH, 0.012]} />
+        <meshPhysicalMaterial {...GLASS_MAT} />
       </mesh>
-      {/* Glass clamps at each post position — two pairs (top + bottom) */}
-      {postXs.map((x, i) => {
-        const clampMat = { color: finishColor, metalness: 0.88, roughness: 0.18, clearcoat: 0.55, clearcoatRoughness: 0.12 };
-        return (
-          <group key={i} position={[x, 0, 0]}>
-            {/* Bottom clamp pair */}
-            {[0.016, -0.016].map((z, j) => (
-              <mesh key={`b${j}`} position={[0, panelH * 0.22, z]} castShadow>
-                <boxGeometry args={[postW * 1.05, 0.055, 0.016]} />
-                <meshPhysicalMaterial {...clampMat} />
+      {/* Glass edge highlight — thin green strip at top */}
+      <mesh position={[0, panelH + 0.02, 0]}>
+        <boxGeometry args={[railLength - 0.07, 0.003, 0.012]} />
+        <meshPhysicalMaterial color="#b8dcc8" transparent opacity={0.6} roughness={0.1} />
+      </mesh>
+
+      {/* D-clamps at each post */}
+      {postXs.map((x, i) => (
+        <group key={i} position={[x, 0, 0]}>
+          {/* Lower clamp */}
+          <group position={[0, panelH * 0.2, 0]}>
+            {[0.014, -0.014].map((z, j) => (
+              <mesh key={j} position={[0, 0, z]} castShadow>
+                <boxGeometry args={[postW * 0.9, 0.06, 0.014]} />
+                <meshPhysicalMaterial {...clampMp} />
               </mesh>
             ))}
-            {/* Top clamp pair */}
-            {[0.016, -0.016].map((z, j) => (
-              <mesh key={`t${j}`} position={[0, panelH * 0.72, z]} castShadow>
-                <boxGeometry args={[postW * 1.05, 0.055, 0.016]} />
-                <meshPhysicalMaterial {...clampMat} />
-              </mesh>
-            ))}
-            {/* Decorative bolt heads on clamps */}
-            {[panelH * 0.22, panelH * 0.72].map((y, ci) => (
-              <mesh key={`bolt${ci}`} position={[0, y, 0.024]} castShadow>
-                <cylinderGeometry args={[0.005, 0.005, 0.006, 8]} />
-                <meshPhysicalMaterial color="#888" metalness={0.95} roughness={0.1} />
-              </mesh>
-            ))}
+            {/* Hex bolt */}
+            <mesh position={[0, 0, 0.022]} rotation={[Math.PI / 2, 0, 0]} castShadow>
+              <cylinderGeometry args={[0.005, 0.005, 0.005, 6]} />
+              <meshPhysicalMaterial color="#70787f" metalness={0.95} roughness={0.08} />
+            </mesh>
           </group>
-        );
-      })}
+          {/* Upper clamp */}
+          <group position={[0, panelH * 0.75, 0]}>
+            {[0.014, -0.014].map((z, j) => (
+              <mesh key={j} position={[0, 0, z]} castShadow>
+                <boxGeometry args={[postW * 0.9, 0.06, 0.014]} />
+                <meshPhysicalMaterial {...clampMp} />
+              </mesh>
+            ))}
+            <mesh position={[0, 0, 0.022]} rotation={[Math.PI / 2, 0, 0]} castShadow>
+              <cylinderGeometry args={[0.005, 0.005, 0.005, 6]} />
+              <meshPhysicalMaterial color="#70787f" metalness={0.95} roughness={0.08} />
+            </mesh>
+          </group>
+        </group>
+      ))}
     </group>
   );
 }
@@ -173,66 +130,60 @@ function GlassInfill({ railLength, panelH, postXs, finishColor, postW }) {
 function FramelessGlass({ railLength, panelH }) {
   return (
     <group>
+      {/* Glass panel */}
       <mesh position={[0, panelH / 2 + 0.04, 0]}>
-        <boxGeometry args={[railLength - 0.04, panelH, 0.014]} />
-        <meshPhysicalMaterial
-          color="#e2edf5"
-          transmission={0.95}
-          roughness={0.015}
-          metalness={0}
-          ior={1.52}
-          thickness={0.014}
-          envMapIntensity={1.35}
-          transparent
-          opacity={0.78}
-          attenuationDistance={2.5}
-          attenuationColor="#f0f8ff"
-          specularIntensity={0.85}
-          specularColor="#ffffff"
-          side={2}
-        />
+        <boxGeometry args={[railLength - 0.03, panelH, 0.012]} />
+        <meshPhysicalMaterial {...GLASS_MAT} transmission={0.91} />
       </mesh>
-      {/* Bottom U-channel for frameless glass */}
-      <mesh position={[0, 0.018, 0]} castShadow>
-        <boxGeometry args={[railLength - 0.02, 0.036, 0.028]} />
-        <meshPhysicalMaterial color="#808890" metalness={0.9} roughness={0.15} clearcoat={0.5} />
+      {/* Glass edge — green tint visible at top */}
+      <mesh position={[0, panelH + 0.04, 0]}>
+        <boxGeometry args={[railLength - 0.03, 0.003, 0.012]} />
+        <meshPhysicalMaterial color="#a8d0b8" transparent opacity={0.5} roughness={0.1} />
       </mesh>
-      {/* Top edge cap */}
-      <mesh position={[0, panelH + 0.04 + 0.008, 0]} castShadow>
-        <boxGeometry args={[railLength - 0.02, 0.016, 0.024]} />
-        <meshPhysicalMaterial color="#808890" metalness={0.9} roughness={0.15} clearcoat={0.5} />
+      {/* U-channel base mount */}
+      <mesh position={[0, 0.016, 0]} castShadow>
+        <boxGeometry args={[railLength - 0.01, 0.032, 0.03]} />
+        <meshPhysicalMaterial color="#707880" metalness={0.92} roughness={0.12} clearcoat={0.55} />
+      </mesh>
+      {/* U-channel inner groove (visible slot) */}
+      <mesh position={[0, 0.033, 0]}>
+        <boxGeometry args={[railLength - 0.02, 0.002, 0.015]} />
+        <meshPhysicalMaterial color="#404850" metalness={0.8} roughness={0.3} />
+      </mesh>
+      {/* Top cap handrail */}
+      <mesh position={[0, panelH + 0.04 + 0.01, 0]} castShadow>
+        <boxGeometry args={[railLength - 0.01, 0.02, 0.026]} />
+        <meshPhysicalMaterial color="#707880" metalness={0.92} roughness={0.12} clearcoat={0.55} />
       </mesh>
     </group>
   );
 }
 
 function VerticalSpijlen({ railLength, panelH, finishColor, material }) {
-  const mp      = frameMat(finishColor, material);
-  // ~11cm spacing between bars is standard for child safety
-  const count   = Math.max(4, Math.round(railLength / 0.11));
+  const mp = frameMat(finishColor, material);
+  const isRvs = material === "rvs";
+  const count = Math.max(4, Math.round(railLength / 0.105));
   const spacing = railLength / (count + 1);
-  const barW    = material === "rvs" ? 0 : 0.014; // 0 = round for RVS
-  const barR    = 0.006; // radius for RVS round bars
 
   return (
     <group>
       {/* Bottom rail */}
-      <mesh position={[0, 0.04, 0]} castShadow receiveShadow>
-        <boxGeometry args={[railLength, 0.028, 0.022]} />
+      <mesh position={[0, 0.035, 0]} castShadow receiveShadow>
+        <boxGeometry args={[railLength, 0.025, 0.02]} />
         <meshPhysicalMaterial {...mp} />
       </mesh>
-      {/* Vertical bars */}
+      {/* Bars */}
       {Array.from({ length: count }, (_, i) => {
         const x = -railLength / 2 + spacing * (i + 1);
-        const y = panelH / 2 + 0.04;
-        return material === "rvs" ? (
+        const y = panelH / 2 + 0.035;
+        return isRvs ? (
           <mesh key={i} position={[x, y, 0]} castShadow>
-            <cylinderGeometry args={[barR, barR, panelH, 12]} />
+            <cylinderGeometry args={[0.006, 0.006, panelH, 16]} />
             <meshPhysicalMaterial {...mp} />
           </mesh>
         ) : (
           <mesh key={i} position={[x, y, 0]} castShadow>
-            <boxGeometry args={[barW, panelH, 0.010]} />
+            <boxGeometry args={[0.012, panelH, 0.012]} />
             <meshPhysicalMaterial {...mp} />
           </mesh>
         );
@@ -241,53 +192,31 @@ function VerticalSpijlen({ railLength, panelH, finishColor, material }) {
   );
 }
 
-/**
- * HorizontaleProfielen — flat rectangular horizontal bars.
- * Inspired by Tipto projects with flat bar infill.
- */
 function HorizontaleProfielen({ railLength, panelH, finishColor, material }) {
-  const mp     = frameMat(finishColor, material);
-  const rows   = panelH > 0.7 ? 5 : 4;
-  const bottomY = 0.08;
-  const topY = panelH - 0.04;
+  const mp = frameMat(finishColor, material);
+  const rows = panelH > 0.7 ? 5 : 4;
+  const bottomY = 0.07;
+  const topY = panelH - 0.03;
   const gap = (topY - bottomY) / (rows - 1);
 
   return (
     <group>
-      {Array.from({ length: rows }, (_, i) => {
-        const y = bottomY + gap * i;
-        return (
-          <mesh key={i} position={[0, y, 0]} castShadow>
-            <boxGeometry args={[railLength - 0.08, 0.022, 0.018]} />
-            <meshPhysicalMaterial {...mp} />
-          </mesh>
-        );
-      })}
+      {Array.from({ length: rows }, (_, i) => (
+        <mesh key={i} position={[0, bottomY + gap * i, 0]} castShadow>
+          <boxGeometry args={[railLength - 0.07, 0.025, 0.02]} />
+          <meshPhysicalMaterial {...mp} />
+        </mesh>
+      ))}
     </group>
   );
 }
 
-/**
- * HorizontaleStaven — round/cylindrical horizontal bars.
- * Based on real Tipto projects: 3–5 round stainless or rectangular powder-coated
- * bars evenly spaced between posts. Common in both indoor stair railings and
- * outdoor balustrades photographed in the Tipto portfolio.
- *
- * Key visual characteristics from photos:
- *   • Round posts (RVS) or rectangular posts (steel/aluminium)
- *   • 3–5 horizontal cylindrical bars (RVS) or rectangular bars (others)
- *   • Even vertical spacing between 10 cm from bottom and 10 cm from top rail
- *   • Post mounting: round rosette-style connectors for RVS, welded for steel
- */
 function HorizontaleStaven({ railLength, panelH, finishColor, material }) {
   const isRvs = material === "rvs";
   const mp = frameMat(finishColor, material);
-  const barCount = panelH > 0.75 ? 4 : 3;
-  const barRadius = isRvs ? 0.011 : 0; // 0 = use box geometry for non-RVS
-  const barH = isRvs ? 0 : 0.016; // box height for non-RVS
-
-  const bottomY = 0.10;
-  const topY = panelH - 0.08;
+  const barCount = panelH > 0.75 ? 5 : 4;
+  const bottomY = 0.09;
+  const topY = panelH - 0.06;
   const gap = (topY - bottomY) / (barCount - 1);
 
   return (
@@ -295,27 +224,32 @@ function HorizontaleStaven({ railLength, panelH, finishColor, material }) {
       {Array.from({ length: barCount }, (_, i) => {
         const y = bottomY + gap * i;
         return isRvs ? (
-          /* Round bar (cylinder rotated along X axis) */
           <mesh key={i} position={[0, y, 0]} rotation={[0, 0, Math.PI / 2]} castShadow>
-            <cylinderGeometry args={[barRadius, barRadius, railLength - 0.06, 14]} />
+            <cylinderGeometry args={[0.01, 0.01, railLength - 0.05, 20]} />
             <meshPhysicalMaterial {...mp} />
           </mesh>
         ) : (
-          /* Flat rectangular bar */
           <mesh key={i} position={[0, y, 0]} castShadow>
-            <boxGeometry args={[railLength - 0.06, 0.018, 0.014]} />
+            <boxGeometry args={[railLength - 0.05, 0.02, 0.016]} />
             <meshPhysicalMaterial {...mp} />
           </mesh>
         );
       })}
-      {/* Mounting rosettes on post positions for RVS */}
+      {/* Rosette connectors for RVS at bar endpoints */}
       {isRvs && Array.from({ length: barCount }, (_, bi) => {
         const y = bottomY + gap * bi;
-        return [-(railLength / 2 - 0.04), (railLength / 2 - 0.04)].map((x, j) => (
-          <mesh key={`${bi}-${j}`} position={[x, y, 0]} castShadow>
-            <cylinderGeometry args={[0.018, 0.018, 0.012, 12]} />
-            <meshPhysicalMaterial color={finishColor} metalness={0.96} roughness={0.14} clearcoat={0.82} />
-          </mesh>
+        return [-(railLength / 2 - 0.035), (railLength / 2 - 0.035)].map((x, j) => (
+          <group key={`${bi}-${j}`} position={[x, y, 0]}>
+            <mesh castShadow>
+              <cylinderGeometry args={[0.016, 0.016, 0.01, 20]} />
+              <meshPhysicalMaterial {...mp} />
+            </mesh>
+            {/* Inner ring */}
+            <mesh position={[0, 0, 0]}>
+              <torusGeometry args={[0.012, 0.002, 8, 20]} />
+              <meshPhysicalMaterial {...mp} />
+            </mesh>
+          </group>
         ));
       })}
     </group>
@@ -323,29 +257,26 @@ function HorizontaleStaven({ railLength, panelH, finishColor, material }) {
 }
 
 function Lamellen({ railLength, panelH, finishColor, material }) {
-  const mp      = frameMat(finishColor, material);
-  // ~6cm spacing for architectural privacy look
-  const count   = Math.max(4, Math.round(railLength / 0.06));
+  const mp = frameMat(finishColor, material);
+  const count = Math.max(4, Math.round(railLength / 0.055));
   const spacing = railLength / (count + 1);
-  const lamelW  = 0.042;
-  const lamelD  = 0.008;
 
   return (
     <group>
       {/* Bottom rail */}
-      <mesh position={[0, 0.025, 0]} castShadow>
-        <boxGeometry args={[railLength, 0.018, 0.022]} />
+      <mesh position={[0, 0.022, 0]} castShadow>
+        <boxGeometry args={[railLength, 0.016, 0.024]} />
         <meshPhysicalMaterial {...mp} />
       </mesh>
-      {/* Lamellen — slightly rotated for visual depth */}
+      {/* Top rail (extra for lamellen) */}
+      <mesh position={[0, panelH + 0.022, 0]} castShadow>
+        <boxGeometry args={[railLength, 0.016, 0.024]} />
+        <meshPhysicalMaterial {...mp} />
+      </mesh>
+      {/* Lamellen with slight angle */}
       {Array.from({ length: count }, (_, i) => (
-        <mesh
-          key={i}
-          position={[-railLength / 2 + spacing * (i + 1), panelH / 2 + 0.025, 0]}
-          rotation={[0, 0.12, 0]}
-          castShadow
-        >
-          <boxGeometry args={[lamelW, panelH - 0.04, lamelD]} />
+        <mesh key={i} position={[-railLength / 2 + spacing * (i + 1), panelH / 2 + 0.022, 0]} rotation={[0, 0.1, 0]} castShadow>
+          <boxGeometry args={[0.04, panelH - 0.01, 0.007]} />
           <meshPhysicalMaterial {...mp} />
         </mesh>
       ))}
@@ -357,17 +288,12 @@ function DiagonalBar({ from, to, color, barW = 0.014, barD = 0.010 }) {
   const dx = to[0] - from[0];
   const dy = to[1] - from[1];
   const length = Math.hypot(dx, dy);
-
   if (length < 0.08) return null;
-
+  const mp = frameMat(color, "gepoedercoat-staal");
   return (
-    <mesh
-      position={[(from[0] + to[0]) / 2, (from[1] + to[1]) / 2, 0]}
-      rotation={[0, 0, Math.atan2(dy, dx) - Math.PI / 2]}
-      castShadow
-    >
+    <mesh position={[(from[0] + to[0]) / 2, (from[1] + to[1]) / 2, 0]} rotation={[0, 0, Math.atan2(dy, dx) - Math.PI / 2]} castShadow>
       <boxGeometry args={[barW, length, barD]} />
-      <meshStandardMaterial color={color} metalness={0.78} roughness={0.32} />
+      <meshPhysicalMaterial {...mp} />
     </mesh>
   );
 }
@@ -387,9 +313,7 @@ function DesignFill({ railLength, panelH, finishColor }) {
         return (
           <group key={i}>
             <DiagonalBar from={[leftX, bottomY]} to={[rightX, topY]} color={finishColor} />
-            {showCross && (
-              <DiagonalBar from={[leftX, topY]} to={[rightX, bottomY]} color={finishColor} />
-            )}
+            {showCross && <DiagonalBar from={[leftX, topY]} to={[rightX, bottomY]} color={finishColor} />}
           </group>
         );
       })}
@@ -399,50 +323,53 @@ function DesignFill({ railLength, panelH, finishColor }) {
 
 // ─── Post + base ──────────────────────────────────────────────────────────────
 
-function Post({ isRvs, finishColor, postH, postW, postD }) {
-  const mp = frameMat(finishColor, isRvs ? "rvs" : "aluminium");
+function Post({ isRvs, finishColor, postH, postW, postD, material }) {
+  const mp = frameMat(finishColor, material || (isRvs ? "rvs" : "aluminium"));
   return (
     <group>
       {/* Main post body */}
       <mesh castShadow receiveShadow>
         {isRvs
-          ? <cylinderGeometry args={[postW / 2, postW / 2, postH, 24]} />
+          ? <cylinderGeometry args={[postW / 2, postW / 2, postH, 32]} />
           : <boxGeometry args={[postW, postH, postD]} />}
         <meshPhysicalMaterial {...mp} />
       </mesh>
 
-      {/* RVS: spherical cap (bolkop) + decorative ring */}
       {isRvs && (
         <>
-          <mesh position={[0, postH / 2 + postW * 0.42, 0]} castShadow>
-            <sphereGeometry args={[postW * 0.58, 24, 24]} />
+          {/* Bolkop — polished sphere cap */}
+          <mesh position={[0, postH / 2 + postW * 0.38, 0]} castShadow>
+            <sphereGeometry args={[postW * 0.55, 32, 32]} />
             <meshPhysicalMaterial {...mp} />
           </mesh>
-          {/* Decorative ring just below top */}
-          <mesh position={[0, postH / 2 - 0.005, 0]} castShadow>
-            <torusGeometry args={[postW / 2 + 0.002, 0.003, 12, 24]} />
+          {/* Decorative rings */}
+          <mesh position={[0, postH / 2 - 0.004, 0]} rotation={[Math.PI / 2, 0, 0]} castShadow>
+            <torusGeometry args={[postW / 2 + 0.001, 0.0025, 12, 32]} />
+            <meshPhysicalMaterial {...mp} />
+          </mesh>
+          <mesh position={[0, -postH / 2 + 0.015, 0]} rotation={[Math.PI / 2, 0, 0]} castShadow>
+            <torusGeometry args={[postW / 2 + 0.001, 0.0025, 12, 32]} />
             <meshPhysicalMaterial {...mp} />
           </mesh>
         </>
       )}
 
-      {/* Rectangular post: top cap plate + bottom accent */}
       {!isRvs && (
         <>
-          {/* Top cap — flat plate with slight overhang */}
-          <mesh position={[0, postH / 2 + 0.006, 0]} castShadow>
-            <boxGeometry args={[postW + 0.008, 0.012, postD + 0.008]} />
+          {/* Top end cap with overhang */}
+          <mesh position={[0, postH / 2 + 0.005, 0]} castShadow>
+            <boxGeometry args={[postW + 0.006, 0.01, postD + 0.006]} />
             <meshPhysicalMaterial {...mp} />
           </mesh>
-          {/* Decorative indent near top */}
-          <mesh position={[0, postH / 2 - 0.035, 0]} castShadow>
-            <boxGeometry args={[postW * 1.12, 0.004, postD * 1.12]} />
-            <meshPhysicalMaterial {...mp} />
+          {/* Chamfer groove top */}
+          <mesh position={[0, postH / 2 - 0.025, 0]} castShadow>
+            <boxGeometry args={[postW + 0.002, 0.003, postD + 0.002]} />
+            <meshPhysicalMaterial {...mp} envMapIntensity={0.6} />
           </mesh>
-          {/* Decorative indent near bottom */}
-          <mesh position={[0, -postH / 2 + 0.08, 0]} castShadow>
-            <boxGeometry args={[postW * 1.06, 0.004, postD * 1.06]} />
-            <meshPhysicalMaterial {...mp} />
+          {/* Chamfer groove bottom */}
+          <mesh position={[0, -postH / 2 + 0.06, 0]} castShadow>
+            <boxGeometry args={[postW + 0.002, 0.003, postD + 0.002]} />
+            <meshPhysicalMaterial {...mp} envMapIntensity={0.6} />
           </mesh>
         </>
       )}
@@ -450,37 +377,11 @@ function Post({ isRvs, finishColor, postH, postW, postD }) {
   );
 }
 
-/**
- * PostBase — mounting hardware at the base of each post.
- *
- * Vloer montage (floor):
- *   Horizontal base plate with anchor bolts, sits on top of the concrete platform.
- *
- * Zijmontage (side):
- *   Vertical mounting plate with anchor bolts, positioned on the outward face
- *   of the concrete platform — communicating that the post is bolted to the
- *   side edge of a floor slab or terrace.
- */
-function PostBase({ mounting, finishColor, postW, postD, postH, isFreeEnd = true }) {
-  const bracketMat = {
-    color: "#505860",
-    metalness: 0.86,
-    roughness: 0.24,
-    clearcoat: 0.42,
-    clearcoatRoughness: 0.18,
-  };
-  const boltMat = {
-    color: "#8d949b",
-    metalness: 0.92,
-    roughness: 0.18,
-    clearcoat: 0.32,
-  };
+function PostBase({ mounting, finishColor, postW, postD, postH, isRvs }) {
+  const bracketMat = { color: "#505860", metalness: 0.88, roughness: 0.2, clearcoat: 0.45, clearcoatRoughness: 0.15 };
+  const boltMat = { color: "#8d949b", metalness: 0.94, roughness: 0.12, clearcoat: 0.35 };
+
   if (mounting === "zijmontage") {
-    // Plate at the BACK of the post (–Z side) so it sits on the slab outer face.
-    // Group sits at slab mid-height: world y = –PLATFORM_HEIGHT/2.
-    // Plate must protrude past the slab on ALL faces.
-    // Slab extends 3 cm past posts on left/right (w = +0.06) and 1 cm on front.
-    // 0.045 m ensures 1.5 cm protrusion on the widest (left/right) faces.
     const plateDepth = 0.01;
     const plateWidth = postW * 1.55;
     const plateHeight = PLATFORM_HEIGHT * 0.52;
@@ -488,7 +389,7 @@ function PostBase({ mounting, finishColor, postW, postD, postH, isFreeEnd = true
     const plateZ = postD / 2 + plateDepth / 2 - 0.003;
     const armZ = postD / 2 - armDepth / 2 + 0.002;
     const armY = PLATFORM_HEIGHT * 0.14;
-    const boltZ  = plateZ - 0.001;
+    const boltZ = plateZ - 0.001;
     return (
       <group position={[0, -postH / 2 - PLATFORM_HEIGHT / 2 + 0.055, 0]}>
         <mesh position={[0, armY, armZ]} castShadow>
@@ -499,15 +400,10 @@ function PostBase({ mounting, finishColor, postW, postD, postH, isFreeEnd = true
           <boxGeometry args={[plateWidth, plateHeight, plateDepth]} />
           <meshPhysicalMaterial {...bracketMat} />
         </mesh>
-        <mesh position={[0, PLATFORM_HEIGHT * 0.25, plateZ + 0.001]} castShadow>
-          <boxGeometry args={[plateWidth * 0.74, 0.026, plateDepth * 1.8]} />
-          <meshPhysicalMaterial {...bracketMat} />
-        </mesh>
-        {/* Anchor bolts going into the slab (–Z direction) */}
         {[[-plateWidth * 0.28, plateHeight * 0.26], [plateWidth * 0.28, plateHeight * 0.26],
           [-plateWidth * 0.28, -plateHeight * 0.18], [plateWidth * 0.28, -plateHeight * 0.18]].map(([bx, by], i) => (
           <mesh key={i} position={[bx, by, boltZ]} rotation={[Math.PI / 2, 0, 0]} castShadow>
-            <cylinderGeometry args={[0.004, 0.004, 0.012, 12]} />
+            <cylinderGeometry args={[0.004, 0.004, 0.012, 8]} />
             <meshPhysicalMaterial {...boltMat} />
           </mesh>
         ))}
@@ -515,16 +411,33 @@ function PostBase({ mounting, finishColor, postW, postD, postH, isFreeEnd = true
     );
   }
 
-  // Floor mount: horizontal base plate with welded sleeve + anchor bolts
+  // Floor mount
+  const baseSize = isRvs ? postW * 2.4 : postW * 2.0;
   return (
-    <group position={[0, -postH / 2 + 0.008, 0]}>
+    <group position={[0, -postH / 2 + 0.006, 0]}>
+      {/* Base plate */}
       <mesh castShadow>
-        <boxGeometry args={[postW * 2.05, 0.014, postD * 2.05]} />
-        <meshPhysicalMaterial color="#69717a" metalness={0.82} roughness={0.26} clearcoat={0.28} />
+        {isRvs
+          ? <cylinderGeometry args={[baseSize / 2, baseSize / 2, 0.012, 32]} />
+          : <boxGeometry args={[baseSize, 0.012, baseSize]} />}
+        <meshPhysicalMaterial {...bracketMat} />
       </mesh>
+      {/* Welded collar / sleeve */}
+      {isRvs ? (
+        <mesh position={[0, 0.012, 0]} castShadow>
+          <cylinderGeometry args={[postW / 2 + 0.004, postW / 2 + 0.004, 0.012, 32]} />
+          <meshPhysicalMaterial {...bracketMat} />
+        </mesh>
+      ) : (
+        <mesh position={[0, 0.01, 0]} castShadow>
+          <boxGeometry args={[postW + 0.008, 0.008, postD + 0.008]} />
+          <meshPhysicalMaterial {...bracketMat} />
+        </mesh>
+      )}
+      {/* Anchor bolts */}
       {[[-1,-1],[-1,1],[1,-1],[1,1]].map(([sx,sz],i) => (
-        <mesh key={i} position={[sx*postW*0.64, 0.012, sz*postD*0.64]} castShadow>
-          <cylinderGeometry args={[0.0048, 0.0048, 0.011, 8]} />
+        <mesh key={i} position={[sx * baseSize * 0.3, 0.012, sz * baseSize * 0.3]} castShadow>
+          <cylinderGeometry args={[0.004, 0.004, 0.01, 8]} />
           <meshPhysicalMaterial {...boltMat} />
         </mesh>
       ))}
@@ -532,35 +445,24 @@ function PostBase({ mounting, finishColor, postW, postD, postH, isFreeEnd = true
   );
 }
 
-// ─── Single rail section (pre-transformed, centered at origin along X axis) ──
+// ─── Single rail section ─────────────────────────────────────────────────────
 
-function RailSection({
-  lengthM,
-  heightM,
-  selection,
-  finishColor,
-  showStartPost = true,
-  showEndPost = true,
-  startIsFreeEnd = true,
-  endIsFreeEnd = true,
-}) {
-  const depthM      = Math.max(0.04, (selection.depth ?? 6) / 100);
-  const isRvs       = selection.material === "rvs";
-  const isAluGlas   = selection.infill === "glas" && selection.material === "aluminium";
-  // Frameless = glass without posts (gepoedercoat + glas). RVS and aluminium get posts.
+function RailSection({ lengthM, heightM, selection, finishColor, showStartPost = true, showEndPost = true, startIsFreeEnd = true, endIsFreeEnd = true }) {
+  const depthM    = Math.max(0.04, (selection.depth ?? 6) / 100);
+  const isRvs     = selection.material === "rvs";
+  const isAluGlas = selection.infill === "glas" && selection.material === "aluminium";
   const isFrameless = selection.infill === "glas" && !isRvs && !isAluGlas;
 
-  const postW   = 0.046;
-  const postD   = depthM * 0.72;
-  const postH   = heightM;
-  const railH   = 0.055;
-  const railD   = depthM * 0.85;
-  const panelH  = Math.max(0.42, heightM - railH - 0.05);
+  const postW  = isRvs ? 0.042 : 0.044;
+  const postD  = isRvs ? 0.042 : depthM * 0.7;
+  const postH  = heightM;
+  const railH  = isRvs ? 0 : 0.05;
+  const railD  = isRvs ? 0.042 : depthM * 0.82;
+  const panelH = Math.max(0.42, heightM - (isRvs ? 0.04 : railH) - 0.04);
   const innerSpan = Math.max(0.12, lengthM - postW);
 
-  // Post spacing: ~80cm apart is realistic for balustrades, min 2 posts
-  const idealSpacing = 0.80;
-  const nPosts  = isFrameless ? 0 : Math.max(2, Math.min(10, Math.round(lengthM / idealSpacing) + 1));
+  // Post spacing: ~85cm for realism
+  const nPosts  = isFrameless ? 0 : Math.max(2, Math.min(10, Math.round(lengthM / 0.85) + 1));
   const postGap = nPosts > 1 ? lengthM / (nPosts - 1) : 0;
 
   const posts = Array.from({ length: nPosts }, (_, i) => {
@@ -568,10 +470,7 @@ function RailSection({
     const isEnd   = i === nPosts - 1;
     if (isStart && !showStartPost) return null;
     if (isEnd && !showEndPost) return null;
-    return {
-      x: -lengthM / 2 + postGap * i,
-      isFreeEnd: (isStart && startIsFreeEnd) || (isEnd && endIsFreeEnd),
-    };
+    return { x: -lengthM / 2 + postGap * i, isFreeEnd: (isStart && startIsFreeEnd) || (isEnd && endIsFreeEnd) };
   }).filter(Boolean);
 
   const postXs = posts.map(p => p.x);
@@ -579,40 +478,39 @@ function RailSection({
 
   return (
     <group>
-      {/* Top handrail — hidden for aluminium + glas (posts visible, no top bar) */}
+      {/* Handrail */}
       {!isFrameless && !isAluGlas && (
-        <group position={[0, heightM + railH / 2, 0]}>
-          {/* Main handrail body */}
-          <mesh castShadow receiveShadow>
-            <boxGeometry args={[innerSpan, railH, railD]} />
+        isRvs ? (
+          /* Round cylindrical handrail for RVS */
+          <mesh position={[0, heightM, 0]} rotation={[0, 0, Math.PI / 2]} castShadow receiveShadow>
+            <cylinderGeometry args={[0.02, 0.02, innerSpan, 32]} />
             <meshPhysicalMaterial {...mp} />
           </mesh>
-          {/* Top chamfer strip for realism */}
-          <mesh position={[0, railH / 2 + 0.002, 0]} castShadow>
-            <boxGeometry args={[innerSpan - 0.004, 0.004, railD - 0.006]} />
-            <meshPhysicalMaterial {...mp} />
-          </mesh>
-        </group>
+        ) : (
+          /* Rectangular handrail with rounded top profile */
+          <group position={[0, heightM + railH / 2, 0]}>
+            <mesh castShadow receiveShadow>
+              <boxGeometry args={[innerSpan, railH, railD]} />
+              <meshPhysicalMaterial {...mp} />
+            </mesh>
+            {/* Top surface highlight */}
+            <mesh position={[0, railH / 2 + 0.002, 0]}>
+              <boxGeometry args={[innerSpan - 0.003, 0.003, railD - 0.004]} />
+              <meshPhysicalMaterial {...mp} envMapIntensity={1.4} roughness={0.1} />
+            </mesh>
+          </group>
+        )
       )}
 
       {/* Posts with base hardware */}
       {posts.map((post, i) => (
         <group key={i} position={[post.x, postH / 2, 0]}>
-          <Post
-            isRvs={isRvs}
-            finishColor={finishColor}
-            postH={postH} postW={postW} postD={postD}
-          />
-          <PostBase
-            mounting={selection.mounting}
-            finishColor={finishColor}
-            postW={postW} postD={postD} postH={postH}
-            isFreeEnd={post.isFreeEnd}
-          />
+          <Post isRvs={isRvs} finishColor={finishColor} postH={postH} postW={postW} postD={postD} material={selection.material} />
+          <PostBase mounting={selection.mounting} finishColor={finishColor} postW={postW} postD={postD} postH={postH} isRvs={isRvs} />
         </group>
       ))}
 
-      {/* Infill panel */}
+      {/* Infill */}
       {isFrameless ? (
         <FramelessGlass railLength={lengthM} panelH={panelH} />
       ) : selection.infill === "glas" ? (
@@ -632,7 +530,7 @@ function RailSection({
   );
 }
 
-// ─── Flat segment in 3D space ─────────────────────────────────────────────────
+// ─── Flat segment in 3D space ────────────────────────────────────────────────
 
 function RailSegment({ segData, selection, finishColor }) {
   const transform = segmentToWorldTransform(segData);
@@ -640,69 +538,36 @@ function RailSegment({ segData, selection, finishColor }) {
   const heightM   = Math.max(0.6, (selection.height ?? 105) / 100);
 
   if (transform.isSloped) {
-    // Stair segment: yaw (horizontal) + pitch (elevation)
-    // Outer group: horizontal orientation
-    // Inner group: elevation tilt around local Z
     return (
-      <group
-        position={[transform.center.x, transform.center.y, transform.center.z]}
-        rotation={[0, transform.yaw, 0]}
-      >
+      <group position={[transform.center.x, transform.center.y, transform.center.z]} rotation={[0, transform.yaw, 0]}>
         <group rotation={[0, 0, transform.pitch]}>
-          <RailSection
-            lengthM={lengthM}
-            heightM={heightM}
-            selection={selection}
-            finishColor={finishColor}
-            showStartPost={segData.showStartPost !== false}
-            showEndPost={segData.showEndPost !== false}
-            startIsFreeEnd={!segData.startIsJunction}
-            endIsFreeEnd={!segData.endIsJunction}
-          />
+          <RailSection lengthM={lengthM} heightM={heightM} selection={selection} finishColor={finishColor}
+            showStartPost={segData.showStartPost !== false} showEndPost={segData.showEndPost !== false}
+            startIsFreeEnd={!segData.startIsJunction} endIsFreeEnd={!segData.endIsJunction} />
         </group>
       </group>
     );
   }
 
-  const yOffset = 0;
-
   return (
-    <group position={[transform.center.x, yOffset, transform.center.z]} rotation={[0, transform.yaw, 0]}>
-      <RailSection
-        lengthM={lengthM}
-        heightM={heightM}
-        selection={selection}
-        finishColor={finishColor}
-        showStartPost={segData.showStartPost !== false}
-        showEndPost={segData.showEndPost !== false}
-        startIsFreeEnd={!segData.startIsJunction}
-        endIsFreeEnd={!segData.endIsJunction}
-      />
+    <group position={[transform.center.x, 0, transform.center.z]} rotation={[0, transform.yaw, 0]}>
+      <RailSection lengthM={lengthM} heightM={heightM} selection={selection} finishColor={finishColor}
+        showStartPost={segData.showStartPost !== false} showEndPost={segData.showEndPost !== false}
+        startIsFreeEnd={!segData.startIsJunction} endIsFreeEnd={!segData.endIsJunction} />
     </group>
   );
 }
 
-/**
- * RoundedCornerConnector — curved connector at rounding vertices.
- *
- * The plan→world mapping negates Z (plan Y → world -Z), which reverses the
- * winding order of arcs. We correct this by inverting the corner direction
- * before sampling — this is the "proper transform layer" fix.
- */
 function RoundedCornerConnector({ corner, selection, finishColor }) {
   const depthM = Math.max(0.04, (selection.depth ?? 6) / 100);
   const railH = 0.055;
   const railD = depthM * 0.85;
   const isFrameless = selection.infill === "glas" && selection.material !== "rvs";
   const heightM = Math.max(0.6, (selection.height ?? 105) / 100);
-  const levels = isFrameless
-    ? [0.06, Math.max(0.02, heightM * 0.45)]
-    : [heightM + railH / 2, 0.10];
+  const levels = isFrameless ? [0.06, Math.max(0.02, heightM * 0.45)] : [heightM + railH / 2, 0.10];
 
-  // Invert direction to compensate for the plan→world Z-sign flip
   const corner3D = { ...corner, direction: -corner.direction };
   const points = sampleRoundedCorner(corner3D, 12).map(planPointToWorld);
-
   if (points.length < 2) return null;
 
   return (
@@ -714,15 +579,9 @@ function RoundedCornerConnector({ corner, selection, finishColor }) {
           const dz = next.z - point.z;
           const length = Math.hypot(dx, dz);
           if (length < 0.01) return null;
-
           return (
-            <mesh
-              key={`${corner.vertexId}-${levelIndex}-${index}`}
-              position={[(point.x + next.x) / 2, y, (point.z + next.z) / 2]}
-              rotation={[0, Math.atan2(-dz, dx), 0]}
-              castShadow
-              receiveShadow
-            >
+            <mesh key={`${corner.vertexId}-${levelIndex}-${index}`} position={[(point.x + next.x) / 2, y, (point.z + next.z) / 2]}
+              rotation={[0, Math.atan2(-dz, dx), 0]} castShadow receiveShadow>
               <boxGeometry args={[length, isFrameless ? 0.02 : railH, isFrameless ? 0.02 : railD]} />
               <meshPhysicalMaterial color={finishColor} metalness={0.82} roughness={0.24} clearcoat={0.4} />
             </mesh>
@@ -735,24 +594,11 @@ function RoundedCornerConnector({ corner, selection, finishColor }) {
 
 // ─── Concrete platform ────────────────────────────────────────────────────────
 
-/**
- * ConcreteBlock — 30 cm concrete slab under flat railing sections.
- *
- * The railing sits at the FRONT EDGE (viewer side, +Z) of the slab.
- * The slab extends behind the railing toward the building interior (–Z direction).
- * A small overhang (FRONT_OVERHANG) protrudes in front of the railing line.
- */
-const FRONT_OVERHANG = 0.01; // 1 cm — railing sits at the very front edge of the slab
+const FRONT_OVERHANG = 0.01;
 
 function ConcreteBlock({ bbox, mounting }) {
-  // Zijmontage: slab flush with railing endpoints — no extension in any direction.
-  // Posts land exactly on the slab face so corner posts are never buried in concrete.
-  // Op de vloer: small overhang all round (3 cm sides, 5 cm front).
-  const w = mounting === "zijmontage"
-    ? Math.max(bbox.width  / 100, 0.30)
-    : Math.max((bbox.width  / 100) + 0.06, 0.50);
+  const w = mounting === "zijmontage" ? Math.max(bbox.width / 100, 0.30) : Math.max((bbox.width / 100) + 0.06, 0.50);
   const d = Math.max((bbox.height / 100) + 0.06, 0.70);
-
   const frontShift = mounting === "zijmontage" ? 0 : 0.05;
   const zFront = -(bbox.minY / 100) + frontShift;
   const cz = zFront - d / 2;
@@ -760,78 +606,53 @@ function ConcreteBlock({ bbox, mounting }) {
 
   return (
     <group>
-      {/* Main concrete body */}
+      {/* Main body */}
       <mesh position={[cx, -PLATFORM_HEIGHT / 2, cz]} receiveShadow castShadow>
         <boxGeometry args={[w, PLATFORM_HEIGHT, d]} />
-        <meshStandardMaterial color="#bfb8ad" roughness={0.95} metalness={0.01} />
+        <meshStandardMaterial color="#b8b0a5" roughness={0.95} metalness={0.01} />
       </mesh>
-      {/* Top surface — slightly lighter, smoother */}
+      {/* Polished top surface */}
       <mesh position={[cx, -0.001, cz]} receiveShadow>
-        <boxGeometry args={[w - 0.002, 0.004, d - 0.002]} />
-        <meshStandardMaterial color="#ccc5ba" roughness={0.85} metalness={0.02} />
+        <boxGeometry args={[w - 0.002, 0.005, d - 0.002]} />
+        <meshStandardMaterial color="#c8c1b6" roughness={0.82} metalness={0.02} />
       </mesh>
-      {/* Edge chamfer strip — subtle detail */}
-      <mesh position={[cx, -0.003, cz + d / 2 - 0.003]}>
-        <boxGeometry args={[w - 0.006, 0.006, 0.006]} />
-        <meshStandardMaterial color="#b0a89d" roughness={0.92} metalness={0.01} />
+      {/* Front chamfer edge */}
+      <mesh position={[cx, -0.004, cz + d / 2 - 0.004]}>
+        <boxGeometry args={[w - 0.004, 0.008, 0.008]} />
+        <meshStandardMaterial color="#a8a197" roughness={0.9} metalness={0.01} />
       </mesh>
     </group>
   );
 }
 
-/**
- * StairFlightBlock — realistic stair steps beneath a sloped railing segment.
- *
- * Works for both ascending (rise > 0) and descending (rise < 0) flights.
- * Group is always anchored at the START vertex of the segment at y = 0 (world).
- * Steps travel along local +X (= yaw direction) and use signed stepH:
- *   rise > 0 → steps climb upward   (flat landing is at the start/bottom)
- *   rise < 0 → steps descend downward (flat landing is at the start/top)
- *
- * The slab extends behind the railing (same FRONT_OVERHANG as ConcreteBlock).
- */
-const STEP_CONCRETE   = "#B2ADA5";
-const STEP_EDGE_COLOR = "#9A9590";
-const STEP_WIDTH = 0.85; // metres — perpendicular to stair, from front overhang into interior
+const STEP_WIDTH = 0.85;
 
 function StairFlightBlock({ segData }) {
   const rise = segData.rise ?? 0;
   if (Math.abs(rise) < 1) return null;
 
   const t = segmentToWorldTransform(segData);
-  const riseM       = rise / 100;          // signed metres
+  const riseM = rise / 100;
   const horizontalM = segData.length / 100;
-
-  // Aim for ~17.5 cm per step (Belgian norm 17–18 cm)
   const nSteps = Math.max(Math.round(Math.abs(riseM) / 0.175), 2);
-  const tread  = horizontalM / nSteps;     // horizontal depth per step (m)
-  const stepH  = riseM / nSteps;           // signed: + ascending, – descending
-
-  // Bottom of the stair well — where the foundation floor is
-  const floorY = riseM >= 0
-    ? -PLATFORM_HEIGHT                     // ascending: bottom landing at y = –0.30
-    : riseM - PLATFORM_HEIGHT;             // descending: bottom landing at y = rise – 0.30
-
-  // Z offset: same FRONT_OVERHANG as ConcreteBlock — railing at front edge, slab behind
+  const tread = horizontalM / nSteps;
+  const stepH = riseM / nSteps;
+  const floorY = riseM >= 0 ? -PLATFORM_HEIGHT : riseM - PLATFORM_HEIGHT;
   const stepCenterZ = -(STEP_WIDTH / 2 - FRONT_OVERHANG);
 
   return (
     <group position={[t.start.x, 0, t.start.z]} rotation={[0, t.yaw, 0]}>
       {Array.from({ length: nSteps }, (_, i) => {
-        const treadTop = (i + 1) * stepH;             // signed tread height
-        const boxH     = Math.abs(treadTop - floorY); // always positive
-        const centerY  = (treadTop + floorY) / 2;
-        const noseY    = treadTop + 0.006;
-
+        const treadTop = (i + 1) * stepH;
+        const boxH = Math.abs(treadTop - floorY);
+        const centerY = (treadTop + floorY) / 2;
         return (
           <group key={i}>
-            {/* Main step body — solid from foundation floor to tread top */}
             <mesh position={[(i + 0.5) * tread, centerY, stepCenterZ]} receiveShadow castShadow>
               <boxGeometry args={[tread, boxH, STEP_WIDTH]} />
               <meshStandardMaterial color="#beb5aa" roughness={0.92} metalness={0.02} />
             </mesh>
-            {/* Nosing strip at the leading edge of each tread */}
-            <mesh position={[(i + 1) * tread - 0.012, noseY, stepCenterZ]} receiveShadow>
+            <mesh position={[(i + 1) * tread - 0.012, treadTop + 0.006, stepCenterZ]} receiveShadow>
               <boxGeometry args={[0.025, 0.012, STEP_WIDTH + 0.01]} />
               <meshStandardMaterial color="#a79e94" roughness={0.88} metalness={0.03} />
             </mesh>
@@ -845,34 +666,13 @@ function StairFlightBlock({ segData }) {
 // ─── 3D Dimension annotations ─────────────────────────────────────────────────
 
 function DimLabel({ position, text }) {
-  return (
-    <Html
-      position={position}
-      center
-      occlude={false}
-      zIndexRange={[100, 0]}
-      style={{ pointerEvents: "none" }}
-    >
-      <div className="dim3d dim3d__label">
-        {text}
-      </div>
-    </Html>
-  );
+  return <Html position={position} center occlude={false} zIndexRange={[100, 0]} style={{ pointerEvents: "none" }}><div className="dim3d dim3d__label">{text}</div></Html>;
 }
 
 function ArrowHead({ position, angle, color = "#D8C8A8", size = 0.08 }) {
   const wing = size * 0.52;
-  const left = [
-    position[0] - Math.cos(angle - Math.PI / 6) * wing,
-    position[1],
-    position[2] - Math.sin(angle - Math.PI / 6) * wing,
-  ];
-  const right = [
-    position[0] - Math.cos(angle + Math.PI / 6) * wing,
-    position[1],
-    position[2] - Math.sin(angle + Math.PI / 6) * wing,
-  ];
-
+  const left = [position[0] - Math.cos(angle - Math.PI / 6) * wing, position[1], position[2] - Math.sin(angle - Math.PI / 6) * wing];
+  const right = [position[0] - Math.cos(angle + Math.PI / 6) * wing, position[1], position[2] - Math.sin(angle + Math.PI / 6) * wing];
   return (
     <>
       <Line points={[left, position]} color={color} lineWidth={1.4} transparent opacity={0.95} />
@@ -886,35 +686,12 @@ function VerticalRiseDimension({ seg, offsetX = 0.16, offsetZ = 0.08 }) {
   const guideColor = "#C4954A";
   const top = [t.end.x + offsetX, t.end.y + 0.02, t.end.z + offsetZ];
   const bottom = [t.end.x + offsetX, 0.02, t.end.z + offsetZ];
-  const center = [
-    (top[0] + bottom[0]) / 2,
-    (top[1] + bottom[1]) / 2,
-    (top[2] + bottom[2]) / 2,
-  ];
-
+  const center = [(top[0] + bottom[0]) / 2, (top[1] + bottom[1]) / 2, (top[2] + bottom[2]) / 2];
   return (
     <group>
       <Line points={[bottom, top]} color={guideColor} lineWidth={1.35} transparent opacity={0.95} />
-      <Line
-        points={[[t.end.x, 0.02, t.end.z], bottom]}
-        color={guideColor}
-        lineWidth={1}
-        dashed
-        dashSize={0.03}
-        gapSize={0.02}
-        transparent
-        opacity={0.7}
-      />
-      <Line
-        points={[[t.end.x, t.end.y + 0.02, t.end.z], top]}
-        color={guideColor}
-        lineWidth={1}
-        dashed
-        dashSize={0.03}
-        gapSize={0.02}
-        transparent
-        opacity={0.7}
-      />
+      <Line points={[[t.end.x, 0.02, t.end.z], bottom]} color={guideColor} lineWidth={1} dashed dashSize={0.03} gapSize={0.02} transparent opacity={0.7} />
+      <Line points={[[t.end.x, t.end.y + 0.02, t.end.z], top]} color={guideColor} lineWidth={1} dashed dashSize={0.03} gapSize={0.02} transparent opacity={0.7} />
       <ArrowHead position={top} angle={-Math.PI / 2} color={guideColor} size={0.06} />
       <ArrowHead position={bottom} angle={Math.PI / 2} color={guideColor} size={0.06} />
       <DimLabel position={center} text={`↑ ${Math.round(Math.abs(seg.rise))} cm`} />
@@ -930,30 +707,11 @@ function SegmentDimension({ seg, heightM }) {
   const start = [t.start.x, labelY, t.start.z];
   const end = [t.end.x, labelY, t.end.z];
   const angle = Math.atan2(t.end.z - t.start.z, t.end.x - t.start.x);
-
   return (
     <group>
       <Line points={[start, end]} color={guideColor} lineWidth={1.4} transparent opacity={0.95} />
-      <Line
-        points={[[t.start.x, 0.04, t.start.z], start]}
-        color={guideColor}
-        lineWidth={1}
-        dashed
-        dashSize={0.04}
-        gapSize={0.025}
-        transparent
-        opacity={0.75}
-      />
-      <Line
-        points={[[t.end.x, t.end.y + 0.04, t.end.z], end]}
-        color={guideColor}
-        lineWidth={1}
-        dashed
-        dashSize={0.04}
-        gapSize={0.025}
-        transparent
-        opacity={0.75}
-      />
+      <Line points={[[t.start.x, 0.04, t.start.z], start]} color={guideColor} lineWidth={1} dashed dashSize={0.04} gapSize={0.025} transparent opacity={0.75} />
+      <Line points={[[t.end.x, t.end.y + 0.04, t.end.z], end]} color={guideColor} lineWidth={1} dashed dashSize={0.04} gapSize={0.025} transparent opacity={0.75} />
       <ArrowHead position={start} angle={angle} color={guideColor} />
       <ArrowHead position={end} angle={angle + Math.PI} color={guideColor} />
       <DimLabel position={[t.center.x, labelY, t.center.z]} text={`${lenCm} cm`} />
@@ -964,36 +722,20 @@ function SegmentDimension({ seg, heightM }) {
 
 function DimensionAnnotationsWithArrows({ segments, heightM }) {
   if (!segments || segments.length === 0) return null;
-
-  return (
-    <>
-      {segments.map(seg => (
-        <SegmentDimension key={`dim-arrow-${seg.id}`} seg={seg} heightM={heightM} />
-      ))}
-    </>
-  );
+  return <>{segments.map(seg => <SegmentDimension key={`dim-arrow-${seg.id}`} seg={seg} heightM={heightM} />)}</>;
 }
 
 function BoundingBoxDimensions({ bbox }) {
   if (!bbox || bbox.width <= 0.01 || bbox.height <= 0.01) return null;
-
-  const minX = bbox.minX / 100;
-  const maxX = bbox.maxX / 100;
-  const minZ = -(bbox.maxY / 100);
-  const maxZ = -(bbox.minY / 100);
-  const widthY = 0.12;
-  const depthY = 0.18;
-  const xDimZ = maxZ + 0.28;
-  const zDimX = minX - 0.26;
+  const minX = bbox.minX / 100, maxX = bbox.maxX / 100, minZ = -(bbox.maxY / 100), maxZ = -(bbox.minY / 100);
+  const widthY = 0.12, depthY = 0.18, xDimZ = maxZ + 0.28, zDimX = minX - 0.26;
   const guideColor = "#cab89a";
-
   return (
     <>
       <Line points={[[minX, widthY, xDimZ], [maxX, widthY, xDimZ]]} color={guideColor} lineWidth={1.2} transparent opacity={0.9} />
       <ArrowHead position={[minX, widthY, xDimZ]} angle={0} color={guideColor} size={0.055} />
       <ArrowHead position={[maxX, widthY, xDimZ]} angle={Math.PI} color={guideColor} size={0.055} />
       <DimLabel position={[(minX + maxX) / 2, widthY, xDimZ]} text={`${Math.round(bbox.width)} cm`} />
-
       <Line points={[[zDimX, depthY, minZ], [zDimX, depthY, maxZ]]} color={guideColor} lineWidth={1.2} transparent opacity={0.9} />
       <ArrowHead position={[zDimX, depthY, minZ]} angle={-Math.PI / 2} color={guideColor} size={0.055} />
       <ArrowHead position={[zDimX, depthY, maxZ]} angle={Math.PI / 2} color={guideColor} size={0.055} />
@@ -1002,178 +744,89 @@ function BoundingBoxDimensions({ bbox }) {
   );
 }
 
-function DimensionAnnotations({ segments, heightM }) {
-  if (!segments || segments.length === 0) return null;
-
-  return (
-    <>
-      {segments.map(seg => {
-        const t = segmentToWorldTransform(seg);
-        const labelY = (seg.rise ?? 0) / 200 + heightM + 0.26;
-        const lenCm  = Math.round(seg.length);
-
-        return (
-          <group key={`dim-${seg.id}`}>
-            {/* Segment length label above the handrail */}
-            <DimLabel
-              position={[t.center.x, labelY, t.center.z]}
-              text={`${lenCm} cm`}
-            />
-            {/* Show rise for stair segments */}
-            {(seg.rise ?? 0) !== 0 && (
-              <DimLabel
-                position={[t.center.x, labelY + 0.22, t.center.z]}
-                text={`↑ ${Math.round(Math.abs(seg.rise))} cm`}
-              />
-            )}
-          </group>
-        );
-      })}
-    </>
-  );
-}
-
-// ─── Scene internals (inside Canvas) ─────────────────────────────────────────
+// ─── Scene internals ─────────────────────────────────────────────────────────
 
 function SceneInner({ segments, roundedCorners, selection, finishColor, bbox, showDimensions, qualityMode }) {
-  const center  = bboxCenterToWorld(bbox);
+  const center = bboxCenterToWorld(bbox);
   const heightM = Math.max(0.6, (selection.height ?? 105) / 100);
-  const sh      = Math.max(Math.hypot(bbox.width, bbox.height) / 200 + 2.5, 4);
+  const sh = Math.max(Math.hypot(bbox.width, bbox.height) / 200 + 2.5, 4);
   const quality = QUALITY_PRESETS[qualityMode] ?? QUALITY_PRESETS.balanced;
 
-  // Floor drops to the bottom of the lowest stair flight so stairs don't go underground
   const floorY = useMemo(() => {
     const minRise = Math.min(0, ...segments.map(s => (s.rise ?? 0) / 100));
     return minRise - PLATFORM_HEIGHT - 0.001;
   }, [segments]);
 
-  // ConcreteBlock covers only flat (non-stair) segments to avoid overlap with StairFlightBlock
   const flatBbox = useMemo(() => {
     const flat = segments.filter(s => Math.abs(s.rise ?? 0) < 1);
     if (flat.length === 0) return null;
     let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
     for (const s of flat) {
-      minX = Math.min(minX, s.start.x, s.end.x);
-      maxX = Math.max(maxX, s.start.x, s.end.x);
-      minY = Math.min(minY, s.start.y, s.end.y);
-      maxY = Math.max(maxY, s.start.y, s.end.y);
+      minX = Math.min(minX, s.start.x, s.end.x); maxX = Math.max(maxX, s.start.x, s.end.x);
+      minY = Math.min(minY, s.start.y, s.end.y); maxY = Math.max(maxY, s.start.y, s.end.y);
     }
     return { minX, maxX, minY, maxY, width: maxX - minX, height: maxY - minY };
   }, [segments]);
 
   return (
     <>
-      <color attach="background" args={["#f4ede2"]} />
-      <fog attach="fog" args={["#f4ede2", 8, 24]} />
+      <color attach="background" args={["#f0ebe2"]} />
+      <fog attach="fog" args={["#f0ebe2", 9, 26]} />
       <CameraFitter bbox={bbox} />
 
       <Environment preset="apartment" background={false} resolution={quality.envResolution} />
 
-      <mesh position={[center.x, 4.8, center.z - 7.2]}>
-        <planeGeometry args={[28, 14]} />
-        <meshBasicMaterial color="#f7f1e7" />
-      </mesh>
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[center.x, 6.9, center.z]}>
-        <ringGeometry args={[6, 11, 48]} />
-        <meshBasicMaterial color="#f1e5ce" transparent opacity={0.32} side={2} />
-      </mesh>
+      {/* Sky / backdrop */}
+      <mesh position={[center.x, 5, center.z - 7.5]}><planeGeometry args={[30, 15]} /><meshBasicMaterial color="#f5f0e8" /></mesh>
 
-      {/* ── 3-point studio lighting ── */}
-      <ambientLight intensity={0.28} color="#F8F0E4" />
-      <hemisphereLight intensity={0.5} color="#FFF8EE" groundColor="#7B8792" />
+      {/* Studio lighting */}
+      <ambientLight intensity={0.25} color="#F8F0E4" />
+      <hemisphereLight intensity={0.45} color="#FFF8EE" groundColor="#7B8792" />
 
-      {/* Key light — warm, strong shadows */}
-      <directionalLight
-        intensity={2.8}
-        position={[center.x + 5.5, 9, center.z + 4.2]}
-        color="#FFF4E8"
-        castShadow
-        shadow-mapSize-width={quality.shadowMap}
-        shadow-mapSize-height={quality.shadowMap}
-        shadow-camera-near={0.5}
-        shadow-camera-far={30}
-        shadow-camera-left={-sh}
-        shadow-camera-right={sh}
-        shadow-camera-top={sh}
-        shadow-camera-bottom={-sh}
-        shadow-bias={-0.0008}
-        shadow-normalBias={0.025}
-      />
+      <directionalLight intensity={3.0} position={[center.x + 5.5, 9.5, center.z + 4.2]} color="#FFF2E4" castShadow
+        shadow-mapSize-width={quality.shadowMap} shadow-mapSize-height={quality.shadowMap}
+        shadow-camera-near={0.5} shadow-camera-far={30}
+        shadow-camera-left={-sh} shadow-camera-right={sh} shadow-camera-top={sh} shadow-camera-bottom={-sh}
+        shadow-bias={-0.0008} shadow-normalBias={0.025} />
 
-      {/* Fill light — cool tone for contrast */}
-      <directionalLight intensity={0.9} position={[center.x - 5, 5, center.z + 3]} color="#D0E4F6" />
+      <directionalLight intensity={1.0} position={[center.x - 5, 5.5, center.z + 3]} color="#D0E4F6" />
+      <pointLight intensity={2.2} position={[center.x + 0.5, 3.5, center.z - 5.5]} color="#FFD9A6" decay={2} />
+      <pointLight intensity={0.5} position={[center.x, 0.3, center.z + 1.5]} color="#E8E0D4" decay={2} />
 
-      {/* Rim / back light — adds edge definition to metals */}
-      <pointLight intensity={2.0} position={[center.x + 0.5, 3.2, center.z - 5]} color="#FFD9A6" decay={2} />
-
-      {/* Under-fill for glass transmission */}
-      <pointLight intensity={0.6} position={[center.x, 0.3, center.z + 1.5]} color="#E8E0D4" decay={2} />
-
-      {/* ── Concrete slab — only under flat segments, at the front edge ── */}
       <ConcreteBlock bbox={flatBbox ?? bbox} mounting={selection.mounting} />
 
-      {/* ── Stair steps — one flight per sloped segment ── */}
       {segments.filter(s => Math.abs(s.rise ?? 0) >= 1).map(s => (
         <StairFlightBlock key={`stair-${s.id}`} segData={s} />
       ))}
 
-      {/* ── Floor around the platform ── */}
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, floorY, 0]}>
         <planeGeometry args={[30, 30]} />
-        <meshStandardMaterial color="#d5cdc0" roughness={0.92} metalness={0.02} />
+        <meshStandardMaterial color="#d2cac0" roughness={0.92} metalness={0.02} />
       </mesh>
 
-      <ContactShadows
-        position={[center.x, floorY + 0.004, center.z]}
+      <ContactShadows position={[center.x, floorY + 0.004, center.z]}
         scale={Math.max(6, Math.hypot(bbox.width, bbox.height) / 90)}
-        blur={quality.contactBlur}
-        opacity={0.28}
+        blur={quality.contactBlur} opacity={0.3}
         far={qualityMode === "lightweight" ? 6 : 8}
-        resolution={quality.shadowMap}
-        color="#1f140d"
-      />
+        resolution={quality.shadowMap} color="#1f140d" />
 
-      {/* Shadow receiver on floor */}
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, floorY + 0.001, 0]} receiveShadow>
-        <planeGeometry args={[40, 40]} />
-        <shadowMaterial opacity={0.26} color="#1A0F08" />
+        <planeGeometry args={[40, 40]} /><shadowMaterial opacity={0.28} color="#1A0F08" />
       </mesh>
 
-      {/* Floor grid */}
-      <Grid
-        position={[center.x, floorY + 0.002, center.z]}
-        args={[40, 40]}
-        cellSize={0.5}
-        cellThickness={0.30}
-        cellColor="#B8B0A8"
-        sectionSize={1}
-        sectionThickness={0.65}
-        sectionColor="#9A9288"
-        fadeDistance={quality.gridFade}
-        fadeStrength={3.0}
-        infiniteGrid
-      />
+      <Grid position={[center.x, floorY + 0.002, center.z]} args={[40, 40]}
+        cellSize={0.5} cellThickness={0.30} cellColor="#B8B0A8"
+        sectionSize={1} sectionThickness={0.65} sectionColor="#9A9288"
+        fadeDistance={quality.gridFade} fadeStrength={3.0} infiniteGrid />
 
-      {/* ── Railing segments ── */}
       {segments.map(seg => (
-        <RailSegment
-          key={seg.id}
-          segData={seg}
-          selection={selection}
-          finishColor={finishColor}
-        />
+        <RailSegment key={seg.id} segData={seg} selection={selection} finishColor={finishColor} />
       ))}
 
       {(selection.extraOptions ?? []).includes("zaokraglenia") && roundedCorners.map((corner) => (
-        <RoundedCornerConnector
-          key={corner.vertexId}
-          corner={corner}
-          selection={selection}
-          finishColor={finishColor}
-        />
+        <RoundedCornerConnector key={corner.vertexId} corner={corner} selection={selection} finishColor={finishColor} />
       ))}
 
-      {/* ── 3D dimension annotations (toggled by button) ── */}
       {showDimensions && (
         <>
           <DimensionAnnotationsWithArrows segments={segments} heightM={heightM} />
@@ -1193,7 +846,6 @@ function Scene3D({ geo, selection, finish, showDimensions = false, qualityMode =
   const finishColor    = finish?.hex ?? "#22262B";
   const quality        = QUALITY_PRESETS[qualityMode] ?? QUALITY_PRESETS.balanced;
 
-  // Enrich each segment with junction flags — avoids duplicate posts at shared vertices
   const enrichedSegments = useMemo(() => {
     const vertexCount = {};
     const vertexOwners = {};
@@ -1201,38 +853,27 @@ function Scene3D({ geo, selection, finish, showDimensions = false, qualityMode =
       vertexCount[seg.startId] = (vertexCount[seg.startId] || 0) + 1;
       vertexCount[seg.endId]   = (vertexCount[seg.endId]   || 0) + 1;
     });
-
     const rankOwner = (current, candidate) => {
       if (!current) return candidate;
       if (candidate.bias !== current.bias) return candidate.bias > current.bias ? candidate : current;
       if (candidate.length !== current.length) return candidate.length > current.length ? candidate : current;
       return candidate.segId < current.segId ? candidate : current;
     };
-
     segments.forEach(seg => {
       const raw = geo.segments[seg.id];
       if (!raw) return;
-
       const dx = Math.abs(raw.endId && geo.vertices[raw.endId] ? geo.vertices[raw.endId].x - geo.vertices[raw.startId].x : 0);
       const dy = Math.abs(raw.endId && geo.vertices[raw.endId] ? geo.vertices[raw.endId].y - geo.vertices[raw.startId].y : 0);
-      const candidate = {
-        segId: seg.id,
-        bias: dx - dy,
-        length: seg.length,
-      };
-
+      const candidate = { segId: seg.id, bias: dx - dy, length: seg.length };
       vertexOwners[raw.startId] = rankOwner(vertexOwners[raw.startId], candidate);
       vertexOwners[raw.endId] = rankOwner(vertexOwners[raw.endId], candidate);
     });
-
     return segments.map(seg => {
       const raw = geo.segments[seg.id];
       const startDegree = raw ? (vertexCount[raw.startId] || 0) : 0;
       const endDegree = raw ? (vertexCount[raw.endId] || 0) : 0;
       return {
-        ...seg,
-        startIsJunction: startDegree >= 2,
-        endIsJunction: endDegree >= 2,
+        ...seg, startIsJunction: startDegree >= 2, endIsJunction: endDegree >= 2,
         showStartPost: raw ? startDegree <= 1 || vertexOwners[raw.startId]?.segId === seg.id : true,
         showEndPost: raw ? endDegree <= 1 || vertexOwners[raw.endId]?.segId === seg.id : true,
       };
@@ -1242,33 +883,18 @@ function Scene3D({ geo, selection, finish, showDimensions = false, qualityMode =
   const initCam = useMemo(() => getCameraSetup(bbox), []); // eslint-disable-line
 
   if (enrichedSegments.length === 0) {
-    return (
-      <div className="scene3d__empty">
-        <p>Teken een balustrade in de 2D-planner om de 3D-preview te zien.</p>
-      </div>
-    );
+    return <div className="scene3d__empty"><p>Teken een balustrade in de 2D-planner om de 3D-preview te zien.</p></div>;
   }
 
   return (
-    <Canvas
-      dpr={quality.dpr}
-      shadows
-      gl={{ antialias: true }}
-    >
+    <Canvas dpr={quality.dpr} shadows gl={{ antialias: true }}>
       <color attach="background" args={["#EAE4D8"]} />
       <fog attach="fog" args={["#EAE4D8", 9, 24]} />
       <PerspectiveCamera makeDefault position={initCam.position} fov={28} />
-
       <Suspense fallback={null}>
-        <SceneInner
-          segments={enrichedSegments}
-          roundedCorners={roundedCorners}
-        selection={selection}
-        finishColor={finishColor}
-        bbox={bbox}
-        showDimensions={showDimensions}
-        qualityMode={qualityMode}
-      />
+        <SceneInner segments={enrichedSegments} roundedCorners={roundedCorners}
+          selection={selection} finishColor={finishColor} bbox={bbox}
+          showDimensions={showDimensions} qualityMode={qualityMode} />
       </Suspense>
     </Canvas>
   );
