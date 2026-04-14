@@ -26,7 +26,7 @@ export default async function RamenPage({ params }: Props) {
       <ProductPageTemplate
         namespace="RamenPage"
         materialKeys={['pvc', 'aluminum', 'wood']}
-        materialImages={[IMAGES.materials.pvc, IMAGES.materials.aluminum, IMAGES.materials.wood]}
+        materialImages={[IMAGES.materials.ramenPvc, IMAGES.materials.ramenAluminium, IMAGES.materials.ramenHout]}
         featureKeys={['insulation', 'noise', 'security', 'energy', 'maintenance', 'custom']}
         breadcrumbLabel="Ramen"
       />

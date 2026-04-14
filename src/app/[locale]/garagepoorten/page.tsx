@@ -26,7 +26,7 @@ export default async function GaragepoortenPage({ params }: Props) {
       <ProductPageTemplate
         namespace="GaragepoortenPage"
         materialKeys={['sectional', 'tilt', 'roller']}
-        materialImages={[IMAGES.products.garagepoorten.src, IMAGES.materials.aluminum, IMAGES.materials.composite]}
+        materialImages={[IMAGES.materials.sectionaal, IMAGES.materials.kantel, IMAGES.materials.rolluik]}
         featureKeys={['automatic', 'insulation', 'security', 'quiet', 'smart', 'design']}
         breadcrumbLabel="Garagepoorten"
       />

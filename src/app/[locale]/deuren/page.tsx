@@ -26,7 +26,7 @@ export default async function DeurenPage({ params }: Props) {
       <ProductPageTemplate
         namespace="DeurenPage"
         materialKeys={['wood', 'aluminum', 'composite']}
-        materialImages={[IMAGES.materials.wood, IMAGES.materials.aluminum, IMAGES.materials.composite]}
+        materialImages={[IMAGES.materials.deurenHout, IMAGES.materials.deurenAluminium, IMAGES.materials.deurenComposiet]}
         featureKeys={['security', 'insulation', 'design', 'durability', 'smart', 'custom']}
         breadcrumbLabel="Deuren"
       />
