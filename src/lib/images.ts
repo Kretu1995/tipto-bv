@@ -66,7 +66,7 @@ export const IMAGES = {
   },
 
   simulator: {
-    preview: '/images/1b.jpg',
+    preview: '/images/14.jpg',
   },
 
   // Full project gallery — all real Tipto installations
