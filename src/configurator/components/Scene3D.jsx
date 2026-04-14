@@ -201,9 +201,14 @@ function FramelessGlass({ railLength, panelH }) {
 
 function VerticalSpijlen({ railLength, panelH, finishColor, material }) {
   const mp = frameMat(finishColor, material);
-  const barSize = 0.016; // same thickness as posts and rails
-  const count = Math.max(4, Math.round(railLength / 0.105));
-  const spacing = railLength / (count + 1);
+  const barSize = 0.016;
+  // Consistent ~10.5cm spacing — calculate count from available length
+  const targetSpacing = 0.105;
+  const count = Math.max(2, Math.round(railLength / targetSpacing) - 1);
+  // Even distribution with equal margins on both sides
+  const totalBarsWidth = count * barSize;
+  const totalGaps = railLength - totalBarsWidth;
+  const spacing = totalGaps / (count + 1);
   const barBottom = 0.02;
   const barTop = panelH;
   const barH = barTop - barBottom;
@@ -212,7 +217,7 @@ function VerticalSpijlen({ railLength, panelH, finishColor, material }) {
   return (
     <group>
       {Array.from({ length: count }, (_, i) => {
-        const x = -railLength / 2 + spacing * (i + 1);
+        const x = -railLength / 2 + spacing * (i + 1) + barSize * i + barSize / 2;
         return (
           <mesh key={i} position={[x, barY, 0]} castShadow>
             <boxGeometry args={[barSize, barH, barSize]} />
@@ -539,12 +544,14 @@ function RailSection({ lengthM, heightM, selection, finishColor, showStartPost =
 
 function CornerCap({ position, selection, finishColor }) {
   const depthM = Math.max(0.04, (selection.depth ?? 6) / 100);
-  const railH = 0.05;
-  const railD = depthM * 0.82;
-  const postW = 0.044;
+  const isSpijlen = selection.infill === "verticale-spijlen";
+  const railH = isSpijlen ? 0.016 : 0.05;
+  const railD = isSpijlen ? 0.016 : depthM * 0.82;
+  const postW = isSpijlen ? 0.016 : 0.044;
   const heightM = Math.max(0.6, (selection.height ?? 105) / 100);
   const mp = frameMat(finishColor, selection.material);
-  const showHandrail = selection.infill !== "glas";
+  const hasHandrailOption = (selection.extraOptions ?? []).includes("handrail-glas");
+  const showHandrail = selection.infill !== "glas" || hasHandrailOption;
   const capY = heightM + railH / 2;
 
   if (!showHandrail) return null;
@@ -589,13 +596,15 @@ function RailSegment({ segData, selection, finishColor }) {
 
 function RoundedCornerConnector({ corner, selection, finishColor }) {
   const depthM = Math.max(0.04, (selection.depth ?? 6) / 100);
-  const railH = 0.05;
-  const railD = depthM * 0.82;
-  const postW = 0.044;
-  const postD = depthM * 0.7;
+  const isSpijlen = selection.infill === "verticale-spijlen";
+  const railH = isSpijlen ? 0.016 : 0.05;
+  const railD = isSpijlen ? 0.016 : depthM * 0.82;
+  const postW = isSpijlen ? 0.016 : 0.044;
+  const postD = isSpijlen ? 0.016 : depthM * 0.7;
   const heightM = Math.max(0.6, (selection.height ?? 105) / 100);
   const mp = frameMat(finishColor, selection.material);
-  const showHandrail = selection.infill !== "glas";
+  const hasHandrailOption = (selection.extraOptions ?? []).includes("handrail-glas");
+  const showHandrail = selection.infill !== "glas" || hasHandrailOption;
 
   const handrailY = heightM + railH / 2;
   const baseRailY = 0.018;

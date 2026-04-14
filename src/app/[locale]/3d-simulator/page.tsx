@@ -2,7 +2,6 @@ import { setRequestLocale } from 'next-intl/server';
 import { getTranslations } from 'next-intl/server';
 import { generatePageMetadata } from '@/lib/metadata';
 import type { Metadata } from 'next';
-import ProductHero from '@/components/sections/ProductHero';
 import SimulatorWrapper from '@/components/three/SimulatorWrapper';
 
 type Props = { params: Promise<{ locale: string }> };
@@ -16,25 +15,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function SimulatorPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations({ locale, namespace: 'SimulatorPage' });
 
   return (
-    <>
-      <ProductHero
-        badge={t('hero.badge')}
-        title={t('hero.title')}
-        subtitle={t('hero.subtitle')}
-        breadcrumbs={[
-          { label: 'Home', href: '/' },
-          { label: '3D Simulator' },
-        ]}
-      />
-
-      <section className="bg-off-white">
-        <div className="w-full">
-          <SimulatorWrapper />
-        </div>
-      </section>
-    </>
+    <div className="h-[calc(100vh-4rem)] lg:h-[calc(100vh-5rem)] mt-16 lg:mt-20">
+      <SimulatorWrapper />
+    </div>
   );
 }
