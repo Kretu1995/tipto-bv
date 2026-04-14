@@ -1,0 +1,403 @@
+@import "./design.css";
+
+:root {
+  --tipto-bg: #f5f1e8;
+  --tipto-surface: rgba(255, 252, 247, 0.78);
+  --tipto-surface-strong: #fffaf2;
+  --tipto-ink: #17191d;
+  --tipto-muted: #64615d;
+  --tipto-line: rgba(23, 25, 29, 0.09);
+  --tipto-accent: #b78b56;
+  --tipto-accent-strong: #8e6537;
+  --tipto-shadow: 0 32px 90px rgba(54, 39, 20, 0.12);
+  --tipto-radius-xl: 28px;
+  --tipto-radius-lg: 20px;
+  --tipto-radius-md: 14px;
+  --tipto-font: "Manrope", "Avenir Next", "Segoe UI", sans-serif;
+}
+
+.tipto-balustrade-3d-shell,
+.tipto-balustrade-3d-root {
+  width: 100%;
+}
+
+.tipto-app {
+  font-family: var(--tipto-font);
+  color: var(--tipto-ink);
+  background:
+    radial-gradient(circle at top left, rgba(183, 139, 86, 0.15), transparent 32%),
+    linear-gradient(145deg, #f8f4ec 0%, #f0e9de 100%);
+  border-radius: 36px;
+  padding: 28px;
+  box-shadow: var(--tipto-shadow);
+  overflow: hidden;
+}
+
+.tipto-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.06fr) minmax(340px, 0.94fr);
+  gap: 24px;
+}
+
+.tipto-main-column,
+.tipto-side-column {
+  display: grid;
+  gap: 20px;
+  align-content: start;
+}
+
+.tipto-hero,
+.tipto-panel,
+.tipto-preview-panel {
+  background: var(--tipto-surface);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: var(--tipto-radius-xl);
+  padding: 24px;
+}
+
+.tipto-hero h1,
+.tipto-panel h2,
+.tipto-preview-panel h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 2vw, 2.45rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.tipto-hero p,
+.tipto-panel p,
+.tipto-preview-panel p,
+.tipto-card-option span,
+.tipto-summary-row span,
+.tipto-fallback-copy p {
+  color: var(--tipto-muted);
+  line-height: 1.6;
+}
+
+.tipto-eyebrow,
+.tipto-preview-badge,
+.tipto-price-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(183, 139, 86, 0.12);
+  color: var(--tipto-accent-strong);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.tipto-panel-header,
+.tipto-preview-copy {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 22px;
+}
+
+.tipto-field,
+.tipto-range,
+.tipto-form label {
+  display: grid;
+  gap: 12px;
+}
+
+.tipto-field + .tipto-field,
+.tipto-field + .tipto-field-grid,
+.tipto-field-grid + .tipto-field,
+.tipto-form > * + *,
+.tipto-summary-list > * + *,
+.tipto-fallback-copy > * + * {
+  margin-top: 18px;
+}
+
+.tipto-field-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.tipto-field-grid,
+.tipto-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.tipto-card-options,
+.tipto-swatch-grid,
+.tipto-check-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.tipto-card-options {
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+.tipto-swatch-grid {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.tipto-card-option,
+.tipto-swatch {
+  border: 1px solid var(--tipto-line);
+  background: rgba(255, 255, 255, 0.64);
+  border-radius: var(--tipto-radius-md);
+  padding: 16px;
+  text-align: left;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  cursor: pointer;
+}
+
+.tipto-card-option:hover,
+.tipto-swatch:hover,
+.tipto-primary-button:hover {
+  transform: translateY(-1px);
+}
+
+.tipto-card-option.is-active,
+.tipto-swatch.is-active {
+  border-color: rgba(183, 139, 86, 0.65);
+  box-shadow: 0 16px 34px rgba(183, 139, 86, 0.16);
+  background: rgba(255, 251, 245, 0.95);
+}
+
+.tipto-swatch {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tipto-swatch-chip {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  flex: 0 0 auto;
+}
+
+.tipto-range input,
+.tipto-form input,
+.tipto-form textarea {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid rgba(23, 25, 29, 0.1);
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.tipto-range input {
+  accent-color: var(--tipto-accent-strong);
+}
+
+.tipto-form input,
+.tipto-form textarea {
+  padding: 14px 15px;
+  font: inherit;
+  color: inherit;
+}
+
+.tipto-check-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.tipto-check-item,
+.tipto-consent {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  color: var(--tipto-muted);
+}
+
+.tipto-config-note,
+.tipto-inline-summary,
+.tipto-reference-box,
+.tipto-form-status {
+  border-radius: var(--tipto-radius-md);
+  padding: 16px 18px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(23, 25, 29, 0.08);
+}
+
+.tipto-config-note,
+.tipto-reference-box {
+  display: grid;
+  gap: 8px;
+}
+
+.tipto-preview-stage {
+  position: relative;
+  min-height: 520px;
+  border-radius: 24px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.1) 65%),
+    linear-gradient(180deg, #fcf8f1 0%, #efe7db 100%);
+}
+
+.tipto-loader {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  width: 100%;
+  color: var(--tipto-muted);
+  font-weight: 600;
+}
+
+.tipto-fallback {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+  padding: 22px;
+  height: 100%;
+}
+
+.tipto-fallback-visual {
+  position: relative;
+  min-height: 260px;
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.05) 68%),
+    linear-gradient(180deg, #f7f4ee 0%, #ede5d8 100%);
+  border: 1px solid rgba(23, 25, 29, 0.08);
+}
+
+.tipto-fallback-rail,
+.tipto-fallback-panel {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  border-radius: 999px;
+}
+
+.tipto-fallback-rail {
+  top: 20%;
+  height: 14px;
+  background: var(--tipto-finish, #22262b);
+  box-shadow: 0 12px 22px rgba(34, 38, 43, 0.18);
+}
+
+.tipto-fallback-panel {
+  top: 28%;
+  bottom: 12%;
+  border-radius: 18px;
+  border: 2px solid rgba(34, 38, 43, 0.18);
+  background: rgba(220, 230, 238, 0.52);
+}
+
+.tipto-fallback-panel[data-infill="verticale-spijlen"],
+.tipto-fallback-panel[data-infill="lamellen"] {
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(34, 38, 43, 0.06) 0,
+      rgba(34, 38, 43, 0.06) 18px,
+      rgba(34, 38, 43, 0.72) 18px,
+      rgba(34, 38, 43, 0.72) 24px
+    );
+}
+
+.tipto-fallback-panel[data-infill="horizontale-profielen"] {
+  background:
+    repeating-linear-gradient(
+      180deg,
+      rgba(34, 38, 43, 0.02) 0,
+      rgba(34, 38, 43, 0.02) 24px,
+      rgba(34, 38, 43, 0.72) 24px,
+      rgba(34, 38, 43, 0.72) 30px
+    );
+}
+
+.tipto-fallback-list {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--tipto-muted);
+}
+
+.tipto-summary-list {
+  display: grid;
+}
+
+.tipto-summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.tipto-primary-button {
+  border: 0;
+  border-radius: 999px;
+  padding: 15px 20px;
+  font: inherit;
+  font-weight: 800;
+  color: #fffaf2;
+  background: linear-gradient(135deg, var(--tipto-accent-strong), var(--tipto-accent));
+  box-shadow: 0 18px 34px rgba(142, 101, 55, 0.24);
+  cursor: pointer;
+}
+
+.tipto-primary-button:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.tipto-form-status.is-success {
+  color: #205d36;
+  border-color: rgba(32, 93, 54, 0.22);
+  background: rgba(220, 247, 229, 0.88);
+}
+
+.tipto-form-status.is-error {
+  color: #7d2c21;
+  border-color: rgba(125, 44, 33, 0.18);
+  background: rgba(251, 231, 228, 0.88);
+}
+
+@media (max-width: 1100px) {
+  .tipto-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tipto-side-column {
+    order: -1;
+  }
+
+  .tipto-preview-stage {
+    min-height: 420px;
+  }
+}
+
+@media (max-width: 720px) {
+  .tipto-app {
+    border-radius: 24px;
+    padding: 16px;
+  }
+
+  .tipto-hero,
+  .tipto-panel,
+  .tipto-preview-panel {
+    padding: 18px;
+  }
+
+  .tipto-field-grid,
+  .tipto-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tipto-panel-header,
+  .tipto-preview-copy {
+    flex-direction: column;
+  }
+
+  .tipto-preview-stage {
+    min-height: 340px;
+  }
+}

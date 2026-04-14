@@ -1,0 +1,687 @@
+/* ============================================================
+   WIZARD SHELL
+   ============================================================ */
+
+.tipto-wizard {
+  display: grid;
+  gap: 24px;
+}
+
+.tipto-wizard-steps {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 20px 24px;
+  background: var(--tipto-surface);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: var(--tipto-radius-xl);
+  overflow: hidden;
+}
+
+/* Track line behind step circles */
+.tipto-wizard-steps::before {
+  content: "";
+  position: absolute;
+  top: 32px;
+  left: 48px;
+  right: 48px;
+  height: 2px;
+  background: var(--tipto-line);
+  z-index: 0;
+}
+
+/* Filled progress bar */
+.tipto-wizard-progress {
+  position: absolute;
+  top: 32px;
+  left: 48px;
+  height: 2px;
+  background: var(--tipto-accent);
+  transition: width 380ms cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+.tipto-wizard-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  z-index: 2;
+}
+
+.tipto-wizard-step-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--tipto-line);
+  background: var(--tipto-surface-strong);
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--tipto-muted);
+  transition: background 260ms ease, border-color 260ms ease, color 260ms ease;
+}
+
+.tipto-wizard-step.is-active .tipto-wizard-step-circle {
+  background: var(--tipto-accent);
+  border-color: var(--tipto-accent);
+  color: #fffaf2;
+  box-shadow: 0 6px 16px rgba(183, 139, 86, 0.35);
+}
+
+.tipto-wizard-step.is-done .tipto-wizard-step-circle {
+  background: var(--tipto-accent-strong);
+  border-color: var(--tipto-accent-strong);
+  color: #fffaf2;
+}
+
+.tipto-wizard-step-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--tipto-muted);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.tipto-wizard-step.is-active .tipto-wizard-step-label {
+  color: var(--tipto-accent-strong);
+}
+
+.tipto-wizard-step.is-done .tipto-wizard-step-label {
+  color: var(--tipto-ink);
+}
+
+.tipto-wizard-body {
+  min-height: 300px;
+}
+
+.tipto-wizard-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 4px;
+}
+
+.tipto-wizard-back-btn {
+  background: none;
+  border: 1px solid var(--tipto-line);
+  border-radius: 999px;
+  padding: 12px 20px;
+  font: inherit;
+  font-weight: 700;
+  color: var(--tipto-muted);
+  cursor: pointer;
+  transition: border-color 180ms ease, color 180ms ease;
+}
+
+.tipto-wizard-back-btn:hover {
+  border-color: var(--tipto-accent);
+  color: var(--tipto-accent-strong);
+}
+
+.tipto-wizard-next-btn {
+  min-width: 200px;
+}
+
+.tipto-wizard-next-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* ============================================================
+   METHOD SELECTOR (Step 1)
+   ============================================================ */
+
+.tipto-method-selector {
+  display: grid;
+  gap: 24px;
+}
+
+.tipto-method-intro {
+  background: var(--tipto-surface);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: var(--tipto-radius-xl);
+  padding: 28px 32px;
+}
+
+.tipto-method-intro h2 {
+  margin: 8px 0 10px;
+  font-size: clamp(1.6rem, 2vw, 2.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.tipto-method-intro p {
+  color: var(--tipto-muted);
+  max-width: 52ch;
+}
+
+.tipto-method-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.tipto-method-card {
+  display: grid;
+  gap: 12px;
+  text-align: left;
+  background: var(--tipto-surface);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: var(--tipto-radius-xl);
+  padding: 28px 24px;
+  cursor: pointer;
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+}
+
+.tipto-method-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 24px 48px rgba(54, 39, 20, 0.14);
+  border-color: rgba(183, 139, 86, 0.45);
+}
+
+.tipto-method-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.tipto-method-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--tipto-ink);
+}
+
+.tipto-method-desc {
+  font-size: 0.88rem;
+  color: var(--tipto-muted);
+  line-height: 1.55;
+}
+
+.tipto-method-cta {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--tipto-accent-strong);
+}
+
+/* ============================================================
+   SKETCH CANVAS (Step 2 – tekenen)
+   ============================================================ */
+
+.tipto-sketch-wrapper {
+  display: grid;
+  gap: 14px;
+}
+
+.tipto-sketch-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.tipto-sketch-header h3 {
+  margin: 0 0 4px;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+}
+
+.tipto-sketch-header p {
+  color: var(--tipto-muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.tipto-sketch-canvas-wrapper {
+  border-radius: var(--tipto-radius-md);
+  overflow: hidden;
+  border: 1px solid var(--tipto-line);
+}
+
+.tipto-sketch-canvas {
+  display: block;
+  width: 100%;
+  cursor: crosshair;
+}
+
+.tipto-sketch-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tipto-sketch-btn {
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--tipto-line);
+  background: rgba(255, 255, 255, 0.7);
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--tipto-ink);
+  cursor: pointer;
+  transition: border-color 160ms ease, background 160ms ease;
+}
+
+.tipto-sketch-btn:hover:not(:disabled) {
+  border-color: var(--tipto-accent);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.tipto-sketch-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.tipto-sketch-btn--danger {
+  color: #7d2c21;
+  border-color: rgba(125, 44, 33, 0.2);
+}
+
+.tipto-sketch-btn--danger:hover:not(:disabled) {
+  border-color: rgba(125, 44, 33, 0.55);
+  background: rgba(251, 231, 228, 0.8);
+}
+
+.tipto-sketch-warning {
+  font-size: 0.84rem;
+  color: #7d5a21;
+  background: rgba(255, 243, 205, 0.88);
+  border: 1px solid rgba(183, 139, 86, 0.3);
+  border-radius: var(--tipto-radius-md);
+  padding: 12px 16px;
+}
+
+.tipto-sketch-hint {
+  font-size: 0.84rem;
+  color: var(--tipto-muted);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px dashed var(--tipto-line);
+  border-radius: var(--tipto-radius-md);
+  padding: 14px 16px;
+}
+
+.tipto-sketch-meta {
+  flex: 0 0 auto;
+}
+
+/* ============================================================
+   PHOTO UPLOAD (Step 2 – foto)
+   ============================================================ */
+
+.tipto-photo-upload {
+  display: grid;
+  gap: 18px;
+}
+
+.tipto-dropzone {
+  border: 2px dashed rgba(183, 139, 86, 0.4);
+  border-radius: var(--tipto-radius-lg);
+  background: rgba(255, 255, 255, 0.55);
+  padding: 48px 32px;
+  text-align: center;
+  cursor: pointer;
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+  transition: border-color 180ms ease, background 180ms ease;
+}
+
+.tipto-dropzone:hover,
+.tipto-dropzone.is-dragover {
+  border-color: var(--tipto-accent);
+  background: rgba(255, 251, 245, 0.88);
+}
+
+.tipto-dropzone-icon {
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.tipto-dropzone strong {
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.tipto-dropzone span {
+  color: var(--tipto-muted);
+  font-size: 0.88rem;
+}
+
+.tipto-dropzone-hint {
+  font-size: 0.78rem !important;
+  opacity: 0.7;
+}
+
+.tipto-file-input-hidden {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 1px;
+  height: 1px;
+}
+
+.tipto-photo-result {
+  display: grid;
+  gap: 18px;
+}
+
+.tipto-photo-preview-wrapper {
+  position: relative;
+  border-radius: var(--tipto-radius-lg);
+  overflow: hidden;
+}
+
+.tipto-photo-preview {
+  display: block;
+  width: 100%;
+  max-height: 320px;
+  object-fit: cover;
+  border-radius: var(--tipto-radius-lg);
+}
+
+.tipto-photo-reset {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(23, 25, 29, 0.65);
+  border: none;
+  color: #fff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+}
+
+.tipto-ai-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--tipto-muted);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.tipto-ai-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(183, 139, 86, 0.3);
+  border-top-color: var(--tipto-accent);
+  border-radius: 50%;
+  animation: tipto-spin 0.7s linear infinite;
+}
+
+@keyframes tipto-spin {
+  to { transform: rotate(360deg); }
+}
+
+.tipto-ai-result {
+  border-radius: var(--tipto-radius-lg);
+  border: 1px solid rgba(183, 139, 86, 0.3);
+  background: rgba(255, 250, 242, 0.9);
+  padding: 20px;
+  display: grid;
+  gap: 14px;
+}
+
+.tipto-ai-result-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.tipto-ai-result-header strong {
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.tipto-ai-mock-badge {
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: rgba(183, 139, 86, 0.15);
+  color: var(--tipto-accent-strong);
+}
+
+.tipto-ai-confidence {
+  font-size: 0.82rem;
+  color: var(--tipto-muted);
+  margin-left: auto;
+}
+
+.tipto-ai-notes {
+  font-size: 0.88rem;
+  color: var(--tipto-muted);
+  line-height: 1.6;
+}
+
+.tipto-ai-hints {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.tipto-ai-hint-item {
+  display: grid;
+  gap: 3px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.65);
+  border-radius: var(--tipto-radius-md);
+  border: 1px solid var(--tipto-line);
+}
+
+.tipto-ai-hint-item span {
+  font-size: 0.76rem;
+  color: var(--tipto-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tipto-ai-hint-item strong {
+  font-size: 0.92rem;
+  font-weight: 800;
+}
+
+.tipto-ai-disclaimer {
+  font-size: 0.8rem;
+  color: var(--tipto-muted);
+  font-style: italic;
+}
+
+/* ============================================================
+   PRICE PANEL (Step 3)
+   ============================================================ */
+
+.tipto-price-panel {
+  display: grid;
+  gap: 22px;
+}
+
+.tipto-price-config-summary {
+  display: grid;
+  gap: 10px;
+}
+
+.tipto-price-config-summary strong {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--tipto-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.tipto-price-config-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tipto-chip {
+  display: inline-flex;
+  padding: 5px 12px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--tipto-line);
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--tipto-ink);
+}
+
+.tipto-price-breakdown {
+  display: grid;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--tipto-line);
+  border-radius: var(--tipto-radius-lg);
+  padding: 18px 20px;
+}
+
+.tipto-price-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 0.92rem;
+  padding: 4px 0;
+}
+
+.tipto-price-line.is-muted {
+  color: var(--tipto-muted);
+  font-size: 0.86rem;
+}
+
+.tipto-price-divider {
+  height: 1px;
+  background: var(--tipto-line);
+  margin: 6px 0;
+}
+
+.tipto-price-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 10px 0 2px;
+  font-weight: 700;
+}
+
+.tipto-price-total-row strong {
+  font-size: 1.55rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: var(--tipto-accent-strong);
+}
+
+.tipto-price-disclaimer {
+  font-size: 0.8rem;
+  color: var(--tipto-muted);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.tipto-price-on-request {
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+  text-align: center;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: var(--tipto-radius-lg);
+  border: 1px dashed var(--tipto-line);
+}
+
+.tipto-price-on-request p {
+  color: var(--tipto-muted);
+  max-width: 40ch;
+}
+
+/* ============================================================
+   QUOTE FORM EXTENSIONS
+   ============================================================ */
+
+.tipto-inline-summary-rows {
+  display: grid;
+  gap: 4px;
+  font-size: 0.88rem;
+  color: var(--tipto-muted);
+}
+
+.tipto-inline-price {
+  color: var(--tipto-accent-strong);
+}
+
+.tipto-submit-btn {
+  width: 100%;
+  font-size: 1.05rem;
+  padding: 18px 24px;
+}
+
+/* ============================================================
+   SUMMARY PANEL EXTENSIONS
+   ============================================================ */
+
+.tipto-summary-price-block {
+  border-top: 1px solid var(--tipto-line);
+  padding-top: 12px;
+  margin-top: 4px;
+}
+
+.tipto-summary-price-note {
+  font-size: 0.76rem;
+  color: var(--tipto-muted);
+  font-style: italic;
+  margin-top: 2px;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 860px) {
+  .tipto-method-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .tipto-wizard-steps {
+    padding: 16px;
+  }
+
+  .tipto-wizard-step-label {
+    display: none;
+  }
+
+  .tipto-ai-hints {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .tipto-wizard-nav {
+    flex-direction: column;
+  }
+
+  .tipto-wizard-next-btn {
+    width: 100%;
+  }
+
+  .tipto-wizard-back-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
