@@ -497,6 +497,34 @@ function RailSection({ lengthM, heightM, selection, finishColor, showStartPost =
         )
       )}
 
+      {/* ── End caps on free ends of handrail ── */}
+      {!isFrameless && !isAluGlas && startIsFreeEnd && (
+        isRvs ? (
+          <mesh position={[railOffsetX - railSpan / 2, railY, 0]} castShadow>
+            <sphereGeometry args={[0.02, 16, 16]} />
+            <meshPhysicalMaterial {...mp} />
+          </mesh>
+        ) : (
+          <mesh position={[railOffsetX - railSpan / 2 - 0.003, railY + railH / 2, 0]} castShadow>
+            <boxGeometry args={[0.006, railH + 0.002, railD + 0.002]} />
+            <meshPhysicalMaterial {...mp} />
+          </mesh>
+        )
+      )}
+      {!isFrameless && !isAluGlas && endIsFreeEnd && (
+        isRvs ? (
+          <mesh position={[railOffsetX + railSpan / 2, railY, 0]} castShadow>
+            <sphereGeometry args={[0.02, 16, 16]} />
+            <meshPhysicalMaterial {...mp} />
+          </mesh>
+        ) : (
+          <mesh position={[railOffsetX + railSpan / 2 + 0.003, railY + railH / 2, 0]} castShadow>
+            <boxGeometry args={[0.006, railH + 0.002, railD + 0.002]} />
+            <meshPhysicalMaterial {...mp} />
+          </mesh>
+        )
+      )}
+
       {/* ── Posts — centered at their X position, bottom at y=0 ── */}
       {posts.map((post, i) => (
         <group key={i} position={[post.x, postH / 2, 0]}>
