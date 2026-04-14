@@ -199,16 +199,19 @@ function FramelessGlass({ railLength, panelH }) {
   );
 }
 
-function VerticalSpijlen({ railLength, panelH, finishColor, material }) {
+function VerticalSpijlen({ railLength, panelH, finishColor, material, startIsFree = true, endIsFree = true }) {
   const mp = frameMat(finishColor, material);
   const barSize = 0.016;
-  // Fixed center-to-center distance between bars — same on every segment
-  const pitch = 0.105; // 10.5cm center-to-center
-  // Start half a pitch from the left edge, place bars at fixed intervals
-  const firstBar = pitch / 2;
+  const pitch = 0.105; // 10.5cm center-to-center — fixed everywhere
+
+  // At free ends: first bar at pitch/2 from edge (no neighbor)
+  // At junctions: first bar at full pitch from edge (corner post acts as neighbor bar)
+  const startOffset = startIsFree ? pitch / 2 : pitch;
+  const endMargin = endIsFree ? pitch * 0.3 : pitch * 0.7;
+
   const bars = [];
-  let pos = firstBar;
-  while (pos < railLength - pitch * 0.3) {
+  let pos = startOffset;
+  while (pos < railLength - endMargin) {
     bars.push(-railLength / 2 + pos);
     pos += pitch;
   }
@@ -526,7 +529,7 @@ function RailSection({ lengthM, heightM, selection, finishColor, showStartPost =
       {selection.infill === "glas" ? (
         <GlassInfill railLength={fillSpan} panelH={panelH} postXs={postXs.map(x => x - fillOffsetX)} finishColor={finishColor} postW={postW} />
       ) : selection.infill === "verticale-spijlen" ? (
-        <VerticalSpijlen railLength={fillSpan} panelH={panelH} finishColor={finishColor} material={selection.material} />
+        <VerticalSpijlen railLength={fillSpan} panelH={panelH} finishColor={finishColor} material={selection.material} startIsFree={startIsFreeEnd} endIsFree={endIsFreeEnd} />
       ) : selection.infill === "horizontale-profielen" ? (
         <HorizontaleProfielen railLength={fillSpan} panelH={panelH} finishColor={finishColor} material={selection.material} />
       ) : selection.infill === "horizontale-staven" ? (
