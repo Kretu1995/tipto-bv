@@ -310,61 +310,35 @@ function DesignFill({ railLength, panelH, finishColor }) {
 
 // ─── Post + base ──────────────────────────────────────────────────────────────
 
-function Post({ isRvs, finishColor, postH, postW, postD, material }) {
-  const mp = frameMat(finishColor, material || (isRvs ? "rvs" : "aluminium"));
+function Post({ finishColor, postH, postW, postD, material }) {
+  const mp = frameMat(finishColor, material || "aluminium");
   return (
     <group>
-      {/* Main post body */}
+      {/* Rectangular post body — same for all materials */}
       <mesh castShadow receiveShadow>
-        {isRvs
-          ? <cylinderGeometry args={[postW / 2, postW / 2, postH, 32]} />
-          : <boxGeometry args={[postW, postH, postD]} />}
+        <boxGeometry args={[postW, postH, postD]} />
         <meshPhysicalMaterial {...mp} />
       </mesh>
-
-      {isRvs && (
-        <>
-          {/* Bolkop — polished sphere cap */}
-          <mesh position={[0, postH / 2 + postW * 0.38, 0]} castShadow>
-            <sphereGeometry args={[postW * 0.55, 32, 32]} />
-            <meshPhysicalMaterial {...mp} />
-          </mesh>
-          {/* Decorative rings */}
-          <mesh position={[0, postH / 2 - 0.004, 0]} rotation={[Math.PI / 2, 0, 0]} castShadow>
-            <torusGeometry args={[postW / 2 + 0.001, 0.0025, 12, 32]} />
-            <meshPhysicalMaterial {...mp} />
-          </mesh>
-          <mesh position={[0, -postH / 2 + 0.015, 0]} rotation={[Math.PI / 2, 0, 0]} castShadow>
-            <torusGeometry args={[postW / 2 + 0.001, 0.0025, 12, 32]} />
-            <meshPhysicalMaterial {...mp} />
-          </mesh>
-        </>
-      )}
-
-      {!isRvs && (
-        <>
-          {/* Top end cap with overhang */}
-          <mesh position={[0, postH / 2 + 0.005, 0]} castShadow>
-            <boxGeometry args={[postW + 0.006, 0.01, postD + 0.006]} />
-            <meshPhysicalMaterial {...mp} />
-          </mesh>
-          {/* Chamfer groove top */}
-          <mesh position={[0, postH / 2 - 0.025, 0]} castShadow>
-            <boxGeometry args={[postW + 0.002, 0.003, postD + 0.002]} />
-            <meshPhysicalMaterial {...mp} envMapIntensity={0.6} />
-          </mesh>
-          {/* Chamfer groove bottom */}
-          <mesh position={[0, -postH / 2 + 0.06, 0]} castShadow>
-            <boxGeometry args={[postW + 0.002, 0.003, postD + 0.002]} />
-            <meshPhysicalMaterial {...mp} envMapIntensity={0.6} />
-          </mesh>
-        </>
-      )}
+      {/* Top end cap */}
+      <mesh position={[0, postH / 2 + 0.005, 0]} castShadow>
+        <boxGeometry args={[postW + 0.006, 0.01, postD + 0.006]} />
+        <meshPhysicalMaterial {...mp} />
+      </mesh>
+      {/* Chamfer groove top */}
+      <mesh position={[0, postH / 2 - 0.025, 0]} castShadow>
+        <boxGeometry args={[postW + 0.002, 0.003, postD + 0.002]} />
+        <meshPhysicalMaterial {...mp} envMapIntensity={0.6} />
+      </mesh>
+      {/* Chamfer groove bottom */}
+      <mesh position={[0, -postH / 2 + 0.06, 0]} castShadow>
+        <boxGeometry args={[postW + 0.002, 0.003, postD + 0.002]} />
+        <meshPhysicalMaterial {...mp} envMapIntensity={0.6} />
+      </mesh>
     </group>
   );
 }
 
-function PostBase({ mounting, finishColor, postW, postD, postH, isRvs }) {
+function PostBase({ mounting, finishColor, postW, postD, postH }) {
   const bracketMat = { color: "#505860", metalness: 0.88, roughness: 0.2, clearcoat: 0.45, clearcoatRoughness: 0.15 };
   const boltMat = { color: "#8d949b", metalness: 0.94, roughness: 0.12, clearcoat: 0.35 };
 
@@ -398,29 +372,18 @@ function PostBase({ mounting, finishColor, postW, postD, postH, isRvs }) {
     );
   }
 
-  // Floor mount
-  const baseSize = isRvs ? postW * 2.4 : postW * 2.0;
+  // Floor mount — always rectangular
+  const baseSize = postW * 2.0;
   return (
     <group position={[0, -postH / 2 + 0.006, 0]}>
-      {/* Base plate */}
       <mesh castShadow>
-        {isRvs
-          ? <cylinderGeometry args={[baseSize / 2, baseSize / 2, 0.012, 32]} />
-          : <boxGeometry args={[baseSize, 0.012, baseSize]} />}
+        <boxGeometry args={[baseSize, 0.012, baseSize]} />
         <meshPhysicalMaterial {...bracketMat} />
       </mesh>
-      {/* Welded collar / sleeve */}
-      {isRvs ? (
-        <mesh position={[0, 0.012, 0]} castShadow>
-          <cylinderGeometry args={[postW / 2 + 0.004, postW / 2 + 0.004, 0.012, 32]} />
-          <meshPhysicalMaterial {...bracketMat} />
-        </mesh>
-      ) : (
-        <mesh position={[0, 0.01, 0]} castShadow>
-          <boxGeometry args={[postW + 0.008, 0.008, postD + 0.008]} />
-          <meshPhysicalMaterial {...bracketMat} />
-        </mesh>
-      )}
+      <mesh position={[0, 0.01, 0]} castShadow>
+        <boxGeometry args={[postW + 0.008, 0.008, postD + 0.008]} />
+        <meshPhysicalMaterial {...bracketMat} />
+      </mesh>
       {/* Anchor bolts */}
       {[[-1,-1],[-1,1],[1,-1],[1,1]].map(([sx,sz],i) => (
         <mesh key={i} position={[sx * baseSize * 0.3, 0.012, sz * baseSize * 0.3]} castShadow>
@@ -436,15 +399,14 @@ function PostBase({ mounting, finishColor, postW, postD, postH, isRvs }) {
 
 function RailSection({ lengthM, heightM, selection, finishColor, showStartPost = true, showEndPost = true, startIsFreeEnd = true, endIsFreeEnd = true }) {
   const depthM    = Math.max(0.04, (selection.depth ?? 6) / 100);
-  const isRvs     = selection.material === "rvs";
-  const isAluGlas = selection.infill === "glas" && selection.material === "aluminium";
-  const isFrameless = selection.infill === "glas" && !isRvs && !isAluGlas;
+  // Same geometry for ALL materials — only finish changes
+  const showHandrail = selection.infill !== "glas"; // glass infill = no top rail by default
 
-  const postW  = isRvs ? 0.042 : 0.044;
-  const postD  = isRvs ? 0.042 : depthM * 0.7;
+  const postW  = 0.044;
+  const postD  = depthM * 0.7;
   const postH  = heightM;
-  const railH  = isRvs ? 0.04 : 0.05;
-  const railD  = isRvs ? 0.042 : depthM * 0.82;
+  const railH  = 0.05;
+  const railD  = depthM * 0.82;
   const panelH = heightM;
 
   // At free ends: handrail extends postW/2 PAST the end post center (flush with outer edge).
@@ -456,8 +418,8 @@ function RailSection({ lengthM, heightM, selection, finishColor, showStartPost =
   const fillSpan   = Math.max(0.12, railSpan);
   const fillOffsetX = railOffsetX;
 
-  // Post spacing: ~85cm, always at least 2
-  const nPosts  = isFrameless ? 0 : Math.max(2, Math.min(10, Math.round(lengthM / 0.85) + 1));
+  // Post spacing: ~85cm, always at least 2, always show posts
+  const nPosts  = Math.max(2, Math.min(10, Math.round(lengthM / 0.85) + 1));
   const postGap = nPosts > 1 ? lengthM / (nPosts - 1) : 0;
 
   const posts = Array.from({ length: nPosts }, (_, i) => {
@@ -476,65 +438,44 @@ function RailSection({ lengthM, heightM, selection, finishColor, showStartPost =
 
   return (
     <group>
-      {/* ── Handrail — trimmed at junctions to avoid overlap ── */}
-      {!isFrameless && !isAluGlas && (
-        isRvs ? (
-          <mesh position={[railOffsetX, railY, 0]} rotation={[0, 0, Math.PI / 2]} castShadow receiveShadow>
-            <cylinderGeometry args={[0.02, 0.02, railSpan, 32]} />
+      {/* ── Handrail — rectangular, shown for non-glass infills ── */}
+      {showHandrail && (
+        <group position={[railOffsetX, railY + railH / 2, 0]}>
+          <mesh castShadow receiveShadow>
+            <boxGeometry args={[railSpan, railH, railD]} />
             <meshPhysicalMaterial {...mp} />
           </mesh>
-        ) : (
-          <group position={[railOffsetX, railY + railH / 2, 0]}>
-            <mesh castShadow receiveShadow>
-              <boxGeometry args={[railSpan, railH, railD]} />
-              <meshPhysicalMaterial {...mp} />
-            </mesh>
-            <mesh position={[0, railH / 2 + 0.002, 0]}>
-              <boxGeometry args={[railSpan - 0.003, 0.003, railD - 0.004]} />
-              <meshPhysicalMaterial {...mp} envMapIntensity={1.4} roughness={0.1} />
-            </mesh>
-          </group>
-        )
+          <mesh position={[0, railH / 2 + 0.002, 0]}>
+            <boxGeometry args={[railSpan - 0.003, 0.003, railD - 0.004]} />
+            <meshPhysicalMaterial {...mp} envMapIntensity={1.4} roughness={0.1} />
+          </mesh>
+        </group>
       )}
 
-      {/* ── End caps on free ends of handrail ── */}
-      {!isFrameless && !isAluGlas && startIsFreeEnd && (
-        isRvs ? (
-          <mesh position={[railOffsetX - railSpan / 2, railY, 0]} castShadow>
-            <sphereGeometry args={[0.02, 16, 16]} />
-            <meshPhysicalMaterial {...mp} />
-          </mesh>
-        ) : (
-          <mesh position={[railOffsetX - railSpan / 2 - 0.003, railY + railH / 2, 0]} castShadow>
-            <boxGeometry args={[0.006, railH + 0.002, railD + 0.002]} />
-            <meshPhysicalMaterial {...mp} />
-          </mesh>
-        )
+      {/* ── End caps on free ends ── */}
+      {showHandrail && startIsFreeEnd && (
+        <mesh position={[railOffsetX - railSpan / 2 - 0.003, railY + railH / 2, 0]} castShadow>
+          <boxGeometry args={[0.006, railH + 0.002, railD + 0.002]} />
+          <meshPhysicalMaterial {...mp} />
+        </mesh>
       )}
-      {!isFrameless && !isAluGlas && endIsFreeEnd && (
-        isRvs ? (
-          <mesh position={[railOffsetX + railSpan / 2, railY, 0]} castShadow>
-            <sphereGeometry args={[0.02, 16, 16]} />
-            <meshPhysicalMaterial {...mp} />
-          </mesh>
-        ) : (
-          <mesh position={[railOffsetX + railSpan / 2 + 0.003, railY + railH / 2, 0]} castShadow>
-            <boxGeometry args={[0.006, railH + 0.002, railD + 0.002]} />
-            <meshPhysicalMaterial {...mp} />
-          </mesh>
-        )
+      {showHandrail && endIsFreeEnd && (
+        <mesh position={[railOffsetX + railSpan / 2 + 0.003, railY + railH / 2, 0]} castShadow>
+          <boxGeometry args={[0.006, railH + 0.002, railD + 0.002]} />
+          <meshPhysicalMaterial {...mp} />
+        </mesh>
       )}
 
       {/* ── Posts — centered at their X position, bottom at y=0 ── */}
       {posts.map((post, i) => (
         <group key={i} position={[post.x, postH / 2, 0]}>
-          <Post isRvs={isRvs} finishColor={finishColor} postH={postH} postW={postW} postD={postD} material={selection.material} />
-          <PostBase mounting={selection.mounting} finishColor={finishColor} postW={postW} postD={postD} postH={postH} isRvs={isRvs} />
+          <Post finishColor={finishColor} postH={postH} postW={postW} postD={postD} material={selection.material} />
+          <PostBase mounting={selection.mounting} finishColor={finishColor} postW={postW} postD={postD} postH={postH} />
         </group>
       ))}
 
-      {/* ── Bottom rail — trimmed same as handrail ── */}
-      {!isFrameless && selection.infill !== "glas" && (
+      {/* ── Bottom rail ── */}
+      {selection.infill !== "glas" && (
         <mesh position={[fillOffsetX, 0.018, 0]} castShadow>
           <boxGeometry args={[fillSpan, 0.018, postD * 0.8]} />
           <meshPhysicalMaterial {...mp} />
@@ -543,9 +484,7 @@ function RailSection({ lengthM, heightM, selection, finishColor, showStartPost =
 
       {/* ── Infill — trimmed and offset to match ── */}
       <group position={[fillOffsetX, 0, 0]}>
-      {isFrameless ? (
-        <FramelessGlass railLength={lengthM} panelH={panelH} />
-      ) : selection.infill === "glas" ? (
+      {selection.infill === "glas" ? (
         <GlassInfill railLength={fillSpan} panelH={panelH} postXs={postXs.map(x => x - fillOffsetX)} finishColor={finishColor} postW={postW} />
       ) : selection.infill === "verticale-spijlen" ? (
         <VerticalSpijlen railLength={fillSpan} panelH={panelH} finishColor={finishColor} material={selection.material} />
@@ -567,29 +506,22 @@ function RailSection({ lengthM, heightM, selection, finishColor, showStartPost =
 
 function CornerCap({ position, selection, finishColor }) {
   const depthM = Math.max(0.04, (selection.depth ?? 6) / 100);
-  const isRvs = selection.material === "rvs";
-  const railH = isRvs ? 0.04 : 0.05;
-  const railD = isRvs ? 0.042 : depthM * 0.82;
-  const postW = isRvs ? 0.042 : 0.044;
+  const railH = 0.05;
+  const railD = depthM * 0.82;
+  const postW = 0.044;
   const heightM = Math.max(0.6, (selection.height ?? 105) / 100);
   const mp = frameMat(finishColor, selection.material);
+  const showHandrail = selection.infill !== "glas";
+  const capY = heightM + railH / 2;
 
-  // Cap sits at handrail height, sized to fill the gap above the corner post
-  const capY = heightM + (isRvs ? 0 : railH / 2);
+  if (!showHandrail) return null;
 
   return (
     <group position={[position.x, capY, position.z]}>
-      {isRvs ? (
-        <mesh castShadow>
-          <sphereGeometry args={[0.022, 16, 16]} />
-          <meshPhysicalMaterial {...mp} />
-        </mesh>
-      ) : (
-        <mesh castShadow>
-          <boxGeometry args={[postW + 0.008, railH, railD]} />
-          <meshPhysicalMaterial {...mp} />
-        </mesh>
-      )}
+      <mesh castShadow>
+        <boxGeometry args={[postW + 0.008, railH, railD]} />
+        <meshPhysicalMaterial {...mp} />
+      </mesh>
     </group>
   );
 }
@@ -624,21 +556,17 @@ function RailSegment({ segData, selection, finishColor }) {
 
 function RoundedCornerConnector({ corner, selection, finishColor }) {
   const depthM = Math.max(0.04, (selection.depth ?? 6) / 100);
-  const isRvs = selection.material === "rvs";
-  const railH = isRvs ? 0.04 : 0.05;
-  const railD = isRvs ? 0.042 : depthM * 0.82;
-  const postW = isRvs ? 0.042 : 0.044;
-  const postD = isRvs ? 0.042 : depthM * 0.7;
-  const isFrameless = selection.infill === "glas" && !isRvs;
+  const railH = 0.05;
+  const railD = depthM * 0.82;
+  const postW = 0.044;
+  const postD = depthM * 0.7;
   const heightM = Math.max(0.6, (selection.height ?? 105) / 100);
   const mp = frameMat(finishColor, selection.material);
+  const showHandrail = selection.infill !== "glas";
 
-  // Rail levels that match RailSection exactly
-  const handrailY = heightM + (isRvs ? 0 : railH / 2);
+  const handrailY = heightM + railH / 2;
   const baseRailY = 0.018;
-  const levels = isFrameless
-    ? [0.04, Math.max(0.02, heightM * 0.45)]
-    : [handrailY, baseRailY];
+  const levels = showHandrail ? [handrailY, baseRailY] : [baseRailY];
 
   const corner3D = { ...corner, direction: -corner.direction };
   const points = sampleRoundedCorner(corner3D, 16).map(planPointToWorld);
@@ -650,12 +578,10 @@ function RoundedCornerConnector({ corner, selection, finishColor }) {
   return (
     <group>
       {/* Corner post */}
-      {!isFrameless && (
-        <group position={[cornerWorld.x, heightM / 2, cornerWorld.z]}>
-          <Post isRvs={isRvs} finishColor={finishColor} postH={heightM} postW={postW} postD={postD} material={selection.material} />
-          <PostBase mounting={selection.mounting} finishColor={finishColor} postW={postW} postD={postD} postH={heightM} isRvs={isRvs} />
-        </group>
-      )}
+      <group position={[cornerWorld.x, heightM / 2, cornerWorld.z]}>
+        <Post finishColor={finishColor} postH={heightM} postW={postW} postD={postD} material={selection.material} />
+        <PostBase mounting={selection.mounting} finishColor={finishColor} postW={postW} postD={postD} postH={heightM} />
+      </group>
 
       {/* Curved rail segments at each level */}
       {levels.map((y, levelIndex) => (
@@ -666,18 +592,10 @@ function RoundedCornerConnector({ corner, selection, finishColor }) {
           const length = Math.hypot(dx, dz);
           if (length < 0.005) return null;
 
-          const segH = levelIndex === 0 ? (isRvs ? railH : railH) : 0.018;
+          const segH = levelIndex === 0 ? railH : 0.018;
           const segD = levelIndex === 0 ? railD : postD * 0.8;
 
-          return isRvs && levelIndex === 0 ? (
-            // Round rail for RVS handrail
-            <mesh key={`${corner.vertexId}-${levelIndex}-${index}`}
-              position={[(point.x + next.x) / 2, y, (point.z + next.z) / 2]}
-              rotation={[0, Math.atan2(-dz, dx), Math.PI / 2]} castShadow>
-              <cylinderGeometry args={[0.02, 0.02, length, 12]} />
-              <meshPhysicalMaterial {...mp} />
-            </mesh>
-          ) : (
+          return (
             <mesh key={`${corner.vertexId}-${levelIndex}-${index}`}
               position={[(point.x + next.x) / 2, y, (point.z + next.z) / 2]}
               rotation={[0, Math.atan2(-dz, dx), 0]} castShadow receiveShadow>
