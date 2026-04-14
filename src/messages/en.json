@@ -101,24 +101,14 @@
       "sectionLabel": "What Clients Say",
       "sectionTitle": "Trusted by Hundreds of Satisfied Clients",
       "items": [
-        {
-          "name": "Martijn De Vries",
-          "role": "Homeowner, Antwerp",
-          "content": "Tipto installed beautiful glass balustrades on our terrace. The quality and finish are exceptional. The entire process was professional and within the agreed timeframe.",
-          "rating": 5
-        },
-        {
-          "name": "Sophie Van den Berg",
-          "role": "Architect, Brussels",
-          "content": "As an architect, I regularly work with Tipto on my projects. Their craftsmanship and attention to detail make them a reliable partner for any construction project.",
-          "rating": 5
-        },
-        {
-          "name": "Thomas Janssen",
-          "role": "Contractor, Mechelen",
-          "content": "The garage doors and windows Tipto delivered for our new construction projects are of excellent quality. Reliable service and competitive prices.",
-          "rating": 5
-        }
+        { "name": "Martijn De Vries", "role": "Homeowner, Antwerp", "content": "Tipto installed beautiful glass balustrades on our terrace. The quality and finish are exceptional. The entire process was professional and within the agreed timeframe." },
+        { "name": "Sophie Van den Berg", "role": "Architect, Brussels", "content": "As an architect, I regularly work with Tipto on my projects. Their craftsmanship and attention to detail make them a reliable partner for any construction project." },
+        { "name": "Thomas Janssen", "role": "Contractor, Mechelen", "content": "The garage doors and windows Tipto delivered for our new construction projects are of excellent quality. Reliable service and competitive prices." },
+        { "name": "Lisa Peeters", "role": "Homeowner, Ghent", "content": "Our new aluminium windows have greatly improved the comfort in our home. The insulation is noticeably better and the sleek finish perfectly matches our renovation. Very satisfied!" },
+        { "name": "Karel Mertens", "role": "Property Developer, Leuven", "content": "For our new-build project of 12 apartments, Tipto delivered and installed all balustrades and garage doors. Tight scheduling, neat finish and correct communication." },
+        { "name": "Anne-Marie Claes", "role": "Homeowner, Hasselt", "content": "The glass stair balustrade Tipto installed is truly beautiful. It gives our interior an open and modern look. The craftsmen were neat and efficient." },
+        { "name": "Pieter Wouters", "role": "Architect, Antwerp", "content": "I have recommended Tipto to my clients multiple times. The quality of their products is consistently high and they always think along about the best solution for each project." },
+        { "name": "Emma De Smet", "role": "Homeowner, Bruges", "content": "Very happy with our new front door and garage door. Everything custom made and perfectly installed. The quote was clear and there were no surprises afterwards." }
       ]
     },
     "cta": {

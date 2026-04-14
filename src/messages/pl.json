@@ -74,9 +74,14 @@
       "sectionLabel": "Opinie Klientów",
       "sectionTitle": "Zaufanie Setek Zadowolonych Klientów",
       "items": [
-        { "name": "Martijn De Vries", "role": "Właściciel domu, Antwerpia", "content": "Tipto zainstalowało piękne szklane balustrady na naszym tarasie. Jakość i wykończenie są wyjątkowe. Cały proces przebiegł profesjonalnie i w ustalonym terminie.", "rating": 5 },
-        { "name": "Sophie Van den Berg", "role": "Architekt, Bruksela", "content": "Jako architekt regularnie współpracuję z Tipto przy moich projektach. Ich rzemiosło i dbałość o detale czynią ich niezawodnym partnerem.", "rating": 5 },
-        { "name": "Thomas Janssen", "role": "Wykonawca, Mechelen", "content": "Bramy garażowe i okna dostarczone przez Tipto do naszych nowych inwestycji są doskonałej jakości. Niezawodna obsługa i konkurencyjne ceny.", "rating": 5 }
+        { "name": "Martijn De Vries", "role": "Właściciel domu, Antwerpia", "content": "Tipto zainstalowało piękne szklane balustrady na naszym tarasie. Jakość i wykończenie są wyjątkowe. Cały proces przebiegł profesjonalnie i w ustalonym terminie." },
+        { "name": "Sophie Van den Berg", "role": "Architekt, Bruksela", "content": "Jako architekt regularnie współpracuję z Tipto przy moich projektach. Ich rzemiosło i dbałość o detale czynią ich niezawodnym partnerem." },
+        { "name": "Thomas Janssen", "role": "Wykonawca, Mechelen", "content": "Bramy garażowe i okna dostarczone przez Tipto do naszych nowych inwestycji są doskonałej jakości. Niezawodna obsługa i konkurencyjne ceny." },
+        { "name": "Lisa Peeters", "role": "Właścicielka domu, Gandawa", "content": "Nasze nowe aluminiowe okna znacznie poprawiły komfort w domu. Izolacja jest zauważalnie lepsza, a eleganckie wykończenie idealnie pasuje do naszej renowacji." },
+        { "name": "Karel Mertens", "role": "Deweloper, Leuven", "content": "Dla naszego projektu 12 mieszkań Tipto dostarczyło i zamontowało wszystkie balustrady i bramy garażowe. Ścisły harmonogram, staranne wykończenie i poprawna komunikacja." },
+        { "name": "Anne-Marie Claes", "role": "Właścicielka domu, Hasselt", "content": "Szklana balustrada schodowa zainstalowana przez Tipto jest naprawdę piękna. Nadaje naszemu wnętrzu otwarty i nowoczesny wygląd. Rzemieślnicy byli schludni i sprawni." },
+        { "name": "Pieter Wouters", "role": "Architekt, Antwerpia", "content": "Wielokrotnie polecałem Tipto moim klientom. Jakość ich produktów jest niezmiennie wysoka i zawsze szukają najlepszego rozwiązania dla każdego projektu." },
+        { "name": "Emma De Smet", "role": "Właścicielka domu, Brugia", "content": "Bardzo zadowolona z naszych nowych drzwi wejściowych i bramy garażowej. Wszystko na wymiar i perfekcyjnie zamontowane. Wycena była jasna i bez niespodzianek." }
       ]
     },
     "cta": {

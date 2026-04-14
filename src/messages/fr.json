@@ -74,9 +74,14 @@
       "sectionLabel": "Témoignages Clients",
       "sectionTitle": "La Confiance de Centaines de Clients Satisfaits",
       "items": [
-        { "name": "Martijn De Vries", "role": "Propriétaire, Anvers", "content": "Tipto a installé de magnifiques balustrades en verre sur notre terrasse. La qualité et la finition sont exceptionnelles. Tout le processus s'est déroulé de manière professionnelle et dans les délais convenus.", "rating": 5 },
-        { "name": "Sophie Van den Berg", "role": "Architecte, Bruxelles", "content": "En tant qu'architecte, je collabore régulièrement avec Tipto pour mes projets. Leur savoir-faire et leur souci du détail en font un partenaire fiable pour tout projet de construction.", "rating": 5 },
-        { "name": "Thomas Janssen", "role": "Entrepreneur, Malines", "content": "Les portes de garage et fenêtres livrées par Tipto pour nos projets de construction neuve sont d'excellente qualité. Service fiable et prix compétitifs.", "rating": 5 }
+        { "name": "Martijn De Vries", "role": "Propriétaire, Anvers", "content": "Tipto a installé de magnifiques balustrades en verre sur notre terrasse. La qualité et la finition sont exceptionnelles. Tout le processus s'est déroulé de manière professionnelle et dans les délais convenus." },
+        { "name": "Sophie Van den Berg", "role": "Architecte, Bruxelles", "content": "En tant qu'architecte, je collabore régulièrement avec Tipto pour mes projets. Leur savoir-faire et leur souci du détail en font un partenaire fiable pour tout projet de construction." },
+        { "name": "Thomas Janssen", "role": "Entrepreneur, Malines", "content": "Les portes de garage et fenêtres livrées par Tipto pour nos projets de construction neuve sont d'excellente qualité. Service fiable et prix compétitifs." },
+        { "name": "Lisa Peeters", "role": "Propriétaire, Gand", "content": "Nos nouvelles fenêtres en aluminium ont considérablement amélioré le confort de notre maison. L'isolation est nettement meilleure et la finition épurée s'intègre parfaitement à notre rénovation." },
+        { "name": "Karel Mertens", "role": "Promoteur immobilier, Louvain", "content": "Pour notre projet de 12 appartements, Tipto a livré et installé toutes les balustrades et portes de garage. Planning serré, finition soignée et communication correcte." },
+        { "name": "Anne-Marie Claes", "role": "Propriétaire, Hasselt", "content": "La balustrade d'escalier en verre installée par Tipto est vraiment magnifique. Elle donne à notre intérieur un look ouvert et moderne. Les artisans étaient soigneux et efficaces." },
+        { "name": "Pieter Wouters", "role": "Architecte, Anvers", "content": "J'ai recommandé Tipto à mes clients à plusieurs reprises. La qualité de leurs produits est constamment élevée et ils réfléchissent toujours à la meilleure solution pour chaque projet." },
+        { "name": "Emma De Smet", "role": "Propriétaire, Bruges", "content": "Très satisfaite de notre nouvelle porte d'entrée et porte de garage. Tout sur mesure et parfaitement installé. Le devis était clair et sans surprises." }
       ]
     },
     "cta": {
