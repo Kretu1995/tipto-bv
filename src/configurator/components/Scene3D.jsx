@@ -202,13 +202,17 @@ function FramelessGlass({ railLength, panelH }) {
 function VerticalSpijlen({ railLength, panelH, finishColor, material }) {
   const mp = frameMat(finishColor, material);
   const barSize = 0.016;
-  // Consistent ~10.5cm spacing — calculate count from available length
-  const targetSpacing = 0.105;
-  const count = Math.max(2, Math.round(railLength / targetSpacing) - 1);
-  // Even distribution with equal margins on both sides
-  const totalBarsWidth = count * barSize;
-  const totalGaps = railLength - totalBarsWidth;
-  const spacing = totalGaps / (count + 1);
+  // Fixed center-to-center distance between bars — same on every segment
+  const pitch = 0.105; // 10.5cm center-to-center
+  // Start half a pitch from the left edge, place bars at fixed intervals
+  const firstBar = pitch / 2;
+  const bars = [];
+  let pos = firstBar;
+  while (pos < railLength - pitch * 0.3) {
+    bars.push(-railLength / 2 + pos);
+    pos += pitch;
+  }
+
   const barBottom = 0.02;
   const barTop = panelH;
   const barH = barTop - barBottom;
@@ -216,15 +220,12 @@ function VerticalSpijlen({ railLength, panelH, finishColor, material }) {
 
   return (
     <group>
-      {Array.from({ length: count }, (_, i) => {
-        const x = -railLength / 2 + spacing * (i + 1) + barSize * i + barSize / 2;
-        return (
-          <mesh key={i} position={[x, barY, 0]} castShadow>
-            <boxGeometry args={[barSize, barH, barSize]} />
-            <meshPhysicalMaterial {...mp} />
-          </mesh>
-        );
-      })}
+      {bars.map((x, i) => (
+        <mesh key={i} position={[x, barY, 0]} castShadow>
+          <boxGeometry args={[barSize, barH, barSize]} />
+          <meshPhysicalMaterial {...mp} />
+        </mesh>
+      ))}
     </group>
   );
 }
