@@ -204,10 +204,9 @@ function VerticalSpijlen({ railLength, panelH, finishColor, material, startIsFre
   const barSize = 0.016;
   const pitch = 0.105; // 10.5cm center-to-center — fixed everywhere
 
-  // At free ends: first bar at pitch/2 from edge (no neighbor)
-  // At junctions: first bar at full pitch from edge (corner post acts as neighbor bar)
-  const startOffset = startIsFree ? pitch / 2 : pitch;
-  const endMargin = endIsFree ? pitch * 0.3 : pitch * 0.7;
+  // Always start at pitch/2 from edge — no corner posts break the rhythm
+  const startOffset = pitch / 2;
+  const endMargin = pitch * 0.3;
 
   const bars = [];
   let pos = startOffset;
@@ -460,17 +459,25 @@ function RailSection({ lengthM, heightM, selection, finishColor, showStartPost =
   const fillSpan   = railSpan;
   const fillOffsetX = railOffsetX;
 
-  // Post spacing: ~85cm, always at least 2, always show posts
-  const nPosts  = Math.max(2, Math.min(10, Math.round(lengthM / 0.85) + 1));
-  const postGap = nPosts > 1 ? lengthM / (nPosts - 1) : 0;
-
-  const posts = Array.from({ length: nPosts }, (_, i) => {
-    const isStart = i === 0;
-    const isEnd   = i === nPosts - 1;
-    if (isStart && !showStartPost) return null;
-    if (isEnd && !showEndPost) return null;
-    return { x: -lengthM / 2 + postGap * i, isFreeEnd: (isStart && startIsFreeEnd) || (isEnd && endIsFreeEnd) };
-  }).filter(Boolean);
+  // For spijlen: only end posts at free ends (no intermediate posts, no junction posts)
+  // For other types: posts every ~85cm
+  const isSpijlenInfill = selection.infill === "verticale-spijlen";
+  let posts;
+  if (isSpijlenInfill) {
+    posts = [];
+    if (showStartPost && startIsFreeEnd) posts.push({ x: -lengthM / 2, isFreeEnd: true });
+    if (showEndPost && endIsFreeEnd) posts.push({ x: lengthM / 2, isFreeEnd: true });
+  } else {
+    const nPosts = Math.max(2, Math.min(10, Math.round(lengthM / 0.85) + 1));
+    const postGap = nPosts > 1 ? lengthM / (nPosts - 1) : 0;
+    posts = Array.from({ length: nPosts }, (_, i) => {
+      const isStart = i === 0;
+      const isEnd = i === nPosts - 1;
+      if (isStart && !showStartPost) return null;
+      if (isEnd && !showEndPost) return null;
+      return { x: -lengthM / 2 + postGap * i, isFreeEnd: (isStart && startIsFreeEnd) || (isEnd && endIsFreeEnd) };
+    }).filter(Boolean);
+  }
 
   const postXs = posts.map(p => p.x);
   const mp = frameMat(finishColor, selection.material);
@@ -549,9 +556,12 @@ function RailSection({ lengthM, heightM, selection, finishColor, showStartPost =
 function CornerCap({ position, selection, finishColor }) {
   const depthM = Math.max(0.04, (selection.depth ?? 6) / 100);
   const isSpijlen = selection.infill === "verticale-spijlen";
-  const railH = isSpijlen ? 0.016 : 0.05;
-  const railD = isSpijlen ? 0.016 : depthM * 0.82;
-  const postW = isSpijlen ? 0.016 : 0.044;
+  // Spijlen: no corner cap — rails flow through continuously
+  if (isSpijlen) return null;
+
+  const railH = 0.05;
+  const railD = depthM * 0.82;
+  const postW = 0.044;
   const heightM = Math.max(0.6, (selection.height ?? 105) / 100);
   const mp = frameMat(finishColor, selection.material);
   const hasHandrailOption = (selection.extraOptions ?? []).includes("handrail-glas");
@@ -623,11 +633,13 @@ function RoundedCornerConnector({ corner, selection, finishColor }) {
 
   return (
     <group>
-      {/* Corner post */}
-      <group position={[cornerWorld.x, heightM / 2, cornerWorld.z]}>
-        <Post finishColor={finishColor} postH={heightM} postW={postW} postD={postD} material={selection.material} />
-        <PostBase mounting={selection.mounting} finishColor={finishColor} postW={postW} postD={postD} postH={heightM} />
-      </group>
+      {/* Corner post — hidden for spijlen (continuous look) */}
+      {!isSpijlen && (
+        <group position={[cornerWorld.x, heightM / 2, cornerWorld.z]}>
+          <Post finishColor={finishColor} postH={heightM} postW={postW} postD={postD} material={selection.material} />
+          <PostBase mounting={selection.mounting} finishColor={finishColor} postW={postW} postD={postD} postH={heightM} />
+        </group>
+      )}
 
       {/* Curved rail segments at each level */}
       {levels.map((y, levelIndex) => (
