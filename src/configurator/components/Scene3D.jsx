@@ -199,18 +199,20 @@ function FramelessGlass({ railLength, panelH }) {
   );
 }
 
-function VerticalSpijlen({ railLength, panelH, finishColor, material, startIsFree = true, endIsFree = true }) {
+function VerticalSpijlen({ railLength, panelH, finishColor, material, totalLength = 0 }) {
   const mp = frameMat(finishColor, material);
   const barSize = 0.016;
-  const pitch = 0.105; // 10.5cm center-to-center — fixed everywhere
 
-  // Equal margin on both sides: pitch/2 from each edge
-  const startOffset = pitch / 2;
-  const endMargin = pitch / 2;
+  // Calculate pitch from total balustrade length so bars divide evenly
+  const totalM = totalLength > 0 ? totalLength / 100 : railLength;
+  const targetPitch = 0.105; // ideal ~10.5cm
+  const nBarsTotal = Math.max(2, Math.round(totalM / targetPitch));
+  const pitch = totalM / nBarsTotal; // adjusted pitch that divides evenly
 
+  // Place bars at fixed pitch intervals, starting at pitch/2
   const bars = [];
-  let pos = startOffset;
-  while (pos < railLength - endMargin) {
+  let pos = pitch / 2;
+  while (pos < railLength - pitch * 0.4) {
     bars.push(-railLength / 2 + pos);
     pos += pitch;
   }
@@ -536,7 +538,7 @@ function RailSection({ lengthM, heightM, selection, finishColor, showStartPost =
       {selection.infill === "glas" ? (
         <GlassInfill railLength={fillSpan} panelH={panelH} postXs={postXs.map(x => x - fillOffsetX)} finishColor={finishColor} postW={postW} />
       ) : selection.infill === "verticale-spijlen" ? (
-        <VerticalSpijlen railLength={fillSpan} panelH={panelH} finishColor={finishColor} material={selection.material} startIsFree={startIsFreeEnd} endIsFree={endIsFreeEnd} />
+        <VerticalSpijlen railLength={fillSpan} panelH={panelH} finishColor={finishColor} material={selection.material} totalLength={selection.length ?? 0} />
       ) : selection.infill === "horizontale-profielen" ? (
         <HorizontaleProfielen railLength={fillSpan} panelH={panelH} finishColor={finishColor} material={selection.material} />
       ) : selection.infill === "horizontale-staven" ? (
