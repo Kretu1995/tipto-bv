@@ -209,14 +209,14 @@ function VerticalSpijlen({ railLength, panelH, finishColor, material, totalLengt
   const nBarsTotal = Math.max(2, Math.round(totalM / targetPitch));
   const pitch = totalM / nBarsTotal;
 
-  // How many bars fit in THIS segment, then center them
-  const nBarsHere = Math.max(1, Math.round(railLength / pitch));
-  const actualSpan = (nBarsHere - 1) * pitch;
-  const startX = -actualSpan / 2;
-
+  // Place bars so that margin at each edge = exactly pitch/2
+  // This means: first bar at -railLength/2 + pitch/2, then every pitch
   const bars = [];
-  for (let i = 0; i < nBarsHere; i++) {
-    bars.push(startX + i * pitch);
+  const firstX = -railLength / 2 + pitch / 2;
+  let x = firstX;
+  while (x <= railLength / 2 - pitch / 2 + 0.001) {
+    bars.push(x);
+    x += pitch;
   }
 
   const barBottom = 0.02;
