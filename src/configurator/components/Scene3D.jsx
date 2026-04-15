@@ -203,19 +203,22 @@ function VerticalSpijlen({ railLength, panelH, finishColor, material, totalLengt
   const mp = frameMat(finishColor, material);
   const barSize = 0.016;
 
-  // Target pitch ~10.5cm
-  const targetPitch = 0.105;
+  // ONE cell width for the ENTIRE balustrade — derived from total length
+  const totalM = totalLength > 0 ? totalLength / 100 : railLength;
+  const nTotal = Math.max(1, Math.floor(totalM / 0.105));
+  const cellWidth = totalM / nTotal;
 
-  // How many bars fit if we need margin >= targetPitch on each side?
-  // usable = railLength, we want nBars spaced so total span INCLUDING margins = railLength
-  // nBars cells of equal width: cellWidth = railLength / nBars, bar in center of each cell
-  const nBars = Math.max(1, Math.floor(railLength / targetPitch));
-  const cellWidth = railLength / nBars;
+  // This segment: divide into cells of that universal width
+  // Use floor so bars don't overflow the segment
+  const nBars = Math.max(1, Math.floor(railLength / cellWidth));
 
-  // Each bar sits in the center of its cell — guaranteed equal spacing everywhere
+  // Center the bars within this segment
+  const usedWidth = nBars * cellWidth;
+  const offset = (railLength - usedWidth) / 2;
+
   const bars = [];
   for (let i = 0; i < nBars; i++) {
-    bars.push(-railLength / 2 + cellWidth * (i + 0.5));
+    bars.push(-railLength / 2 + offset + cellWidth * (i + 0.5));
   }
 
   const barBottom = 0.02;
