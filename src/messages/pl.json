@@ -219,6 +219,12 @@
     "privacy": "Polityka prywatności",
     "terms": "Regulamin"
   },
+  "SimulatorMobile": {
+    "title": "Wymagany komputer",
+    "message": "Konfigurator 3D balustrad jest dostępny na komputerze i tablecie (poziomo). Otwórz tę stronę na większym ekranie, aby uzyskać najlepsze wrażenia.",
+    "cta": "Zapytaj o wycenę",
+    "back": "Powrót do strony głównej"
+  },
   "CookieConsent": {
     "message": "Używamy plików cookie, aby poprawić Twoje doświadczenia na naszej stronie. Kontynuując przeglądanie, zgadzasz się na naszą politykę cookies.",
     "accept": "Akceptuję",

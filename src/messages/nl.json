@@ -727,6 +727,12 @@
     "privacy": "Privacybeleid",
     "terms": "Algemene Voorwaarden"
   },
+  "SimulatorMobile": {
+    "title": "Desktop vereist",
+    "message": "De 3D Balustrade Configurator is beschikbaar op desktop en tablet (landscape). Open deze pagina op een groter scherm voor de beste ervaring.",
+    "cta": "Offerte aanvragen",
+    "back": "Terug naar home"
+  },
   "CookieConsent": {
     "message": "Wij gebruiken cookies om uw ervaring op onze website te verbeteren. Door verder te surfen, gaat u akkoord met ons cookiebeleid.",
     "accept": "Accepteren",

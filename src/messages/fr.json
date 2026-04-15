@@ -233,6 +233,12 @@
     "privacy": "Politique de confidentialité",
     "terms": "Conditions générales"
   },
+  "SimulatorMobile": {
+    "title": "Bureau requis",
+    "message": "Le configurateur 3D de balustrades est disponible sur ordinateur et tablette (paysage). Ouvrez cette page sur un écran plus grand pour la meilleure expérience.",
+    "cta": "Demander un devis",
+    "back": "Retour à l'accueil"
+  },
   "CookieConsent": {
     "message": "Nous utilisons des cookies pour améliorer votre expérience sur notre site. En continuant à naviguer, vous acceptez notre politique de cookies.",
     "accept": "Accepter",

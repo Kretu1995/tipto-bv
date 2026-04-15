@@ -564,6 +564,12 @@
     "privacy": "Privacy Policy",
     "terms": "Terms & Conditions"
   },
+  "SimulatorMobile": {
+    "title": "Desktop required",
+    "message": "The 3D Balustrade Configurator is available on desktop and tablet (landscape). Open this page on a larger screen for the best experience.",
+    "cta": "Request a quote",
+    "back": "Back to home"
+  },
   "CookieConsent": {
     "message": "We use cookies to improve your experience on our website. By continuing to browse, you agree to our cookie policy.",
     "accept": "Accept",
