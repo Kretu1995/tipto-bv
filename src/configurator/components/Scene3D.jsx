@@ -204,9 +204,9 @@ function VerticalSpijlen({ railLength, panelH, finishColor, material, startIsFre
   const barSize = 0.016;
   const pitch = 0.105; // 10.5cm center-to-center — fixed everywhere
 
-  // Always start at pitch/2 from edge — no corner posts break the rhythm
+  // Equal margin on both sides: pitch/2 from each edge
   const startOffset = pitch / 2;
-  const endMargin = pitch * 0.3;
+  const endMargin = pitch / 2;
 
   const bars = [];
   let pos = startOffset;
