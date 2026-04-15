@@ -203,21 +203,19 @@ function VerticalSpijlen({ railLength, panelH, finishColor, material, totalLengt
   const mp = frameMat(finishColor, material);
   const barSize = 0.016;
 
-  // Fixed target pitch — same everywhere
-  const pitch = 0.105;
+  // ONE pitch for the entire balustrade, derived from total length
+  const totalM = totalLength > 0 ? totalLength / 100 : railLength;
+  const nTotal = Math.max(2, Math.round(totalM / 0.105));
+  const pitch = totalM / nTotal;
 
-  // Number of bars that fit with equal margin (pitch/2) on each side
-  // Available span for bars = railLength - pitch (margin on each side = pitch/2)
-  // Number of gaps between bars = nBars - 1, each gap = pitch
-  // So: (nBars - 1) * pitch = railLength - pitch → nBars = railLength/pitch
+  // This segment: place bars at this universal pitch, centered
   const nBars = Math.max(1, Math.round(railLength / pitch));
-
-  // Center nBars evenly within railLength with exact equal spacing
-  const actualPitch = railLength / nBars;
+  const span = (nBars - 1) * pitch;
+  const startX = -span / 2;
 
   const bars = [];
   for (let i = 0; i < nBars; i++) {
-    bars.push(-railLength / 2 + actualPitch / 2 + i * actualPitch);
+    bars.push(startX + i * pitch);
   }
 
   const barBottom = 0.02;
